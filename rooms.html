@@ -3,131 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Room | Arcadia Suites Hotel Kampala</title>
-<meta name="description" content="Room details at Arcadia Suites Hotel, Kira Road, Kampala.">
-<meta name="theme-color" content="#1F2E26">
+<title>Rooms & Suites | Arcadia Suites Hotel Kampala</title>
+<meta name="description" content="Comfortable rooms and suites at Arcadia Suites Hotel, Kira Road, Kampala.">
+<meta name="theme-color" content="#1E1915">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F2E26'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23C9A55A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23A83A24'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23F2EFE9' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --cream:#F5EFE2;--cream-2:#EDE6D5;--green:#1F2E26;--green-2:#2C3F34;
-    --gold:#C9A55A;--gold-2:#B8934A;--ink:#1F2E26;--body:#5F5A50;--muted:#8A8578;
-    --rule:#D9CFBB;--white:#fff;
+    --sand:#F2EFE9;--white:#FFFFFF;--espresso:#1E1915;
+    --brick:#A83A24;--brick-2:#8B2E1C;--copper:#D89A4E;--copper-2:#B87536;
+    --body:#5C5750;--muted:#8A857C;--rule:#DCD5C6;--rule-2:#E8E3D7;
     --f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;
     --max:1360px;--pad:48px;
     padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
   }
   html{scroll-behavior:smooth;scroll-padding-top:80px}
-  body{font-family:var(--f-sans);background:var(--cream);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,h3{font-family:var(--f-serif);color:var(--ink);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
+  body{font-family:var(--f-sans);background:var(--sand);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--f-serif);color:var(--espresso);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
   a{color:inherit;text-decoration:none}
   img{max-width:100%;display:block}
   ul{list-style:none}
-  ::selection{background:var(--gold);color:var(--green)}
-
+  ::selection{background:var(--brick);color:var(--sand)}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
   @media (max-width:900px){ .wrap{padding:0 24px} }
+  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);margin-bottom:24px}
+  .kicker::before{content:'';width:32px;height:1px;background:var(--brick)}
 
-  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
-  .kicker::before{content:'';width:32px;height:1px;background:var(--gold)}
-
-  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(245,239,226,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
-  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(245,239,226,0.98)}
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(242,239,233,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(242,239,233,0.98)}
   .nav-inner{max-width:var(--max);margin:0 auto;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
   @media (max-width:900px){ .nav-inner{padding:16px 24px} }
-  .logo{display:flex;align-items:center;gap:14px;color:var(--green);line-height:1}
-  .logo-mark{width:36px;height:36px;background:var(--green);display:grid;place-items:center;color:var(--gold);font-family:var(--f-serif);font-size:22px;flex:none}
+  .logo{display:flex;align-items:center;gap:14px;color:var(--espresso);line-height:1}
+  .logo-mark{width:38px;height:38px;background:var(--brick);display:grid;place-items:center;color:var(--sand);font-family:var(--f-serif);font-size:22px;flex:none;transition:background .2s}
+  .logo:hover .logo-mark{background:var(--brick-2)}
   .logo-text{display:flex;flex-direction:column;line-height:1;gap:4px}
   .logo-name{font-family:var(--f-serif);font-size:20px;letter-spacing:0.02em}
   .logo-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
   .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
   .nav-links a{color:var(--body);position:relative;padding:6px 0;transition:color .2s}
-  .nav-links a:hover{color:var(--green)}
-  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--green);color:var(--cream);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
-  .nav-cta:hover{background:var(--gold);color:var(--green)}
-  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--green)}
+  .nav-links a:hover,.nav-links a.active{color:var(--brick)}
+  .nav-links a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--brick)}
+  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
+  .nav-cta:hover{background:var(--brick-2)}
+  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--espresso)}
   .menu-btn svg{width:26px;height:26px}
   @media (max-width:960px){ .nav-links,.nav-cta{display:none} .menu-btn{display:inline-flex} }
-  .sheet{position:fixed;inset:0;background:var(--green);color:var(--cream);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
+  .sheet{position:fixed;inset:0;background:var(--espresso);color:var(--sand);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
   .sheet.open{display:flex}
-  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(245,239,226,0.12);color:var(--cream);display:flex;justify-content:space-between;align-items:center}
-  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:0.1em}
+  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(242,239,233,0.12);color:var(--sand);display:flex;justify-content:space-between;align-items:center}
+  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--copper);letter-spacing:0.1em}
   .sheet a:last-of-type{border-bottom:0}
-  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--gold);color:var(--green);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
+  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
 
-  .crumb{padding:140px 0 40px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
-  .crumb a{transition:color .2s}
-  .crumb a:hover{color:var(--gold)}
-  .crumb span{margin:0 12px;color:var(--rule)}
+  .page-hero{padding:180px 0 90px;border-bottom:1px solid var(--rule)}
+  .page-hero h1{font-size:clamp(52px, 7.4vw, 108px);line-height:0.96;letter-spacing:-0.03em;color:var(--espresso);max-width:16ch;margin-bottom:36px;font-weight:400}
+  .page-hero h1 em{font-style:italic;color:var(--brick)}
+  .page-hero p{font-size:19px;line-height:1.65;color:var(--body);max-width:52ch}
+  @media (max-width:900px){ .page-hero{padding:130px 0 60px} }
 
-  .room-hero{padding:0 0 80px}
-  .room-hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:start}
-  .room-visual{aspect-ratio:4/3;background:var(--cream-2);position:relative;overflow:hidden;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
-  .room-visual::before{content:'';position:absolute;inset:24px;border:1px solid var(--rule);pointer-events:none;z-index:1}
-  .room-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .room-info .meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-  .room-info h1{font-size:clamp(42px, 5vw, 68px);line-height:1.02;letter-spacing:-0.03em;color:var(--ink);margin-bottom:22px;font-weight:400}
-  .room-info > p{font-size:17px;line-height:1.7;color:var(--body);margin-bottom:32px;max-width:46ch}
-  .price-box{background:var(--white);border:1px solid var(--rule);padding:28px 32px;margin-bottom:28px}
-  .price-box .label{font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-  .price-box .amt{font-family:var(--f-serif);font-size:42px;color:var(--ink);line-height:1;letter-spacing:-0.025em}
-  .price-box .amt small{font-family:var(--f-sans);font-size:14px;color:var(--muted);margin-left:6px}
-  @media (max-width:960px){
-    .room-hero-inner{grid-template-columns:1fr;gap:40px}
-    .crumb{padding:110px 0 30px}
+  .rooms-section{padding:100px 0}
+  .rooms-list{display:grid;gap:0}
+  .room-row{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:80px 0;border-bottom:1px solid var(--rule)}
+  .room-row:first-child{padding-top:0}
+  .room-row:last-child{border-bottom:0;padding-bottom:0}
+  .room-row.reverse .room-media{order:2}
+  .room-row.reverse .room-content{order:1}
+  .room-media{aspect-ratio:4/3;background:var(--rule-2);position:relative;overflow:hidden;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
+  .room-media::before{content:'';position:absolute;inset:24px;border:1px solid var(--rule);pointer-events:none;z-index:1}
+  .room-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .room-content .meta{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);margin-bottom:18px}
+  .room-content h2{font-family:var(--f-serif);font-size:clamp(36px, 4vw, 56px);line-height:1.05;color:var(--espresso);letter-spacing:-0.025em;margin-bottom:22px;font-weight:400}
+  .room-content > p{font-size:16px;line-height:1.7;color:var(--body);margin-bottom:28px;max-width:46ch}
+  .room-amenities{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-bottom:32px}
+  .room-amenities li{font-size:14.5px;color:var(--body);padding-left:22px;position:relative;line-height:1.55}
+  .room-amenities li::before{content:'—';position:absolute;left:0;color:var(--copper)}
+  .room-foot{display:flex;justify-content:space-between;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--rule);flex-wrap:wrap}
+  .room-price-label{font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .room-price-amt{font-family:var(--f-serif);font-size:30px;color:var(--espresso);line-height:1;letter-spacing:-0.02em}
+  .room-price-amt small{font-family:var(--f-sans);font-size:13px;color:var(--muted);margin-left:4px}
+  @media (max-width:900px){
+    .room-row{grid-template-columns:1fr;gap:32px;padding:56px 0}
+    .room-row.reverse .room-media{order:0}
+    .room-row.reverse .room-content{order:0}
+    .room-amenities{grid-template-columns:1fr}
   }
 
-  .section{padding:80px 0;border-top:1px solid var(--rule)}
-  .section h2{font-size:clamp(30px, 3.6vw, 46px);line-height:1.1;letter-spacing:-0.025em;margin-bottom:32px;font-weight:400}
-  .amenities-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:20px 40px}
-  .amenities-grid li{font-size:16px;color:var(--body);padding-left:26px;position:relative;line-height:1.55;padding-bottom:14px;border-bottom:1px solid var(--rule)}
-  .amenities-grid li::before{content:'—';position:absolute;left:0;color:var(--gold)}
-  @media (max-width:700px){ .amenities-grid{grid-template-columns:1fr} }
-
   .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 32px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;border:0;cursor:pointer;transition:all .2s}
-  .btn-primary{background:var(--green);color:var(--cream)}
-  .btn-primary:hover{background:var(--gold);color:var(--green);transform:translateY(-2px)}
-  .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
-  .btn-outline:hover{background:var(--green);color:var(--cream)}
-  .btn-gold{background:var(--gold);color:var(--green)}
-  .btn-gold:hover{background:var(--gold-2);color:var(--cream)}
+  .btn-primary{background:var(--brick);color:var(--sand)}
+  .btn-primary:hover{background:var(--brick-2);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+  .btn-outline:hover{background:var(--espresso);color:var(--sand)}
+  .btn-gold{background:var(--copper);color:var(--espresso)}
+  .btn-gold:hover{background:var(--copper-2);color:var(--sand)}
   .btn svg{width:14px;height:14px;transition:transform .3s}
   .btn:hover svg{transform:translateX(4px)}
 
-  .notfound{padding:200px 24px;text-align:center;color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
+  .empty-rooms{padding:100px 40px;text-align:center;border:1px dashed var(--rule);color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
 
-  .book-cta{background:var(--green);color:var(--cream);padding:100px 0;text-align:center;position:relative;overflow:hidden}
-  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,165,90,0.18) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+  .book-cta{background:var(--brick);color:var(--sand);padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,239,233,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
   .book-cta-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
-  .book-cta .kicker{color:var(--gold);justify-content:center}
-  .book-cta .kicker::before{background:var(--gold)}
-  .book-cta h2{font-size:clamp(38px, 5vw, 68px);line-height:1.02;letter-spacing:-0.035em;color:var(--cream);margin-bottom:26px;font-weight:400}
-  .book-cta h2 em{font-style:italic;color:var(--gold)}
-  .book-cta p{font-size:17px;line-height:1.65;color:rgba(245,239,226,0.72);margin:0 auto 40px;max-width:50ch}
+  .book-cta .kicker{color:var(--sand);justify-content:center}
+  .book-cta .kicker::before{background:var(--sand)}
+  .book-cta h2{font-size:clamp(40px, 5.6vw, 76px);line-height:1;letter-spacing:-0.035em;color:var(--sand);margin-bottom:28px;font-weight:400}
+  .book-cta h2 em{font-style:italic;color:var(--copper)}
+  .book-cta p{font-size:17px;line-height:1.65;color:rgba(242,239,233,0.82);margin:0 auto 40px;max-width:52ch}
   .book-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .book-cta .btn-primary{background:var(--sand);color:var(--brick)}
+  .book-cta .btn-primary:hover{background:var(--espresso);color:var(--sand)}
+  .book-cta .btn-outline{color:var(--sand);border-color:rgba(242,239,233,0.4)}
+  .book-cta .btn-outline:hover{background:var(--sand);color:var(--brick);border-color:var(--sand)}
 
-  footer{background:var(--green);color:rgba(245,239,226,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(245,239,226,0.08)}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(245,239,226,0.12)}
-  .footer-brand .logo{color:var(--cream)}
-  .footer-brand .logo-mark{background:var(--gold);color:var(--green)}
-  .footer-brand .logo-sub{color:rgba(245,239,226,0.4)}
-  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(245,239,226,0.55);max-width:36ch}
-  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+  footer{background:var(--espresso);color:rgba(242,239,233,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(242,239,233,0.08)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(242,239,233,0.12)}
+  .footer-brand .logo{color:var(--sand)}
+  .footer-brand .logo-mark{background:var(--brick);color:var(--sand)}
+  .footer-brand .logo-sub{color:rgba(242,239,233,0.4)}
+  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(242,239,233,0.55);max-width:36ch}
+  .footer-brand .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);border:1px solid rgba(216,154,78,0.35);padding:8px 14px}
+  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--copper);margin-bottom:24px}
   .footer-col ul{display:flex;flex-direction:column;gap:14px}
-  .footer-col a{font-size:14px;color:rgba(245,239,226,0.6);transition:color .2s}
-  .footer-col a:hover{color:var(--gold)}
-  .footer-col li{font-size:14px;color:rgba(245,239,226,0.6);line-height:1.55}
-  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,239,226,0.4)}
-  .footer-bottom a:hover{color:var(--gold)}
+  .footer-col a{font-size:14px;color:rgba(242,239,233,0.6);transition:color .2s}
+  .footer-col a:hover{color:var(--copper)}
+  .footer-col li{font-size:14px;color:rgba(242,239,233,0.6);line-height:1.55}
+  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,239,233,0.4)}
+  .footer-bottom a{transition:color .2s}
+  .footer-bottom a:hover{color:var(--copper)}
   @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;gap:40px} .footer-brand{grid-column:1/-1} }
   @media (max-width:520px){ .footer-grid{grid-template-columns:1fr} footer{padding:60px 0 32px} }
 
-  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--green);color:var(--cream);display:grid;place-items:center;box-shadow:0 12px 32px rgba(31,46,38,0.28);z-index:90;transition:background .25s, transform .25s;border:1px solid rgba(201,165,90,0.3);border-radius:50%}
-  .wa:hover{background:var(--gold);color:var(--green);transform:translateY(-3px)}
+  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--brick);color:var(--sand);display:grid;place-items:center;box-shadow:0 12px 32px rgba(168,58,36,0.35);z-index:90;transition:background .25s, transform .25s;border-radius:50%}
+  .wa:hover{background:var(--brick-2);transform:translateY(-3px)}
   .wa svg{width:24px;height:24px}
+
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
 </style>
 </head>
 <body>
@@ -142,7 +156,7 @@
       </span>
     </a>
     <div class="nav-links">
-      <a href="rooms.html">Rooms</a>
+      <a href="rooms.html" class="active">Rooms</a>
       <a href="dining.html">Dining</a>
       <a href="amenities.html">Amenities</a>
       <a href="location.html">Location</a>
@@ -166,17 +180,33 @@
   <a href="booking.html" class="sheet-cta">Book a stay</a>
 </div>
 
-<div class="wrap">
-  <div class="crumb">
-    <a href="index.html">Home</a><span>/</span><a href="rooms.html">Rooms</a><span>/</span><span id="crumbName">Room</span>
-  </div>
-</div>
-
-<div id="roomContent">
+<header class="page-hero">
   <div class="wrap">
-    <div class="notfound">Loading room...</div>
+    <span class="kicker rv">Rooms & Suites</span>
+    <h1 class="rv">Rooms designed for <em>a good night's sleep.</em></h1>
+    <p class="rv">Comfortable beds, quiet air conditioning, and the essentials done properly. Pick the room that fits your stay.</p>
   </div>
-</div>
+</header>
+
+<section class="rooms-section">
+  <div class="wrap">
+    <div class="rooms-list" id="roomsList">
+      <div class="empty-rooms">Loading rooms...</div>
+    </div>
+  </div>
+</section>
+
+<section class="book-cta">
+  <div class="wrap book-cta-inner">
+    <span class="kicker rv">Reserve a room</span>
+    <h2 class="rv">Ready to <em>stay</em> with us?</h2>
+    <p class="rv">Send us your dates and we'll reply with availability and rates.</p>
+    <div class="actions rv">
+      <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
@@ -190,6 +220,7 @@
           </span>
         </a>
         <p>A modern boutique hotel on Kira Road, with comfortable rooms, quiet service, and rooftop dining above the city.</p>
+        <span class="badge">Kira Road · Kampala</span>
       </div>
       <div class="footer-col">
         <h4>Explore</h4>
@@ -231,7 +262,7 @@
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+  import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
@@ -259,74 +290,55 @@
     document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
   }, { passive: true });
 
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+
   function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 
-  var params = new URLSearchParams(window.location.search);
-  var roomId = params.get('id');
-  var content = document.getElementById('roomContent');
+  var roomsList = document.getElementById('roomsList');
+  onSnapshot(query(collection(db, 'rooms'), orderBy('createdAt', 'asc')), function (snap) {
+    var rooms = [];
+    snap.forEach(function (d) { rooms.push({ id: d.id, ...d.data() }); });
+    rooms = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
 
-  if (!roomId) {
-    content.innerHTML = '<div class="wrap"><div class="notfound">Room not specified. <a href="rooms.html" style="color:var(--gold)">Browse rooms →</a></div></div>';
-  } else {
-    getDoc(doc(db, 'rooms', roomId)).then(function (d) {
-      if (!d.exists()) {
-        content.innerHTML = '<div class="wrap"><div class="notfound">Room not found. <a href="rooms.html" style="color:var(--gold)">Browse rooms →</a></div></div>';
-        return;
-      }
-      var r = d.data();
-      document.title = r.title + ' | Arcadia Suites Hotel Kampala';
-      document.getElementById('crumbName').textContent = r.title;
+    if (!rooms.length) {
+      roomsList.innerHTML = '<div class="empty-rooms">Rooms are being updated. Check back shortly.</div>';
+      return;
+    }
 
+    roomsList.innerHTML = rooms.map(function (r, i) {
+      var reverse = i % 2 === 1;
       var img = r.imageUrl
         ? '<img src="' + r.imageUrl + '" alt="' + esc(r.title) + '" onerror="this.style.display=\'none\'">'
         : '<span>Photo coming soon</span>';
       var amenities = (r.amenities || []).map(function (a) { return '<li>' + esc(a) + '</li>'; }).join('');
       var price = r.price
-        ? '<div class="price-box"><div class="label">Rate</div><div class="amt">' + esc(r.price) + '<small>' + esc(r.currency || 'UGX') + '</small></div></div>'
+        ? '<div><div class="room-price-label">From</div><div class="room-price-amt">' + esc(r.price) + '<small>' + esc(r.currency || 'UGX') + '</small></div></div>'
         : '';
 
-      content.innerHTML =
-        '<div class="wrap">' +
-          '<section class="room-hero">' +
-            '<div class="room-hero-inner">' +
-              '<div class="room-visual">' + img + '</div>' +
-              '<div class="room-info">' +
-                '<div class="meta">Room</div>' +
-                '<h1>' + esc(r.title) + '</h1>' +
-                '<p>' + esc(r.description || '') + '</p>' +
-                price +
-                '<div style="display:flex;gap:12px;flex-wrap:wrap">' +
-                  '<a href="booking.html?room=' + encodeURIComponent(r.title) + '" class="btn btn-primary">Book this room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
-                  '<a href="https://wa.me/256200950700?text=' + encodeURIComponent('Hello, I would like to book the ' + r.title) + '" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp</a>' +
-                '</div>' +
-              '</div>' +
-            '</div>' +
-          '</section>' +
-
-          (amenities ?
-            '<section class="section">' +
-              '<h2>What\'s in this room</h2>' +
-              '<ul class="amenities-grid">' + amenities + '</ul>' +
-            '</section>'
-          : '') +
-        '</div>' +
-
-        '<section class="book-cta">' +
-          '<div class="wrap book-cta-inner">' +
-            '<span class="kicker">Ready to reserve?</span>' +
-            '<h2>Stay with <em>us.</em></h2>' +
-            '<p>Send us your dates and we will reply with availability and rates for the ' + esc(r.title) + '.</p>' +
-            '<div class="actions">' +
-              '<a href="booking.html?room=' + encodeURIComponent(r.title) + '" class="btn btn-gold">Book now<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
-              '<a href="rooms.html" class="btn btn-outline" style="color:var(--cream);border-color:rgba(245,239,226,0.3)">See other rooms</a>' +
-            '</div>' +
+      return '<div class="room-row' + (reverse ? ' reverse' : '') + '">' +
+        '<div class="room-media rv">' + img + '</div>' +
+        '<div class="room-content rv">' +
+          '<div class="meta">Room</div>' +
+          '<h2>' + esc(r.title) + '</h2>' +
+          '<p>' + esc(r.description || '') + '</p>' +
+          (amenities ? '<ul class="room-amenities">' + amenities + '</ul>' : '') +
+          '<div class="room-foot">' +
+            price +
+            '<a href="room.html?id=' + r.id + '" class="btn btn-primary">View & book<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>' +
           '</div>' +
-        '</section>';
-    }).catch(function (err) {
-      console.error(err);
-      content.innerHTML = '<div class="wrap"><div class="notfound">Could not load room. <a href="rooms.html" style="color:var(--gold)">Browse rooms →</a></div></div>';
-    });
-  }
+        '</div>' +
+      '</div>';
+    }).join('');
+
+    roomsList.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  });
 </script>
 </body>
 </html>
