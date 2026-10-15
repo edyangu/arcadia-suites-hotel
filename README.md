@@ -2,7 +2,7 @@ Arcadia Suites Hotel Kampala
 
 Official website for Arcadia Suites Hotel, a boutique hotel on Kira Road, Kampala, Uganda.
 
-Live site: https://arcadia-suites.vercel.app
+Live site: https://arcadia-suites-hotel.vercel.app
 
 
 WHAT THIS IS
