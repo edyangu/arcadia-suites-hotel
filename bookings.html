@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Contact | Arcadia Suites Hotel Kampala</title>
-<meta name="description" content="Contact Arcadia Suites Hotel on Kira Road, Kampala. Phone, email, WhatsApp, and location.">
+<title>Book a Room | Arcadia Suites Hotel Kampala</title>
+<meta name="description" content="Book a room at Arcadia Suites Hotel on Kira Road, Kampala. Send your dates and we'll reply with availability.">
 <meta name="theme-color" content="#1F2E26">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +13,9 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --cream:#F5EFE2;--cream-2:#EDE6D5;--green:#1F2E26;--gold:#C9A55A;--gold-2:#B8934A;
+    --cream:#F5EFE2;--cream-2:#EDE6D5;--green:#1F2E26;--green-2:#2C3F34;--gold:#C9A55A;--gold-2:#B8934A;
     --ink:#1F2E26;--body:#5F5A50;--muted:#8A8578;--rule:#D9CFBB;--white:#fff;
+    --red:#B8412F;--ok:#2D7A47;
     --f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;
     --max:1360px;--pad:48px;
     padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
@@ -24,6 +25,7 @@
   h1,h2,h3{font-family:var(--f-serif);color:var(--ink);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
   a{color:inherit;text-decoration:none}
   ul{list-style:none}
+  button,input,textarea,select{font:inherit;color:inherit}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
   @media (max-width:900px){ .wrap{padding:0 24px} }
   .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
@@ -40,13 +42,10 @@
   .logo-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
   .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
   .nav-links a{color:var(--body);position:relative;padding:6px 0;transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--green)}
-  .nav-links a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold)}
-  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--green);color:var(--cream);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
-  .nav-cta:hover{background:var(--gold);color:var(--green)}
+  .nav-links a:hover{color:var(--green)}
   .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--green)}
   .menu-btn svg{width:26px;height:26px}
-  @media (max-width:960px){ .nav-links,.nav-cta{display:none} .menu-btn{display:inline-flex} }
+  @media (max-width:960px){ .nav-links{display:none} .menu-btn{display:inline-flex} }
   .sheet{position:fixed;inset:0;background:var(--green);color:var(--cream);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
   .sheet.open{display:flex}
   .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(245,239,226,0.12);color:var(--cream);display:flex;justify-content:space-between;align-items:center}
@@ -54,50 +53,53 @@
   .sheet a:last-of-type{border-bottom:0}
   .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--gold);color:var(--green);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
 
-  .page-hero{padding:180px 0 90px;border-bottom:1px solid var(--rule)}
-  .page-hero h1{font-size:clamp(52px, 7.4vw, 108px);line-height:0.96;letter-spacing:-0.03em;color:var(--ink);max-width:16ch;margin-bottom:36px;font-weight:400}
+  .page-hero{padding:180px 0 80px;border-bottom:1px solid var(--rule)}
+  .page-hero h1{font-size:clamp(52px, 7.4vw, 100px);line-height:0.98;letter-spacing:-0.03em;color:var(--ink);max-width:14ch;margin-bottom:32px;font-weight:400}
   .page-hero h1 em{font-style:italic;color:var(--gold-2)}
   .page-hero p{font-size:19px;line-height:1.65;color:var(--body);max-width:52ch}
   @media (max-width:900px){ .page-hero{padding:130px 0 60px} }
 
-  .contact-section{padding:100px 0}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-  .contact-cards{display:grid;gap:0;border-top:1px solid var(--rule)}
-  .contact-card{display:flex;flex-direction:column;gap:16px;padding:32px 0;border-bottom:1px solid var(--rule);transition:padding-left .3s}
-  .contact-card:hover{padding-left:12px}
-  .cc-label{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:500}
-  .cc-value{font-family:var(--f-serif);font-size:26px;line-height:1.35;color:var(--ink);letter-spacing:-0.015em}
-  .cc-value a{transition:color .2s;border-bottom:1px solid transparent}
-  .cc-value a:hover{color:var(--gold-2);border-bottom-color:var(--gold)}
-  .cc-note{font-size:14.5px;color:var(--muted);line-height:1.6}
+  .booking-section{padding:100px 0}
+  .booking-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start}
+  .booking-info .kicker{margin-bottom:20px}
+  .booking-info h2{font-size:clamp(30px, 3.6vw, 46px);line-height:1.08;letter-spacing:-0.025em;color:var(--ink);margin-bottom:24px;max-width:16ch;font-weight:400}
+  .booking-info h2 em{font-style:italic;color:var(--gold-2)}
+  .booking-info > p{font-size:16px;line-height:1.75;color:var(--body);margin-bottom:24px;max-width:44ch}
+  .booking-info > p em{font-style:italic;color:var(--gold-2)}
+  .booking-details{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:32px}
+  .booking-details .li{padding:20px 0;border-bottom:1px solid var(--rule);font-size:15px;line-height:1.65}
+  .booking-details .li b{display:block;color:var(--ink);font-weight:500;margin-bottom:4px;font-family:var(--f-sans)}
+  .booking-details .li span{color:var(--muted);font-size:14.5px}
+  .booking-details .li a{color:var(--gold-2);border-bottom:1px solid var(--gold)}
 
-  .contact-side .kicker{margin-bottom:20px}
-  .contact-side h2{font-size:clamp(30px, 3.6vw, 46px);line-height:1.08;letter-spacing:-0.025em;color:var(--ink);margin-bottom:24px;max-width:16ch;font-weight:400}
-  .contact-side h2 em{font-style:italic;color:var(--gold-2)}
-  .contact-side p{font-size:16px;line-height:1.75;color:var(--body);margin-bottom:20px;max-width:44ch}
-  .contact-side p em{font-style:italic;color:var(--gold-2)}
-  @media (max-width:900px){ .contact-section{padding:70px 0} .contact-grid{grid-template-columns:1fr;gap:48px} }
+  .form-card{background:var(--white);border:1px solid var(--rule);padding:56px;box-shadow:0 4px 24px rgba(31,46,38,0.06)}
+  .form-card h3{font-size:32px;letter-spacing:-0.02em;margin-bottom:8px;font-weight:400}
+  .form-card > p{font-size:14.5px;color:var(--muted);margin-bottom:36px;line-height:1.6}
 
-  .map-frame{width:100%;height:480px;background:var(--cream-2);display:block;border:0;border-top:1px solid var(--rule)}
-  @media (max-width:768px){ .map-frame{height:320px} }
+  .field{margin-bottom:22px}
+  .field label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500}
+  .field input,.field textarea,.field select{width:100%;padding:14px 16px;background:var(--cream);border:1px solid var(--rule);font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s;border-radius:0}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--green)}
+  .field textarea{resize:vertical;min-height:110px;line-height:1.55}
+  .field .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 
-  .book-cta{background:var(--green);color:var(--cream);padding:120px 0;text-align:center;position:relative;overflow:hidden}
-  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,165,90,0.18) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-  .book-cta-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
-  .book-cta .kicker{color:var(--gold);justify-content:center}
-  .book-cta .kicker::before{background:var(--gold)}
-  .book-cta h2{font-size:clamp(40px, 5.6vw, 76px);line-height:1;letter-spacing:-0.035em;color:var(--cream);margin-bottom:28px;font-weight:400}
-  .book-cta h2 em{font-style:italic;color:var(--gold)}
-  .book-cta p{font-size:17px;line-height:1.65;color:rgba(245,239,226,0.72);margin:0 auto 40px;max-width:50ch}
-  .book-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 32px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;border:0;cursor:pointer;transition:all .2s}
-  .btn-primary{background:var(--green);color:var(--cream)}
-  .btn-primary:hover{background:var(--gold);color:var(--green);transform:translateY(-2px)}
-  .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
-  .btn-outline:hover{background:var(--green);color:var(--cream)}
-  .btn-gold{background:var(--gold);color:var(--green)}
-  .btn-gold:hover{background:var(--gold-2);color:var(--cream)}
-  .btn svg{width:14px;height:14px}
+  .submit-btn{width:100%;padding:20px;background:var(--green);color:var(--cream);border:0;cursor:pointer;font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;transition:background .2s;margin-top:12px}
+  .submit-btn:hover:not(:disabled){background:var(--gold);color:var(--green)}
+  .submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+
+  .status{font-size:14px;font-weight:500;min-height:1.5em;margin-top:20px;text-align:center;line-height:1.55}
+  .status.success{color:var(--ok)}
+  .status.error{color:var(--red)}
+
+  .consent{font-size:12.5px;color:var(--muted);line-height:1.55;margin-top:20px;text-align:center}
+  .consent a{color:var(--gold-2);border-bottom:1px solid var(--gold)}
+
+  @media (max-width:900px){
+    .booking-section{padding:70px 0}
+    .booking-grid{grid-template-columns:1fr;gap:48px}
+    .form-card{padding:36px 28px}
+    .field .row2{grid-template-columns:1fr}
+  }
 
   footer{background:var(--green);color:rgba(245,239,226,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(245,239,226,0.08)}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(245,239,226,0.12)}
@@ -141,9 +143,8 @@
       <a href="amenities.html">Amenities</a>
       <a href="location.html">Location</a>
       <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
-    <a href="booking.html" class="nav-cta">Book a stay</a>
     <button class="menu-btn" id="menuBtn" aria-label="Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
     </button>
@@ -162,62 +163,115 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <span class="kicker rv">Contact</span>
-    <h1 class="rv">Get in <em>touch.</em></h1>
-    <p class="rv">Call, email, or send a WhatsApp message. Front desk is open 24 hours a day, seven days a week.</p>
+    <span class="kicker rv">Reserve a room</span>
+    <h1 class="rv">Book your <em>stay.</em></h1>
+    <p class="rv">Fill in your dates and details below. We'll reply within a day with availability, rates, and everything else you need.</p>
   </div>
 </header>
 
-<section class="contact-section">
+<section class="booking-section">
   <div class="wrap">
-    <div class="contact-grid">
-      <div class="contact-cards rv">
-        <div class="contact-card">
-          <div class="cc-label">Call us</div>
-          <div class="cc-value"><a href="tel:+256200950700">+256 200 950 700</a></div>
-          <div class="cc-note">Front desk, available 24 hours a day</div>
-        </div>
-        <div class="contact-card">
-          <div class="cc-label">Email</div>
-          <div class="cc-value"><a href="mailto:info@arcadiasuiteshotel.com">info@arcadiasuiteshotel.com</a></div>
-          <div class="cc-note">Replies within a day</div>
-        </div>
-        <div class="contact-card">
-          <div class="cc-label">WhatsApp</div>
-          <div class="cc-value"><a href="https://wa.me/256200950700" target="_blank" rel="noopener">Message us</a></div>
-          <div class="cc-note">Fastest way to reach us for bookings and questions</div>
-        </div>
-        <div class="contact-card">
-          <div class="cc-label">Visit</div>
-          <div class="cc-value">Kira Road, Kampala</div>
-          <div class="cc-note">Near Acacia Mall, Uganda Museum, and Kololo. Any taxi driver will know it.</div>
+    <div class="booking-grid">
+      <div class="booking-info rv">
+        <span class="kicker">What happens next</span>
+        <h2>Send your dates, <em>get a confirmation.</em></h2>
+        <p>
+          This is a booking enquiry, not an instant confirmation. We check availability, then reply personally with rates and any details you need. <em>Most replies go out within a few hours during the day.</em>
+        </p>
+
+        <div class="booking-details">
+          <div class="li">
+            <b>Prefer to call?</b>
+            <span>+256 200 950 700</span>
+          </div>
+          <div class="li">
+            <b>Prefer WhatsApp?</b>
+            <a href="https://wa.me/256200950700" target="_blank" rel="noopener">Message us here</a>
+          </div>
+          <div class="li">
+            <b>Special requests?</b>
+            <span>Mention them in the notes field below</span>
+          </div>
+          <div class="li">
+            <b>Groups and events?</b>
+            <span>Use the notes field, we'll come back with a plan</span>
+          </div>
         </div>
       </div>
 
-      <div class="contact-side rv">
-        <span class="kicker">Booking & events</span>
-        <h2>For rooms, dinner, <em>or private events.</em></h2>
-        <p>
-          Use the <a href="booking.html" style="color:var(--gold-2);border-bottom:1px solid var(--gold)">booking form</a> for room reservations, or message us on WhatsApp for anything else.
-        </p>
-        <p>
-          We handle dinner reservations, private parties, corporate cocktails, and family celebrations on our rooftop. <em>Tell us the plan and we'll work out the rest.</em>
-        </p>
-        <div style="margin-top:32px;display:flex;gap:12px;flex-wrap:wrap">
-          <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp</a>
-        </div>
+      <div class="form-card rv">
+        <h3>Booking request</h3>
+        <p>All fields marked required. We don't share your details with anyone.</p>
+
+        <form id="bookingForm" novalidate>
+          <div class="field">
+            <label for="name">Full name *</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@email.com">
+              </div>
+              <div>
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+256 7...">
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="checkin">Check-in *</label>
+                <input type="date" id="checkin" name="checkin" required>
+              </div>
+              <div>
+                <label for="checkout">Check-out *</label>
+                <input type="date" id="checkout" name="checkout" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="guests">Guests *</label>
+                <select id="guests" name="guests" required>
+                  <option value="1">1 guest</option>
+                  <option value="2" selected>2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5+">5+ guests</option>
+                </select>
+              </div>
+              <div>
+                <label for="room">Room type</label>
+                <select id="room" name="room">
+                  <option value="">Any room</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Special requests</label>
+            <textarea id="message" name="message" placeholder="Anything we should know? Airport pickup, dietary needs, late arrival, events..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Send booking request</button>
+
+          <p class="consent">
+            By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We only use your details to respond to your request.
+          </p>
+          <p class="status" id="status" role="status"></p>
+        </form>
       </div>
     </div>
   </div>
 </section>
-
-<iframe
-  class="map-frame"
-  src="https://www.google.com/maps?q=Arcadia+Suites+Hotel+Kira+Road+Kampala&output=embed"
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-  title="Arcadia Suites Hotel map"></iframe>
 
 <footer>
   <div class="wrap">
@@ -271,8 +325,28 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
 </a>
 
-<script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
+    authDomain: "arcadia-suits-hotel.firebaseapp.com",
+    projectId: "arcadia-suits-hotel",
+    storageBucket: "arcadia-suits-hotel.firebasestorage.app",
+    messagingSenderId: "443226155596",
+    appId: "1:443226155596:web:2821439ad0338c3c6822e9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  var FORMSPREE = 'https://formspree.io/f/xyzkqkno';
+
   document.getElementById('year').textContent = new Date().getFullYear();
+
   var sheet = document.getElementById('sheet');
   document.getElementById('menuBtn').addEventListener('click', function () {
     sheet.classList.toggle('open');
@@ -292,6 +366,86 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  var params = new URLSearchParams(window.location.search);
+  var preRoom = params.get('room');
+
+  var roomSelect = document.getElementById('room');
+  onSnapshot(query(collection(db, 'rooms'), orderBy('createdAt', 'asc')), function (snap) {
+    var rooms = [];
+    snap.forEach(function (d) { rooms.push(d.data()); });
+    rooms = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
+
+    var currentVal = roomSelect.value;
+    roomSelect.innerHTML = '<option value="">Any room</option>' +
+      rooms.map(function (r) { return '<option value="' + esc(r.title) + '">' + esc(r.title) + '</option>'; }).join('');
+
+    if (preRoom) {
+      var option = Array.from(roomSelect.options).find(function (o) { return o.value === preRoom; });
+      if (option) roomSelect.value = preRoom;
+    } else if (currentVal) {
+      var opt = Array.from(roomSelect.options).find(function (o) { return o.value === currentVal; });
+      if (opt) roomSelect.value = currentVal;
+    }
+  });
+
+  var form = document.getElementById('bookingForm');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    statusEl.className = 'status';
+    statusEl.textContent = '';
+
+    var fd = new FormData(form);
+    var enquiry = {
+      name: (fd.get('name') || '').trim(),
+      email: (fd.get('email') || '').trim(),
+      phone: (fd.get('phone') || '').trim(),
+      checkin: fd.get('checkin') || '',
+      checkout: fd.get('checkout') || '',
+      guests: fd.get('guests') || '',
+      room: fd.get('room') || 'Any room',
+      message: (fd.get('message') || '').trim(),
+      status: 'pending',
+      date: new Date().toISOString().split('T')[0],
+      createdAt: serverTimestamp()
+    };
+
+    var emailPromise = fetch(FORMSPREE, {
+      method: 'POST',
+      body: fd,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    var dbPromise = addDoc(collection(db, 'enquiries'), enquiry);
+
+    Promise.allSettled([emailPromise, dbPromise])
+      .then(function (results) {
+        var emailOk = results[0].status === 'fulfilled' && results[0].value && results[0].value.ok;
+        var dbOk = results[1].status === 'fulfilled';
+
+        if (emailOk || dbOk) {
+          statusEl.className = 'status success';
+          statusEl.textContent = 'Thank you. We have your booking request and will reply shortly.';
+          form.reset();
+        } else {
+          statusEl.className = 'status error';
+          statusEl.textContent = 'Something went wrong. Please message us on WhatsApp instead.';
+        }
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send booking request';
+      });
+  });
 </script>
 </body>
 </html>
