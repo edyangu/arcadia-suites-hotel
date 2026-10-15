@@ -3,128 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Location | Arcadia Suites Hotel Kampala</title>
-<meta name="description" content="Arcadia Suites Hotel on Kira Road, Kampala. Minutes from Acacia Mall, the Uganda Museum, and Kololo.">
-<meta name="theme-color" content="#1F2E26">
+<title>Amenities | Arcadia Suites Hotel Kampala</title>
+<meta name="description" content="24-hour front desk, free parking, fitness center, business center, laundry, and more at Arcadia Suites Hotel, Kira Road, Kampala.">
+<meta name="theme-color" content="#1E1915">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F2E26'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23C9A55A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23A83A24'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23F2EFE9' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    --cream:#F5EFE2;--cream-2:#EDE6D5;--green:#1F2E26;--gold:#C9A55A;--gold-2:#B8934A;
-    --ink:#1F2E26;--body:#5F5A50;--muted:#8A8578;--rule:#D9CFBB;--white:#fff;
+    --sand:#F2EFE9;--white:#FFFFFF;--espresso:#1E1915;
+    --brick:#A83A24;--brick-2:#8B2E1C;--copper:#D89A4E;--copper-2:#B87536;
+    --body:#5C5750;--muted:#8A857C;--rule:#DCD5C6;--rule-2:#E8E3D7;
     --f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;
     --max:1360px;--pad:48px;
     padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
   }
-  html{scroll-behavior:smooth}
-  body{font-family:var(--f-sans);background:var(--cream);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-  h1,h2,h3{font-family:var(--f-serif);color:var(--ink);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:var(--f-sans);background:var(--sand);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--f-serif);color:var(--espresso);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
   a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
   ul{list-style:none}
+  ::selection{background:var(--brick);color:var(--sand)}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
   @media (max-width:900px){ .wrap{padding:0 24px} }
-  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
-  .kicker::before{content:'';width:32px;height:1px;background:var(--gold)}
-  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(245,239,226,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
-  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(245,239,226,0.98)}
+  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);margin-bottom:24px}
+  .kicker::before{content:'';width:32px;height:1px;background:var(--brick)}
+
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(242,239,233,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(242,239,233,0.98)}
   .nav-inner{max-width:var(--max);margin:0 auto;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
   @media (max-width:900px){ .nav-inner{padding:16px 24px} }
-  .logo{display:flex;align-items:center;gap:14px;color:var(--green);line-height:1}
-  .logo-mark{width:36px;height:36px;background:var(--green);display:grid;place-items:center;color:var(--gold);font-family:var(--f-serif);font-size:22px;flex:none}
+  .logo{display:flex;align-items:center;gap:14px;color:var(--espresso);line-height:1}
+  .logo-mark{width:38px;height:38px;background:var(--brick);display:grid;place-items:center;color:var(--sand);font-family:var(--f-serif);font-size:22px;flex:none;transition:background .2s}
+  .logo:hover .logo-mark{background:var(--brick-2)}
   .logo-text{display:flex;flex-direction:column;line-height:1;gap:4px}
   .logo-name{font-family:var(--f-serif);font-size:20px;letter-spacing:0.02em}
   .logo-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
   .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
   .nav-links a{color:var(--body);position:relative;padding:6px 0;transition:color .2s}
-  .nav-links a:hover,.nav-links a.active{color:var(--green)}
-  .nav-links a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--gold)}
-  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--green);color:var(--cream);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
-  .nav-cta:hover{background:var(--gold);color:var(--green)}
-  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--green)}
+  .nav-links a:hover,.nav-links a.active{color:var(--brick)}
+  .nav-links a.active::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--brick)}
+  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
+  .nav-cta:hover{background:var(--brick-2)}
+  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--espresso)}
   .menu-btn svg{width:26px;height:26px}
   @media (max-width:960px){ .nav-links,.nav-cta{display:none} .menu-btn{display:inline-flex} }
-  .sheet{position:fixed;inset:0;background:var(--green);color:var(--cream);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
+  .sheet{position:fixed;inset:0;background:var(--espresso);color:var(--sand);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
   .sheet.open{display:flex}
-  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(245,239,226,0.12);color:var(--cream);display:flex;justify-content:space-between;align-items:center}
-  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--gold);letter-spacing:0.1em}
+  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(242,239,233,0.12);color:var(--sand);display:flex;justify-content:space-between;align-items:center}
+  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--copper);letter-spacing:0.1em}
   .sheet a:last-of-type{border-bottom:0}
-  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--gold);color:var(--green);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
+  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
 
   .page-hero{padding:180px 0 90px;border-bottom:1px solid var(--rule)}
-  .page-hero h1{font-size:clamp(52px, 7.4vw, 108px);line-height:0.96;letter-spacing:-0.03em;color:var(--ink);max-width:16ch;margin-bottom:36px;font-weight:400}
-  .page-hero h1 em{font-style:italic;color:var(--gold-2)}
+  .page-hero h1{font-size:clamp(52px, 7.4vw, 108px);line-height:0.96;letter-spacing:-0.03em;color:var(--espresso);max-width:16ch;margin-bottom:36px;font-weight:400}
+  .page-hero h1 em{font-style:italic;color:var(--brick)}
   .page-hero p{font-size:19px;line-height:1.65;color:var(--body);max-width:52ch}
   @media (max-width:900px){ .page-hero{padding:130px 0 60px} }
 
-  .map-section{padding:0;border-bottom:1px solid var(--rule)}
-  .map-frame{width:100%;height:480px;background:var(--cream-2);position:relative;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;border:0}
-  .map-frame iframe{width:100%;height:100%;border:0;display:block}
-  @media (max-width:768px){ .map-frame{height:320px} }
+  .grid-section{padding:100px 0}
+  .amen-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:0;border-top:1px solid var(--rule)}
+  .amen{padding:48px 40px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .amen:nth-child(3n){border-right:0}
+  .amen .num{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.24em;color:var(--brick);margin-bottom:26px}
+  .amen h3{font-size:26px;margin-bottom:16px;color:var(--espresso);line-height:1.2;letter-spacing:-0.015em}
+  .amen p{font-size:15px;line-height:1.7;color:var(--body)}
+  @media (max-width:900px){
+    .grid-section{padding:70px 0}
+    .amen-grid{grid-template-columns:1fr 1fr}
+    .amen:nth-child(3n){border-right:1px solid var(--rule)}
+    .amen:nth-child(2n){border-right:0}
+  }
+  @media (max-width:600px){
+    .amen-grid{grid-template-columns:1fr}
+    .amen{border-right:0}
+  }
 
-  .info{padding:100px 0}
-  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-  .info-copy p{font-size:16.5px;line-height:1.75;color:var(--body);margin-bottom:22px;max-width:48ch}
-  .info-copy p em{font-style:italic;color:var(--gold-2)}
-  .info-copy h2{font-size:clamp(32px, 4vw, 48px);line-height:1.08;letter-spacing:-0.025em;margin-bottom:28px;max-width:18ch;font-weight:400}
-  .info-copy h2 em{font-style:italic;color:var(--gold-2)}
-  .info-list{display:grid;gap:0;border-top:1px solid var(--rule)}
-  .info-list .li{display:flex;justify-content:space-between;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule);font-size:15px;gap:16px}
-  .info-list .li b{color:var(--ink);font-weight:500;font-family:var(--f-sans)}
-  .info-list .li span{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:0.05em;text-align:right}
-  @media (max-width:900px){ .info{padding:70px 0} .info-grid{grid-template-columns:1fr;gap:48px} }
+  .note{background:var(--white);border-left:3px solid var(--brick);padding:32px 40px;margin:80px 0 0;font-size:16px;line-height:1.7;color:var(--body);border:1px solid var(--rule);border-left:3px solid var(--brick)}
+  .note strong{color:var(--espresso);font-weight:500;display:block;margin-bottom:8px;font-family:var(--f-serif);font-size:20px}
 
-  .nearby{padding:100px 0;background:var(--cream-2);border-top:1px solid var(--rule)}
-  .nearby h2{font-size:clamp(32px, 4vw, 48px);line-height:1.08;letter-spacing:-0.025em;margin-bottom:48px;max-width:18ch;font-weight:400}
-  .nearby h2 em{font-style:italic;color:var(--gold-2)}
-  .nearby-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:0;border-top:1px solid var(--rule)}
-  .nb{padding:32px 32px 32px 0;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-  .nb:nth-child(3n){border-right:0}
-  .nb .nm{font-family:var(--f-serif);font-size:22px;color:var(--ink);margin-bottom:10px;letter-spacing:-0.015em;line-height:1.25}
-  .nb .dist{font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
-  @media (max-width:900px){ .nearby{padding:70px 0} .nearby-grid{grid-template-columns:1fr 1fr} .nb:nth-child(3n){border-right:1px solid var(--rule)} .nb:nth-child(2n){border-right:0} }
-  @media (max-width:520px){ .nearby-grid{grid-template-columns:1fr} .nb{border-right:0} }
-
-  .book-cta{background:var(--green);color:var(--cream);padding:120px 0;text-align:center;position:relative;overflow:hidden}
-  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,165,90,0.18) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+  .book-cta{background:var(--brick);color:var(--sand);padding:120px 0;text-align:center;position:relative;overflow:hidden}
+  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,239,233,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
   .book-cta-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
-  .book-cta .kicker{color:var(--gold);justify-content:center}
-  .book-cta .kicker::before{background:var(--gold)}
-  .book-cta h2{font-size:clamp(40px, 5.6vw, 76px);line-height:1;letter-spacing:-0.035em;color:var(--cream);margin-bottom:28px;font-weight:400}
-  .book-cta h2 em{font-style:italic;color:var(--gold)}
-  .book-cta p{font-size:17px;line-height:1.65;color:rgba(245,239,226,0.72);margin:0 auto 40px;max-width:50ch}
+  .book-cta .kicker{color:var(--sand);justify-content:center}
+  .book-cta .kicker::before{background:var(--sand)}
+  .book-cta h2{font-size:clamp(40px, 5.6vw, 76px);line-height:1;letter-spacing:-0.035em;color:var(--sand);margin-bottom:28px;font-weight:400}
+  .book-cta h2 em{font-style:italic;color:var(--copper)}
+  .book-cta p{font-size:17px;line-height:1.65;color:rgba(242,239,233,0.82);margin:0 auto 40px;max-width:50ch}
   .book-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .book-cta .btn-primary{background:var(--sand);color:var(--brick)}
+  .book-cta .btn-primary:hover{background:var(--espresso);color:var(--sand)}
+  .book-cta .btn-outline{color:var(--sand);border-color:rgba(242,239,233,0.4)}
+  .book-cta .btn-outline:hover{background:var(--sand);color:var(--brick);border-color:var(--sand)}
+
   .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 32px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;border:0;cursor:pointer;transition:all .2s}
-  .btn-primary{background:var(--green);color:var(--cream)}
-  .btn-primary:hover{background:var(--gold);color:var(--green);transform:translateY(-2px)}
-  .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green)}
-  .btn-outline:hover{background:var(--green);color:var(--cream)}
-  .btn-gold{background:var(--gold);color:var(--green)}
-  .btn-gold:hover{background:var(--gold-2);color:var(--cream)}
+  .btn-primary{background:var(--brick);color:var(--sand)}
+  .btn-primary:hover{background:var(--brick-2);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+  .btn-outline:hover{background:var(--espresso);color:var(--sand)}
   .btn svg{width:14px;height:14px}
 
-  footer{background:var(--green);color:rgba(245,239,226,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(245,239,226,0.08)}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(245,239,226,0.12)}
-  .footer-brand .logo{color:var(--cream)}
-  .footer-brand .logo-mark{background:var(--gold);color:var(--green)}
-  .footer-brand .logo-sub{color:rgba(245,239,226,0.4)}
-  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(245,239,226,0.55);max-width:36ch}
-  .footer-brand .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,165,90,0.3);padding:8px 14px}
-  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:24px}
+  footer{background:var(--espresso);color:rgba(242,239,233,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(242,239,233,0.08)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(242,239,233,0.12)}
+  .footer-brand .logo{color:var(--sand)}
+  .footer-brand .logo-mark{background:var(--brick);color:var(--sand)}
+  .footer-brand .logo-sub{color:rgba(242,239,233,0.4)}
+  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(242,239,233,0.55);max-width:36ch}
+  .footer-brand .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);border:1px solid rgba(216,154,78,0.35);padding:8px 14px}
+  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--copper);margin-bottom:24px}
   .footer-col ul{display:flex;flex-direction:column;gap:14px}
-  .footer-col a{font-size:14px;color:rgba(245,239,226,0.6);transition:color .2s}
-  .footer-col a:hover{color:var(--gold)}
-  .footer-col li{font-size:14px;color:rgba(245,239,226,0.6);line-height:1.55}
-  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,239,226,0.4)}
-  .footer-bottom a:hover{color:var(--gold)}
+  .footer-col a{font-size:14px;color:rgba(242,239,233,0.6);transition:color .2s}
+  .footer-col a:hover{color:var(--copper)}
+  .footer-col li{font-size:14px;color:rgba(242,239,233,0.6);line-height:1.55}
+  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,239,233,0.4)}
+  .footer-bottom a:hover{color:var(--copper)}
   @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;gap:40px} .footer-brand{grid-column:1/-1} }
   @media (max-width:520px){ .footer-grid{grid-template-columns:1fr} footer{padding:60px 0 32px} }
 
-  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--green);color:var(--cream);display:grid;place-items:center;box-shadow:0 12px 32px rgba(31,46,38,0.28);z-index:90;transition:background .25s, transform .25s;border:1px solid rgba(201,165,90,0.3);border-radius:50%}
-  .wa:hover{background:var(--gold);color:var(--green);transform:translateY(-3px)}
+  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--brick);color:var(--sand);display:grid;place-items:center;box-shadow:0 12px 32px rgba(168,58,36,0.35);z-index:90;transition:background .25s, transform .25s;border-radius:50%}
+  .wa:hover{background:var(--brick-2);transform:translateY(-3px)}
   .wa svg{width:24px;height:24px}
+
   .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
   .rv.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
@@ -144,8 +146,8 @@
     <div class="nav-links">
       <a href="rooms.html">Rooms</a>
       <a href="dining.html">Dining</a>
-      <a href="amenities.html">Amenities</a>
-      <a href="location.html" class="active">Location</a>
+      <a href="amenities.html" class="active">Amenities</a>
+      <a href="location.html">Location</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
@@ -168,88 +170,29 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <span class="kicker rv">Location</span>
-    <h1 class="rv">In the middle of <em>everything.</em></h1>
-    <p class="rv">Kira Road runs through the heart of Kampala, and Arcadia Suites sits on it, minutes from Acacia Mall and the Uganda Museum.</p>
+    <span class="kicker rv">What's included</span>
+    <h1 class="rv">The essentials, <em>handled properly.</em></h1>
+    <p class="rv">Everything you need for a comfortable stay in Kampala, without the extras you don't. Here's what comes with your room.</p>
   </div>
 </header>
 
-<section class="map-section">
-  <iframe
-    class="map-frame"
-    src="https://www.google.com/maps?q=Arcadia+Suites+Hotel+Kira+Road+Kampala&output=embed"
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    title="Arcadia Suites Hotel map"></iframe>
-</section>
-
-<section class="info">
+<section class="grid-section">
   <div class="wrap">
-    <div class="info-grid">
-      <div class="info-copy rv">
-        <span class="kicker">Getting here</span>
-        <h2>Kira Road, <em>Kampala.</em></h2>
-        <p>
-          We're on Kira Road, one of the main arteries running through Kampala. Whether you're arriving from Entebbe Airport, from the city centre, or from one of the nearby neighbourhoods, the drive is straightforward and the streets are well-known to any driver in the city.
-        </p>
-        <p>
-          <em>Tell any taxi driver "Kira Road, near Acacia Mall"</em> and you'll be dropped at our gate.
-        </p>
-      </div>
-
-      <div class="info-list rv">
-        <div class="li"><b>Acacia Mall</b><span>3 min drive</span></div>
-        <div class="li"><b>Uganda Museum</b><span>4 min drive</span></div>
-        <div class="li"><b>Kololo</b><span>7 min drive</span></div>
-        <div class="li"><b>Kampala city centre</b><span>12 min drive</span></div>
-        <div class="li"><b>Entebbe International Airport</b><span>60 min drive</span></div>
-      </div>
+    <div class="amen-grid">
+      <div class="amen rv"><div class="num">01</div><h3>24-hour front desk</h3><p>Someone is always here. Late arrival, early departure, or a question at 3am, you will find us. Check-in is quick and personal, not a queue.</p></div>
+      <div class="amen rv"><div class="num">02</div><h3>Free parking</h3><p>Secure on-site parking for every guest. No charge, no reservation needed. Park when you arrive and forget about it until you leave.</p></div>
+      <div class="amen rv"><div class="num">03</div><h3>Fitness center</h3><p>A small, well-maintained gym with what you need to keep a routine going while you're away from home. Open to guests throughout the day.</p></div>
+      <div class="amen rv"><div class="num">04</div><h3>Business center</h3><p>Printing, quiet workspace, and reliable wifi. Set up a meeting or catch up on email without leaving the building.</p></div>
+      <div class="amen rv"><div class="num">05</div><h3>Laundry service</h3><p>Same-day laundry and dry-cleaning available. Leave it at the desk in the morning, it comes back folded by evening.</p></div>
+      <div class="amen rv"><div class="num">06</div><h3>24-hour room service</h3><p>Order from the restaurant menu and eat in your room, any time. Perfect for late nights or quiet mornings.</p></div>
+      <div class="amen rv"><div class="num">07</div><h3>Concierge</h3><p>Need a taxi, a restaurant booking, or directions somewhere? Just ask at the desk. We know the city and we're happy to help.</p></div>
+      <div class="amen rv"><div class="num">08</div><h3>Free wifi</h3><p>Fast, reliable, and available in every room and every public space in the hotel. No password changes, no time limits.</p></div>
+      <div class="amen rv"><div class="num">09</div><h3>Rooftop restaurant</h3><p>Breakfast, lunch, dinner, and coffee served above the city. Open to guests and to the public, all day, every day.</p></div>
     </div>
-  </div>
-</section>
 
-<section class="nearby">
-  <div class="wrap">
-    <span class="kicker rv">Around us</span>
-    <h2 class="rv">What's <em>nearby.</em></h2>
-
-    <div class="nearby-grid">
-      <div class="nb rv">
-        <div class="nm">Acacia Mall</div>
-        <div class="dist">3 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Uganda Museum</div>
-        <div class="dist">4 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Kololo</div>
-        <div class="dist">7 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Garden City Mall</div>
-        <div class="dist">10 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Kampala Golf Course</div>
-        <div class="dist">8 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Uganda National Cultural Centre</div>
-        <div class="dist">11 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Kampala Serena Hotel</div>
-        <div class="dist">9 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Entebbe Airport</div>
-        <div class="dist">60 min drive</div>
-      </div>
-      <div class="nb rv">
-        <div class="nm">Lake Victoria</div>
-        <div class="dist">45 min drive</div>
-      </div>
+    <div class="note rv">
+      <strong>And what we don't have</strong>
+      We don't have a swimming pool or a spa on the premises, and we don't pretend to. What we do have is a clean, comfortable room, attentive service, and one of the best rooftop views in Kampala.
     </div>
   </div>
 </section>
@@ -257,11 +200,11 @@
 <section class="book-cta">
   <div class="wrap book-cta-inner">
     <span class="kicker rv">Reserve a room</span>
-    <h2 class="rv">Stay in the <em>middle.</em></h2>
+    <h2 class="rv">Stay with <em>us.</em></h2>
     <p class="rv">Send us your dates and we'll reply with availability and rates.</p>
     <div class="actions rv">
-      <a href="booking.html" class="btn btn-gold">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-      <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-outline" style="color:var(--cream);border-color:rgba(245,239,226,0.3)">WhatsApp us</a>
+      <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a>
     </div>
   </div>
 </section>
