@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin | Arcadia Suites Hotel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231F2E26'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23C9A55A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --green:#1F2E26;
+    --green-2:#2C3F34;
+    --cream:#F5EFE2;
+    --cream-2:#EDE6D5;
+    --gold:#C9A55A;
+    --gold-2:#B8934A;
+    --ink:#1F2E26;
+    --body:#5F5A50;
+    --muted:#8A8578;
+    --rule:#D9CFBB;
+    --white:#fff;
+    --green-ok:#2D7A47;
+    --red:#B8412F;
+    --blue:#4A6FA5;
+    --amber:#B8863D;
+
+    --f-serif:'Cormorant Garamond', Georgia, serif;
+    --f-sans:'Inter', sans-serif;
+    --f-mono:'JetBrains Mono', ui-monospace, monospace;
+
+    --r:4px;
+    --sh:0 1px 3px rgba(31,46,38,0.06);
+    --sh-lg:0 8px 24px rgba(31,46,38,0.1);
+    padding-top:env(safe-area-inset-top,0);
+    padding-bottom:env(safe-area-inset-bottom,0);
+  }
+  body{font-family:var(--f-sans);background:var(--cream);color:var(--body);font-size:14.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,h4{font-family:var(--f-serif);color:var(--ink);font-weight:500;line-height:1.2;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button,input,textarea,select{font:inherit;color:inherit}
+  ::selection{background:var(--gold);color:var(--green)}
+
+  /* LOGIN */
+  .login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--green);padding:24px;position:relative;overflow:hidden}
+  .login::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(201,165,90,0.15) 0%,transparent 60%);border-radius:50%}
+  .login-box{background:var(--cream);padding:56px 48px;width:100%;max-width:420px;position:relative;z-index:1}
+  .login-mark{width:52px;height:52px;background:var(--green);color:var(--gold);display:grid;place-items:center;font-family:var(--f-serif);font-size:28px;margin-bottom:32px}
+  .login-box .kicker{font-family:var(--f-mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+  .login-box .kicker::before{content:'';width:24px;height:1px;background:var(--gold)}
+  .login-box h1{font-size:34px;margin-bottom:10px;letter-spacing:-0.02em}
+  .login-box > p{font-size:14.5px;color:var(--muted);margin-bottom:36px;line-height:1.55}
+  .lfield{margin-bottom:20px}
+  .lfield label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500}
+  .lfield input{width:100%;padding:14px 16px;background:var(--white);border:1px solid var(--rule);font-family:inherit;font-size:15px;color:var(--ink);transition:border-color .2s}
+  .lfield input:focus{outline:none;border-color:var(--green)}
+  .lbtn{width:100%;padding:16px;background:var(--green);color:var(--cream);border:0;cursor:pointer;font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;transition:background .2s;margin-top:12px}
+  .lbtn:hover{background:var(--gold);color:var(--green)}
+  .lbtn:disabled{opacity:0.5;cursor:not-allowed}
+  .lerr{color:var(--red);font-size:13px;text-align:center;margin-top:16px;display:none}
+  .lerr.show{display:block}
+
+  /* DASHBOARD */
+  .dash{display:none;min-height:100vh}
+  .dash.active{display:block}
+
+  .bar{background:var(--green);color:var(--cream);padding:18px 32px;display:flex;justify-content:space-between;align-items:center;gap:24px;position:sticky;top:0;z-index:20;flex-wrap:wrap}
+  .bar-left{display:flex;align-items:center;gap:16px}
+  .bar-mark{width:36px;height:36px;background:var(--gold);color:var(--green);display:grid;place-items:center;font-family:var(--f-serif);font-size:22px}
+  .bar-title{font-family:var(--f-serif);font-size:22px;letter-spacing:-0.01em}
+  .bar-sub{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-top:2px}
+  .bar-right{display:flex;gap:10px;align-items:center}
+  .bar-right a,.bar-right button{background:rgba(245,239,226,0.08);color:var(--cream);border:0;padding:10px 18px;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;cursor:pointer;transition:background .15s;font-weight:500}
+  .bar-right a:hover,.bar-right button:hover{background:rgba(245,239,226,0.16)}
+  .bar-right .user{font-family:var(--f-mono);font-size:11px;color:rgba(245,239,226,0.5);letter-spacing:0.05em;margin-right:8px}
+
+  .stat-bar{background:var(--cream-2);border-bottom:1px solid var(--rule);padding:0 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+  .sbox{padding:22px 20px;border-right:1px solid var(--rule)}
+  .sbox:last-child{border-right:0}
+  .sbox .k{font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:500}
+  .sbox .v{font-family:var(--f-serif);font-size:32px;color:var(--ink);line-height:1;letter-spacing:-0.02em;font-weight:400}
+
+  .tabs{background:var(--cream);border-bottom:1px solid var(--rule);padding:0 32px;display:flex;gap:32px;overflow-x:auto;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{padding:22px 0;font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;font-weight:500}
+  .tab:hover{color:var(--ink)}
+  .tab.active{color:var(--ink);border-bottom-color:var(--gold)}
+
+  .main{max-width:1300px;margin:0 auto;padding:36px 32px 80px}
+  .phead{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:22px;border-bottom:1px solid var(--rule)}
+  .phead h2{font-size:30px;letter-spacing:-0.02em}
+  .phead p{font-size:14px;color:var(--muted);margin-top:4px}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border:0;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap}
+  .btn:disabled{opacity:0.5;cursor:not-allowed}
+  .btn-primary{background:var(--green);color:var(--cream)}
+  .btn-primary:hover:not(:disabled){background:var(--gold);color:var(--green)}
+  .btn-outline{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+  .btn-outline:hover:not(:disabled){border-color:var(--ink)}
+  .btn-danger{background:transparent;color:var(--red);border:1px solid rgba(184,65,47,0.3)}
+  .btn-danger:hover:not(:disabled){background:rgba(184,65,47,0.06)}
+  .btn-gold{background:var(--gold);color:var(--green)}
+  .btn-gold:hover:not(:disabled){background:var(--gold-2);color:var(--cream)}
+
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .fbtn{padding:8px 16px;background:transparent;border:1px solid var(--rule);font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all .15s;color:var(--muted);font-weight:500}
+  .fbtn:hover{border-color:var(--ink);color:var(--ink)}
+  .fbtn.active{background:var(--green);color:var(--cream);border-color:var(--green)}
+  .search{padding:10px 16px;background:var(--white);border:1px solid var(--rule);font-family:inherit;font-size:14px;flex:1;min-width:200px}
+  .search:focus{outline:none;border-color:var(--green)}
+
+  table{width:100%;border-collapse:collapse;background:var(--white)}
+  th{text-align:left;padding:16px 22px;font-family:var(--f-mono);font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);background:var(--cream-2);border-bottom:1px solid var(--rule);font-weight:500}
+  td{padding:18px 22px;border-bottom:1px solid var(--rule);font-size:14px;color:var(--body);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  tr:hover td{background:var(--cream)}
+  td strong{color:var(--ink);font-weight:500}
+  td small{color:var(--muted);font-size:12.5px}
+
+  .badge{display:inline-block;padding:5px 12px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;border-radius:999px}
+  .b-pending{background:#FDF3E3;color:#8A5D2A}
+  .b-contacted{background:#E3EAF3;color:#2E4B7A}
+  .b-booked{background:#E1EDE6;color:#1F5B37}
+  .b-completed{background:#D4E9DA;color:#194B2A}
+  .b-cancelled{background:#F3DED9;color:#7A2716}
+
+  .link{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);background:none;border:0;cursor:pointer;padding:0;margin-right:14px;font-weight:500;border-bottom:1px solid transparent;transition:all .15s}
+  .link:hover{border-bottom-color:var(--green)}
+  .link.danger{color:var(--red)}
+  .link.danger:hover{border-bottom-color:var(--red)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+  .card{background:var(--white);border:1px solid var(--rule);overflow:hidden;transition:transform .2s, border-color .2s}
+  .card:hover{transform:translateY(-2px);border-color:var(--gold)}
+  .card-img{width:100%;height:180px;background:var(--cream-2);display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;overflow:hidden;position:relative}
+  .card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+  .card-body{padding:20px 22px}
+  .card-body h3{font-size:22px;margin-bottom:6px;letter-spacing:-0.01em}
+  .card-body .meta{font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .card-body p{font-size:13.5px;line-height:1.55;color:var(--body);margin-bottom:14px}
+  .card-actions{display:flex;gap:10px;padding-top:14px;border-top:1px solid var(--rule)}
+  .card-actions button{padding:8px 14px;font-size:10px;letter-spacing:0.14em}
+
+  .empty{padding:80px 24px;text-align:center;color:var(--muted);background:var(--white);border:1px dashed var(--rule)}
+  .empty h3{font-size:24px;color:var(--ink);margin-bottom:8px}
+  .empty p{font-size:14px}
+
+  .modal-bg{display:none;position:fixed;inset:0;background:rgba(31,46,38,0.65);z-index:1000;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(4px)}
+  .modal-bg.active{display:flex}
+  .modal{background:var(--cream);padding:40px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;position:relative}
+  .modal h2{font-size:28px;margin-bottom:28px;letter-spacing:-0.02em}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500}
+  .field input,.field textarea,.field select{width:100%;padding:13px 16px;background:var(--white);border:1px solid var(--rule);font-family:inherit;font-size:14.5px;color:var(--ink);transition:border-color .2s;border-radius:0}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--green)}
+  .field textarea{resize:vertical;min-height:90px;line-height:1.55}
+  .field small{display:block;font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .field .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .preview{margin-top:12px;width:100%;height:160px;background:var(--cream-2);border:1px dashed var(--rule);display:grid;place-items:center;color:var(--muted);font-size:12.5px;overflow:hidden}
+  .preview img{width:100%;height:100%;object-fit:cover}
+  .mfoot{display:flex;gap:12px;margin-top:32px;padding-top:22px;border-top:1px solid var(--rule)}
+  .mfoot button{flex:1;padding:15px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;cursor:pointer;border:0;transition:all .15s}
+  .mcancel{background:var(--cream-2);color:var(--ink)}
+  .mcancel:hover{background:var(--rule)}
+  .msave{background:var(--green);color:var(--cream)}
+  .msave:hover{background:var(--gold);color:var(--green)}
+  .msave:disabled{opacity:0.5;cursor:not-allowed}
+
+  .hint{background:#E3EAF3;border-left:3px solid var(--blue);padding:16px 20px;margin-bottom:20px;font-size:13.5px;color:#2E4B7A;line-height:1.55}
+  .hint strong{color:#1F3A5C;display:block;margin-bottom:4px;font-weight:600}
+  .hint a{color:#2E4B7A;text-decoration:underline;font-weight:500}
+
+  .toast{position:fixed;bottom:32px;right:32px;background:var(--green);color:var(--cream);padding:16px 24px;box-shadow:var(--sh-lg);font-size:14px;font-weight:500;opacity:0;transform:translateY(16px);transition:all .3s;z-index:2000;border-left:3px solid var(--gold);max-width:calc(100vw - 64px)}
+  .toast.show{opacity:1;transform:translateY(0)}
+  .toast.error{background:var(--red);border-left-color:var(--cream)}
+  .toast.success{background:var(--green-ok);border-left-color:var(--cream)}
+
+  .loading{padding:60px 24px;text-align:center;color:var(--muted);font-family:var(--f-mono);font-size:11.5px;letter-spacing:0.14em;text-transform:uppercase}
+
+  @media (max-width:768px){
+    .bar{padding:14px 20px}
+    .bar-sub{display:none}
+    .bar-right .user{display:none}
+    .stat-bar{padding:0;grid-template-columns:1fr 1fr}
+    .sbox{padding:16px}
+    .sbox .v{font-size:24px}
+    .tabs{padding:0 20px;gap:20px}
+    .main{padding:24px 20px 60px}
+    .phead h2{font-size:24px}
+    th,td{padding:12px 14px;font-size:13px}
+    table{display:block;overflow-x:auto;white-space:nowrap}
+    .grid{grid-template-columns:1fr;gap:18px}
+    .modal{padding:28px 22px}
+    .modal h2{font-size:24px}
+    .field .row2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="loginScreen">
+  <div class="login-box">
+    <div class="login-mark">A</div>
+    <div class="kicker">Admin access</div>
+    <h1>Arcadia Suites</h1>
+    <p>Sign in to manage the hotel website.</p>
+
+    <div class="lfield">
+      <label for="loginEmail">Email</label>
+      <input type="email" id="loginEmail" placeholder="you@email.com" autocomplete="email">
+    </div>
+    <div class="lfield">
+      <label for="loginPassword">Password</label>
+      <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+    </div>
+    <button class="lbtn" id="loginBtn">Sign in</button>
+    <p class="lerr" id="loginError">Incorrect email or password.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dashboard">
+
+  <div class="bar">
+    <div class="bar-left">
+      <span class="bar-mark">A</span>
+      <div>
+        <div class="bar-title">Arcadia Suites</div>
+        <div class="bar-sub">Hotel admin</div>
+      </div>
+    </div>
+    <div class="bar-right">
+      <span class="user" id="userEmail"></span>
+      <a href="index.html" target="_blank">View site</a>
+      <button id="logoutBtn">Sign out</button>
+    </div>
+  </div>
+
+  <div class="stat-bar">
+    <div class="sbox"><div class="k">Enquiries</div><div class="v" id="statEnq">0</div></div>
+    <div class="sbox"><div class="k">Pending</div><div class="v" id="statPend">0</div></div>
+    <div class="sbox"><div class="k">Rooms</div><div class="v" id="statRooms">0</div></div>
+    <div class="sbox"><div class="k">Menu</div><div class="v" id="statMenu">0</div></div>
+    <div class="sbox"><div class="k">Photos</div><div class="v" id="statPhotos">0</div></div>
+    <div class="sbox"><div class="k">Reviews</div><div class="v" id="statReviews">0</div></div>
+    <div class="sbox"><div class="k">Offers</div><div class="v" id="statOffers">0</div></div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="enquiries">Enquiries</div>
+    <div class="tab" data-tab="rooms">Rooms</div>
+    <div class="tab" data-tab="menu">Menu</div>
+    <div class="tab" data-tab="photos">Photos</div>
+    <div class="tab" data-tab="offers">Offers</div>
+    <div class="tab" data-tab="reviews">Reviews</div>
+    <div class="tab" data-tab="settings">Settings</div>
+  </div>
+
+  <div class="main">
+
+    <!-- ENQUIRIES -->
+    <div id="enqTab">
+      <div class="phead">
+        <div><h2>Booking enquiries</h2><p>Guests who submitted the booking form.</p></div>
+      </div>
+      <div class="filters">
+        <input type="text" class="search" id="enqSearch" placeholder="Search name, phone, email...">
+        <button class="fbtn active" data-enq-filter="all">All</button>
+        <button class="fbtn" data-enq-filter="pending">Pending</button>
+        <button class="fbtn" data-enq-filter="contacted">Contacted</button>
+        <button class="fbtn" data-enq-filter="booked">Booked</button>
+        <button class="fbtn" data-enq-filter="cancelled">Cancelled</button>
+      </div>
+      <div id="enqWrap"><div class="loading">Loading enquiries...</div></div>
+    </div>
+
+    <!-- ROOMS -->
+    <div id="roomsTab" style="display:none">
+      <div class="phead">
+        <div><h2>Rooms & Suites</h2><p>Room types shown on the website.</p></div>
+        <button class="btn btn-primary" id="addRoomBtn">+ Add room</button>
+      </div>
+      <div class="grid" id="roomsGrid"><div class="loading" style="grid-column:1/-1">Loading rooms...</div></div>
+    </div>
+
+    <!-- MENU -->
+    <div id="menuTab" style="display:none">
+      <div class="phead">
+        <div><h2>Restaurant menu</h2><p>Dishes shown on the dining page.</p></div>
+        <button class="btn btn-primary" id="addMenuBtn">+ Add item</button>
+      </div>
+      <div class="grid" id="menuGrid"><div class="loading" style="grid-column:1/-1">Loading menu...</div></div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div id="photosTab" style="display:none">
+      <div class="phead">
+        <div><h2>Photo gallery</h2><p>Images shown across the site.</p></div>
+        <button class="btn btn-primary" id="addPhotoBtn">+ Add photo</button>
+      </div>
+      <div class="grid" id="photosGrid"><div class="loading" style="grid-column:1/-1">Loading photos...</div></div>
+    </div>
+
+    <!-- OFFERS -->
+    <div id="offersTab" style="display:none">
+      <div class="phead">
+        <div><h2>Offers & promotions</h2><p>Popups shown to guests on the site.</p></div>
+        <button class="btn btn-primary" id="addOfferBtn">+ Add offer</button>
+      </div>
+      <div class="grid" id="offersGrid"><div class="loading" style="grid-column:1/-1">Loading offers...</div></div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div id="reviewsTab" style="display:none">
+      <div class="phead">
+        <div><h2>Guest reviews</h2><p>Testimonials shown on the homepage.</p></div>
+        <button class="btn btn-primary" id="addReviewBtn">+ Add review</button>
+      </div>
+      <div class="grid" id="reviewsGrid"><div class="loading" style="grid-column:1/-1">Loading reviews...</div></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="settingsTab" style="display:none">
+      <div class="phead">
+        <div><h2>Hotel settings</h2><p>Contact details, hero text, and general info.</p></div>
+      </div>
+      <div id="settingsWrap"><div class="loading">Loading settings...</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ROOM MODAL -->
+<div class="modal-bg" id="roomModal">
+  <div class="modal">
+    <h2 id="roomModalTitle">Add room</h2>
+    <input type="hidden" id="roomEditId">
+
+    <div class="field"><label for="roomTitle">Room name</label><input type="text" id="roomTitle" placeholder="e.g. Deluxe Double"></div>
+    <div class="field"><label for="roomDesc">Short description</label><textarea id="roomDesc" rows="3" placeholder="What makes this room special"></textarea></div>
+    <div class="field">
+      <div class="row2">
+        <div><label for="roomPrice">Price</label><input type="text" id="roomPrice" placeholder="e.g. 250000"></div>
+        <div><label for="roomCurrency">Currency</label><input type="text" id="roomCurrency" value="UGX"></div>
+      </div>
+    </div>
+    <div class="field"><label for="roomAmenities">Amenities (one per line)</label><textarea id="roomAmenities" rows="4" placeholder="King bed&#10;Air conditioning&#10;Free wifi&#10;Ensuite bathroom"></textarea></div>
+    <div class="field"><label for="roomImageUrl">Image URL</label><input type="url" id="roomImageUrl" placeholder="https://i.postimg.cc/.../room.jpg"><small>Upload to postimages.org and paste the direct link here</small></div>
+    <div class="preview" id="roomPreview">Image preview</div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('roomModal')">Cancel</button>
+      <button class="msave" id="roomSaveBtn">Save room</button>
+    </div>
+  </div>
+</div>
+
+<!-- MENU MODAL -->
+<div class="modal-bg" id="menuModal">
+  <div class="modal">
+    <h2 id="menuModalTitle">Add menu item</h2>
+    <input type="hidden" id="menuEditId">
+
+    <div class="field"><label for="menuCategory">Category</label>
+      <select id="menuCategory">
+        <option value="Breakfast">Breakfast</option>
+        <option value="Starters">Starters</option>
+        <option value="Mains">Mains</option>
+        <option value="Grills">Grills</option>
+        <option value="Desserts">Desserts</option>
+        <option value="Coffee">Coffee</option>
+        <option value="Drinks">Drinks</option>
+      </select>
+    </div>
+    <div class="field"><label for="menuName">Dish name</label><input type="text" id="menuName" placeholder="e.g. Grilled Tilapia"></div>
+    <div class="field"><label for="menuDesc">Description</label><textarea id="menuDesc" rows="2" placeholder="Short description"></textarea></div>
+    <div class="field">
+      <div class="row2">
+        <div><label for="menuPrice">Price</label><input type="text" id="menuPrice" placeholder="e.g. 35000"></div>
+        <div><label for="menuCurrency">Currency</label><input type="text" id="menuCurrency" value="UGX"></div>
+      </div>
+    </div>
+    <div class="field"><label for="menuImageUrl">Image URL (optional)</label><input type="url" id="menuImageUrl" placeholder="https://i.postimg.cc/.../dish.jpg"></div>
+    <div class="preview" id="menuPreview">Image preview</div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('menuModal')">Cancel</button>
+      <button class="msave" id="menuSaveBtn">Save item</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO MODAL -->
+<div class="modal-bg" id="photoModal">
+  <div class="modal">
+    <h2 id="photoModalTitle">Add photo</h2>
+    <input type="hidden" id="photoEditId">
+
+    <div class="hint"><strong>Upload first</strong>Go to <a href="https://postimages.org" target="_blank" rel="noopener">postimages.org</a>, upload your image, copy the <strong>Direct link</strong>, paste below.</div>
+
+    <div class="field"><label for="photoCaption">Caption</label><input type="text" id="photoCaption" placeholder="e.g. Rooftop restaurant"></div>
+    <div class="field"><label for="photoCategory">Category</label>
+      <select id="photoCategory">
+        <option value="Rooms">Rooms</option>
+        <option value="Dining">Dining</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Exterior">Exterior</option>
+        <option value="Events">Events</option>
+      </select>
+    </div>
+    <div class="field"><label for="photoImageUrl">Image URL</label><input type="url" id="photoImageUrl" placeholder="https://i.postimg.cc/.../photo.jpg"></div>
+    <div class="preview" id="photoPreview">Image preview</div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('photoModal')">Cancel</button>
+      <button class="msave" id="photoSaveBtn">Save photo</button>
+    </div>
+  </div>
+</div>
+
+<!-- OFFER MODAL -->
+<div class="modal-bg" id="offerModal">
+  <div class="modal">
+    <h2 id="offerModalTitle">Add offer</h2>
+    <input type="hidden" id="offerEditId">
+
+    <div class="hint"><strong>Upload first</strong>Go to <a href="https://postimages.org" target="_blank" rel="noopener">postimages.org</a>, upload your image, copy the <strong>Direct link</strong>, paste below.</div>
+
+    <div class="field"><label for="offerTitle">Title</label><input type="text" id="offerTitle" placeholder="e.g. Weekend Special"></div>
+    <div class="field"><label for="offerDesc">Description</label><textarea id="offerDesc" rows="2" placeholder="Short line shown on the popup"></textarea></div>
+    <div class="field"><label for="offerImageUrl">Image URL</label><input type="url" id="offerImageUrl" placeholder="https://i.postimg.cc/.../promo.jpg"></div>
+    <div class="preview" id="offerPreview">Image preview</div>
+    <div class="field"><label for="offerLink">Link (optional)</label><input type="url" id="offerLink" placeholder="https://wa.me/256200950700"></div>
+    <div class="field"><label for="offerBtnText">Button text</label><input type="text" id="offerBtnText" placeholder="Book now"></div>
+    <div class="field"><label for="offerDuration">Display duration (seconds)</label><input type="number" id="offerDuration" value="8" min="3" max="60"></div>
+    <div class="field"><label for="offerActive">Status</label>
+      <select id="offerActive"><option value="yes">Active</option><option value="no">Hidden</option></select>
+    </div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('offerModal')">Cancel</button>
+      <button class="msave" id="offerSaveBtn">Save offer</button>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEW MODAL -->
+<div class="modal-bg" id="reviewModal">
+  <div class="modal">
+    <h2 id="reviewModalTitle">Add review</h2>
+    <input type="hidden" id="reviewEditId">
+
+    <div class="field"><label for="reviewName">Guest name</label><input type="text" id="reviewName" placeholder="e.g. Sarah M."></div>
+    <div class="field"><label for="reviewLocation">Location</label><input type="text" id="reviewLocation" placeholder="e.g. Nairobi, Kenya"></div>
+    <div class="field"><label for="reviewQuote">Review</label><textarea id="reviewQuote" rows="4" placeholder="What the guest said"></textarea></div>
+    <div class="field"><label for="reviewRating">Rating (1-5)</label><input type="number" id="reviewRating" value="5" min="1" max="5"></div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('reviewModal')">Cancel</button>
+      <button class="msave" id="reviewSaveBtn">Save review</button>
+    </div>
+  </div>
+</div>
+
+<!-- ENQUIRY DETAIL MODAL -->
+<div class="modal-bg" id="enqModal">
+  <div class="modal">
+    <h2>Enquiry details</h2>
+    <input type="hidden" id="enqEditId">
+
+    <div class="field"><label>Guest</label><input type="text" id="enqName" readonly></div>
+    <div class="field"><label>Email</label><input type="text" id="enqEmail" readonly></div>
+    <div class="field"><label>Phone</label><input type="text" id="enqPhone" readonly></div>
+    <div class="field">
+      <div class="row2">
+        <div><label>Check-in</label><input type="text" id="enqCheckin" readonly></div>
+        <div><label>Check-out</label><input type="text" id="enqCheckout" readonly></div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="row2">
+        <div><label>Guests</label><input type="text" id="enqGuests" readonly></div>
+        <div><label>Room type</label><input type="text" id="enqRoom" readonly></div>
+      </div>
+    </div>
+    <div class="field"><label>Message</label><textarea id="enqMessage" rows="3" readonly></textarea></div>
+    <div class="field"><label for="enqStatus">Status</label>
+      <select id="enqStatus">
+        <option value="pending">Pending</option>
+        <option value="contacted">Contacted</option>
+        <option value="booked">Booked</option>
+        <option value="cancelled">Cancelled</option>
+      </select>
+    </div>
+    <div class="field"><label for="enqNotes">Internal notes</label><textarea id="enqNotes" rows="3" placeholder="Notes only you can see"></textarea></div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('enqModal')">Close</button>
+      <button class="msave" id="enqSaveBtn">Save changes</button>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL (reuses enqModal style but is inline, not modal) -->
+
+<div class="toast" id="toast"></div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import {
+    getFirestore, collection, doc, addDoc, setDoc, deleteDoc, updateDoc,
+    onSnapshot, query, orderBy, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+  import {
+    getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
+    authDomain: "arcadia-suits-hotel.firebaseapp.com",
+    projectId: "arcadia-suits-hotel",
+    storageBucket: "arcadia-suits-hotel.firebasestorage.app",
+    messagingSenderId: "443226155596",
+    appId: "1:443226155596:web:2821439ad0338c3c6822e9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const auth = getAuth(app);
+
+  var enquiries = [], rooms = [], menu = [], photos = [], offers = [], reviews = [], settings = {};
+  var listenersStarted = false;
+  var enqFilter = 'all', enqSearch = '';
+
+  /* AUTH */
+  var loginBtn = document.getElementById('loginBtn');
+  var loginErr = document.getElementById('loginError');
+  loginBtn.addEventListener('click', doLogin);
+  document.getElementById('loginPassword').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') doLogin();
+  });
+  function doLogin() {
+    var email = document.getElementById('loginEmail').value.trim();
+    var pw = document.getElementById('loginPassword').value;
+    if (!email || !pw) return;
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Signing in...';
+    loginErr.classList.remove('show');
+    signInWithEmailAndPassword(auth, email, pw)
+      .catch(function () {
+        loginErr.classList.add('show');
+      })
+      .finally(function () {
+        loginBtn.disabled = false;
+        loginBtn.textContent = 'Sign in';
+      });
+  }
+  document.getElementById('logoutBtn').addEventListener('click', function () { signOut(auth); });
+
+  onAuthStateChanged(auth, function (u) {
+    if (u) {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').classList.add('active');
+      document.getElementById('userEmail').textContent = u.email;
+      if (!listenersStarted) { listenersStarted = true; startListeners(); }
+    } else {
+      document.getElementById('loginScreen').style.display = 'flex';
+      document.getElementById('dashboard').classList.remove('active');
+    }
+  });
+
+  /* TABS */
+  document.querySelectorAll('.tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('active'); });
+      t.classList.add('active');
+      var id = t.dataset.tab;
+      document.getElementById('enqTab').style.display = id === 'enquiries' ? 'block' : 'none';
+      document.getElementById('roomsTab').style.display = id === 'rooms' ? 'block' : 'none';
+      document.getElementById('menuTab').style.display = id === 'menu' ? 'block' : 'none';
+      document.getElementById('photosTab').style.display = id === 'photos' ? 'block' : 'none';
+      document.getElementById('offersTab').style.display = id === 'offers' ? 'block' : 'none';
+      document.getElementById('reviewsTab').style.display = id === 'reviews' ? 'block' : 'none';
+      document.getElementById('settingsTab').style.display = id === 'settings' ? 'block' : 'none';
+    });
+  });
+
+  /* HELPERS */
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s || '';
+    return d.innerHTML;
+  }
+  function toast(msg, type) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (type ? ' ' + type : '');
+    setTimeout(function () { t.className = 'toast'; }, 3000);
+  }
+  window.closeModal = function (id) { document.getElementById(id).classList.remove('active'); };
+  document.querySelectorAll('.modal-bg').forEach(function (b) {
+    b.addEventListener('click', function (e) { if (e.target === b) b.classList.remove('active'); });
+  });
+  function preview(inputId, previewId) {
+    var url = document.getElementById(inputId).value.trim();
+    var p = document.getElementById(previewId);
+    if (!url) { p.innerHTML = 'Image preview'; return; }
+    p.innerHTML = '<img src="' + url + '" alt="" onerror="this.parentElement.innerHTML=\'Could not load image\'">';
+  }
+
+  /* LIVE LISTENERS */
+  function startListeners() {
+    onSnapshot(query(collection(db, 'enquiries'), orderBy('createdAt', 'desc')), function (s) {
+      enquiries = [];
+      s.forEach(function (d) { enquiries.push({ id: d.id, ...d.data() }); });
+      renderEnquiries(); updateStats();
+    });
+    onSnapshot(query(collection(db, 'rooms'), orderBy('createdAt', 'asc')), function (s) {
+      rooms = [];
+      s.forEach(function (d) { rooms.push({ id: d.id, ...d.data() }); });
+      renderRooms(); updateStats();
+    });
+    onSnapshot(query(collection(db, 'menu'), orderBy('createdAt', 'asc')), function (s) {
+      menu = [];
+      s.forEach(function (d) { menu.push({ id: d.id, ...d.data() }); });
+      renderMenu(); updateStats();
+    });
+    onSnapshot(query(collection(db, 'photos'), orderBy('createdAt', 'desc')), function (s) {
+      photos = [];
+      s.forEach(function (d) { photos.push({ id: d.id, ...d.data() }); });
+      renderPhotos(); updateStats();
+    });
+    onSnapshot(query(collection(db, 'offers'), orderBy('createdAt', 'desc')), function (s) {
+      offers = [];
+      s.forEach(function (d) { offers.push({ id: d.id, ...d.data() }); });
+      renderOffers(); updateStats();
+    });
+    onSnapshot(query(collection(db, 'reviews'), orderBy('createdAt', 'desc')), function (s) {
+      reviews = [];
+      s.forEach(function (d) { reviews.push({ id: d.id, ...d.data() }); });
+      renderReviews(); updateStats();
+    });
+    onSnapshot(doc(db, 'settings', 'hotel'), function (d) {
+      settings = d.exists() ? d.data() : {};
+      renderSettings();
+    });
+  }
+
+  function clean(arr, keys) {
+    return arr.filter(function (x) {
+      return x && !keys.some(function (k) { return x[k] === 'test'; }) && !keys.every(function (k) { return !x[k]; });
+    });
+  }
+
+  function updateStats() {
+    var realEnq = enquiries.filter(function (e) { return e.name && e.name !== 'test'; });
+    var realRooms = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
+    var realMenu = menu.filter(function (m) { return m.name && m.name !== 'test'; });
+    var realPhotos = photos.filter(function (p) { return p.imageUrl && p.imageUrl !== 'test'; });
+    var realOffers = offers.filter(function (o) { return o.title && o.title !== 'test'; });
+    var realReviews = reviews.filter(function (r) { return r.name && r.name !== 'test'; });
+
+    document.getElementById('statEnq').textContent = realEnq.length;
+    document.getElementById('statPend').textContent = realEnq.filter(function (e) { return (e.status || 'pending') === 'pending'; }).length;
+    document.getElementById('statRooms').textContent = realRooms.length;
+    document.getElementById('statMenu').textContent = realMenu.length;
+    document.getElementById('statPhotos').textContent = realPhotos.length;
+    document.getElementById('statReviews').textContent = realReviews.length;
+    document.getElementById('statOffers').textContent = realOffers.length;
+  }
+
+  /* ============== ENQUIRIES ============== */
+  document.querySelectorAll('[data-enq-filter]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.querySelectorAll('[data-enq-filter]').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      enqFilter = b.dataset.enqFilter;
+      renderEnquiries();
+    });
+  });
+  document.getElementById('enqSearch').addEventListener('input', function (e) {
+    enqSearch = e.target.value.toLowerCase();
+    renderEnquiries();
+  });
+
+  function renderEnquiries() {
+    var wrap = document.getElementById('enqWrap');
+    var list = enquiries.filter(function (e) { return e.name && e.name !== 'test'; });
+
+    if (enqFilter !== 'all') {
+      list = list.filter(function (e) { return (e.status || 'pending') === enqFilter; });
+    }
+    if (enqSearch) {
+      list = list.filter(function (e) {
+        return (e.name || '').toLowerCase().includes(enqSearch) ||
+          (e.email || '').toLowerCase().includes(enqSearch) ||
+          (e.phone || '').toLowerCase().includes(enqSearch);
+      });
+    }
+
+    if (!list.length) {
+      wrap.innerHTML = '<div class="empty"><h3>No enquiries</h3><p>New booking enquiries will appear here.</p></div>';
+      return;
+    }
+
+    wrap.innerHTML = '<table><thead><tr><th>Date</th><th>Guest</th><th>Phone</th><th>Check-in</th><th>Status</th><th>Actions</th></tr></thead><tbody>' +
+      list.map(function (e) {
+        var status = e.status || 'pending';
+        var label = status.charAt(0).toUpperCase() + status.slice(1);
+        return '<tr>' +
+          '<td><small>' + esc(e.date || '') + '</small></td>' +
+          '<td><strong>' + esc(e.name) + '</strong><br><small>' + esc(e.email || '') + '</small></td>' +
+          '<td>' + esc(e.phone || '') + '</td>' +
+          '<td><small>' + esc(e.checkin || '') + ' → ' + esc(e.checkout || '') + '</small></td>' +
+          '<td><span class="badge b-' + status + '">' + label + '</span></td>' +
+          '<td>' +
+            '<a class="link" href="https://wa.me/' + (e.phone || '').replace(/[^0-9]/g, '') + '" target="_blank">WhatsApp</a>' +
+            '<button class="link" data-enq-view="' + e.id + '">View</button>' +
+            '<button class="link danger" data-enq-del="' + e.id + '">Delete</button>' +
+          '</td>' +
+        '</tr>';
+      }).join('') + '</tbody></table>';
+
+    wrap.querySelectorAll('[data-enq-view]').forEach(function (b) {
+      b.addEventListener('click', function () { openEnq(b.dataset.enqView); });
+    });
+    wrap.querySelectorAll('[data-enq-del]').forEach(function (b) {
+      b.addEventListener('click', function () { delEnq(b.dataset.enqDel); });
+    });
+  }
+
+  function openEnq(id) {
+    var e = enquiries.find(function (x) { return x.id === id; });
+    if (!e) return;
+    document.getElementById('enqEditId').value = id;
+    document.getElementById('enqName').value = e.name || '';
+    document.getElementById('enqEmail').value = e.email || '';
+    document.getElementById('enqPhone').value = e.phone || '';
+    document.getElementById('enqCheckin').value = e.checkin || '';
+    document.getElementById('enqCheckout').value = e.checkout || '';
+    document.getElementById('enqGuests').value = e.guests || '';
+    document.getElementById('enqRoom').value = e.room || '';
+    document.getElementById('enqMessage').value = e.message || '';
+    document.getElementById('enqStatus').value = e.status || 'pending';
+    document.getElementById('enqNotes').value = e.notes || '';
+    document.getElementById('enqModal').classList.add('active');
+  }
+
+  document.getElementById('enqSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('enqEditId').value;
+    var data = {
+      status: document.getElementById('enqStatus').value,
+      notes: document.getElementById('enqNotes').value.trim(),
+      updatedAt: serverTimestamp()
+    };
+    updateDoc(doc(db, 'enquiries', id), data)
+      .then(function () { toast('Enquiry updated', 'success'); closeModal('enqModal'); })
+      .catch(function () { toast('Update failed', 'error'); });
+  });
+
+  function delEnq(id) {
+    if (!confirm('Delete this enquiry?')) return;
+    deleteDoc(doc(db, 'enquiries', id)).then(function () { toast('Deleted'); });
+  }
+
+  /* ============== ROOMS ============== */
+  document.getElementById('addRoomBtn').addEventListener('click', function () { openRoomModal(); });
+
+  function renderRooms() {
+    var grid = document.getElementById('roomsGrid');
+    var list = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No rooms yet</h3><p>Click "+ Add room" to create your first room type.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (r) {
+      var img = r.imageUrl ? '<img src="' + r.imageUrl + '" alt="">' : 'No image';
+      var price = r.price ? '<div class="meta">' + esc(r.price) + ' ' + esc(r.currency || 'UGX') + '</div>' : '';
+      return '<div class="card">' +
+        '<div class="card-img">' + img + '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + esc(r.title) + '</h3>' +
+          price +
+          '<p>' + esc((r.description || '').slice(0, 100)) + '...</p>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-room-edit="' + r.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-room-del="' + r.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-room-edit]').forEach(function (b) { b.addEventListener('click', function () { openRoomModal(b.dataset.roomEdit); }); });
+    grid.querySelectorAll('[data-room-del]').forEach(function (b) { b.addEventListener('click', function () { delRoom(b.dataset.roomDel); }); });
+  }
+
+  function openRoomModal(id) {
+    document.getElementById('roomModal').classList.add('active');
+    if (id) {
+      var r = rooms.find(function (x) { return x.id === id; });
+      document.getElementById('roomModalTitle').textContent = 'Edit room';
+      document.getElementById('roomEditId').value = id;
+      document.getElementById('roomTitle').value = r.title || '';
+      document.getElementById('roomDesc').value = r.description || '';
+      document.getElementById('roomPrice').value = r.price || '';
+      document.getElementById('roomCurrency').value = r.currency || 'UGX';
+      document.getElementById('roomAmenities').value = (r.amenities || []).join('\n');
+      document.getElementById('roomImageUrl').value = r.imageUrl || '';
+      preview('roomImageUrl', 'roomPreview');
+    } else {
+      document.getElementById('roomModalTitle').textContent = 'Add room';
+      document.getElementById('roomEditId').value = '';
+      ['roomTitle','roomDesc','roomPrice','roomAmenities','roomImageUrl'].forEach(function (i) { document.getElementById(i).value = ''; });
+      document.getElementById('roomCurrency').value = 'UGX';
+      document.getElementById('roomPreview').innerHTML = 'Image preview';
+    }
+  }
+
+  document.getElementById('roomSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('roomEditId').value;
+    var title = document.getElementById('roomTitle').value.trim();
+    if (!title) return toast('Room name required', 'error');
+    var amenities = document.getElementById('roomAmenities').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    var data = {
+      title: title,
+      description: document.getElementById('roomDesc').value.trim(),
+      price: document.getElementById('roomPrice').value.trim(),
+      currency: document.getElementById('roomCurrency').value.trim() || 'UGX',
+      amenities: amenities,
+      imageUrl: document.getElementById('roomImageUrl').value.trim(),
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'rooms', id), data, { merge: true })
+      : addDoc(collection(db, 'rooms'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('roomModal');
+      toast(id ? 'Room updated' : 'Room added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delRoom(id) {
+    if (!confirm('Delete this room?')) return;
+    deleteDoc(doc(db, 'rooms', id)).then(function () { toast('Room deleted'); });
+  }
+
+  /* ============== MENU ============== */
+  document.getElementById('addMenuBtn').addEventListener('click', function () { openMenuModal(); });
+
+  function renderMenu() {
+    var grid = document.getElementById('menuGrid');
+    var list = menu.filter(function (m) { return m.name && m.name !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No menu items yet</h3><p>Click "+ Add item" to add dishes.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (m) {
+      var img = m.imageUrl ? '<img src="' + m.imageUrl + '" alt="">' : 'No image';
+      var price = m.price ? '<div class="meta">' + esc(m.price) + ' ' + esc(m.currency || 'UGX') + '</div>' : '';
+      return '<div class="card">' +
+        '<div class="card-img">' + img + '</div>' +
+        '<div class="card-body">' +
+          '<div class="meta">' + esc(m.category || 'Mains') + '</div>' +
+          '<h3>' + esc(m.name) + '</h3>' +
+          price +
+          '<p>' + esc(m.description || '') + '</p>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-menu-edit="' + m.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-menu-del="' + m.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-menu-edit]').forEach(function (b) { b.addEventListener('click', function () { openMenuModal(b.dataset.menuEdit); }); });
+    grid.querySelectorAll('[data-menu-del]').forEach(function (b) { b.addEventListener('click', function () { delMenu(b.dataset.menuDel); }); });
+  }
+
+  function openMenuModal(id) {
+    document.getElementById('menuModal').classList.add('active');
+    if (id) {
+      var m = menu.find(function (x) { return x.id === id; });
+      document.getElementById('menuModalTitle').textContent = 'Edit menu item';
+      document.getElementById('menuEditId').value = id;
+      document.getElementById('menuCategory').value = m.category || 'Mains';
+      document.getElementById('menuName').value = m.name || '';
+      document.getElementById('menuDesc').value = m.description || '';
+      document.getElementById('menuPrice').value = m.price || '';
+      document.getElementById('menuCurrency').value = m.currency || 'UGX';
+      document.getElementById('menuImageUrl').value = m.imageUrl || '';
+      preview('menuImageUrl', 'menuPreview');
+    } else {
+      document.getElementById('menuModalTitle').textContent = 'Add menu item';
+      document.getElementById('menuEditId').value = '';
+      ['menuName','menuDesc','menuPrice','menuImageUrl'].forEach(function (i) { document.getElementById(i).value = ''; });
+      document.getElementById('menuCategory').value = 'Mains';
+      document.getElementById('menuCurrency').value = 'UGX';
+      document.getElementById('menuPreview').innerHTML = 'Image preview';
+    }
+  }
+
+  document.getElementById('menuSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('menuEditId').value;
+    var name = document.getElementById('menuName').value.trim();
+    if (!name) return toast('Dish name required', 'error');
+    var data = {
+      category: document.getElementById('menuCategory').value,
+      name: name,
+      description: document.getElementById('menuDesc').value.trim(),
+      price: document.getElementById('menuPrice').value.trim(),
+      currency: document.getElementById('menuCurrency').value.trim() || 'UGX',
+      imageUrl: document.getElementById('menuImageUrl').value.trim(),
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'menu', id), data, { merge: true })
+      : addDoc(collection(db, 'menu'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('menuModal');
+      toast(id ? 'Menu item updated' : 'Menu item added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delMenu(id) {
+    if (!confirm('Delete this menu item?')) return;
+    deleteDoc(doc(db, 'menu', id)).then(function () { toast('Deleted'); });
+  }
+
+  /* ============== PHOTOS ============== */
+  document.getElementById('addPhotoBtn').addEventListener('click', function () { openPhotoModal(); });
+
+  function renderPhotos() {
+    var grid = document.getElementById('photosGrid');
+    var list = photos.filter(function (p) { return p.imageUrl && p.imageUrl !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No photos yet</h3><p>Click "+ Add photo" to add gallery images.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (p) {
+      return '<div class="card">' +
+        '<div class="card-img"><img src="' + p.imageUrl + '" alt=""></div>' +
+        '<div class="card-body">' +
+          '<div class="meta">' + esc(p.category || 'Hotel') + '</div>' +
+          '<h3>' + esc(p.caption || 'Untitled') + '</h3>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-photo-edit="' + p.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-photo-del="' + p.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-photo-edit]').forEach(function (b) { b.addEventListener('click', function () { openPhotoModal(b.dataset.photoEdit); }); });
+    grid.querySelectorAll('[data-photo-del]').forEach(function (b) { b.addEventListener('click', function () { delPhoto(b.dataset.photoDel); }); });
+  }
+
+  function openPhotoModal(id) {
+    document.getElementById('photoModal').classList.add('active');
+    if (id) {
+      var p = photos.find(function (x) { return x.id === id; });
+      document.getElementById('photoModalTitle').textContent = 'Edit photo';
+      document.getElementById('photoEditId').value = id;
+      document.getElementById('photoCaption').value = p.caption || '';
+      document.getElementById('photoCategory').value = p.category || 'Hotel';
+      document.getElementById('photoImageUrl').value = p.imageUrl || '';
+      preview('photoImageUrl', 'photoPreview');
+    } else {
+      document.getElementById('photoModalTitle').textContent = 'Add photo';
+      document.getElementById('photoEditId').value = '';
+      document.getElementById('photoCaption').value = '';
+      document.getElementById('photoCategory').value = 'Hotel';
+      document.getElementById('photoImageUrl').value = '';
+      document.getElementById('photoPreview').innerHTML = 'Image preview';
+    }
+  }
+
+  document.getElementById('photoSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('photoEditId').value;
+    var caption = document.getElementById('photoCaption').value.trim();
+    var imageUrl = document.getElementById('photoImageUrl').value.trim();
+    if (!caption) return toast('Caption required', 'error');
+    if (!imageUrl && !id) return toast('Image URL required', 'error');
+    var data = {
+      caption: caption,
+      category: document.getElementById('photoCategory').value,
+      imageUrl: imageUrl,
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'photos', id), data, { merge: true })
+      : addDoc(collection(db, 'photos'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('photoModal');
+      toast(id ? 'Photo updated' : 'Photo added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delPhoto(id) {
+    if (!confirm('Delete this photo?')) return;
+    deleteDoc(doc(db, 'photos', id)).then(function () { toast('Deleted'); });
+  }
+
+  /* ============== OFFERS ============== */
+  document.getElementById('addOfferBtn').addEventListener('click', function () { openOfferModal(); });
+
+  function renderOffers() {
+    var grid = document.getElementById('offersGrid');
+    var list = offers.filter(function (o) { return o.title && o.title !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No offers yet</h3><p>Click "+ Add offer" to create promotions.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (o) {
+      var img = o.imageUrl ? '<img src="' + o.imageUrl + '" alt="">' : 'No image';
+      return '<div class="card">' +
+        '<div class="card-img">' + img + '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + esc(o.title) + '</h3>' +
+          '<div class="meta">' + (o.duration || 8) + 's · ' + (o.active === 'yes' ? 'Active' : 'Hidden') + '</div>' +
+          '<p>' + esc(o.description || '') + '</p>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-offer-edit="' + o.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-offer-del="' + o.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-offer-edit]').forEach(function (b) { b.addEventListener('click', function () { openOfferModal(b.dataset.offerEdit); }); });
+    grid.querySelectorAll('[data-offer-del]').forEach(function (b) { b.addEventListener('click', function () { delOffer(b.dataset.offerDel); }); });
+  }
+
+  function openOfferModal(id) {
+    document.getElementById('offerModal').classList.add('active');
+    if (id) {
+      var o = offers.find(function (x) { return x.id === id; });
+      document.getElementById('offerModalTitle').textContent = 'Edit offer';
+      document.getElementById('offerEditId').value = id;
+      document.getElementById('offerTitle').value = o.title || '';
+      document.getElementById('offerDesc').value = o.description || '';
+      document.getElementById('offerImageUrl').value = o.imageUrl || '';
+      document.getElementById('offerLink').value = o.link || '';
+      document.getElementById('offerBtnText').value = o.btnText || '';
+      document.getElementById('offerDuration').value = o.duration || 8;
+      document.getElementById('offerActive').value = o.active || 'yes';
+      preview('offerImageUrl', 'offerPreview');
+    } else {
+      document.getElementById('offerModalTitle').textContent = 'Add offer';
+      document.getElementById('offerEditId').value = '';
+      ['offerTitle','offerDesc','offerImageUrl','offerLink','offerBtnText'].forEach(function (i) { document.getElementById(i).value = ''; });
+      document.getElementById('offerDuration').value = 8;
+      document.getElementById('offerActive').value = 'yes';
+      document.getElementById('offerPreview').innerHTML = 'Image preview';
+    }
+  }
+
+  document.getElementById('offerSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('offerEditId').value;
+    var title = document.getElementById('offerTitle').value.trim();
+    if (!title) return toast('Title required', 'error');
+    var data = {
+      title: title,
+      description: document.getElementById('offerDesc').value.trim(),
+      imageUrl: document.getElementById('offerImageUrl').value.trim(),
+      link: document.getElementById('offerLink').value.trim(),
+      btnText: document.getElementById('offerBtnText').value.trim(),
+      duration: parseInt(document.getElementById('offerDuration').value) || 8,
+      active: document.getElementById('offerActive').value,
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'offers', id), data, { merge: true })
+      : addDoc(collection(db, 'offers'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('offerModal');
+      toast(id ? 'Offer updated' : 'Offer added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delOffer(id) {
+    if (!confirm('Delete this offer?')) return;
+    deleteDoc(doc(db, 'offers', id)).then(function () { toast('Deleted'); });
+  }
+
+  /* ============== REVIEWS ============== */
+  document.getElementById('addReviewBtn').addEventListener('click', function () { openReviewModal(); });
+
+  function renderReviews() {
+    var grid = document.getElementById('reviewsGrid');
+    var list = reviews.filter(function (r) { return r.name && r.name !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No reviews yet</h3><p>Click "+ Add review" to add guest testimonials.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (r) {
+      return '<div class="card">' +
+        '<div class="card-body">' +
+          '<div class="meta">' + (r.rating || 5) + ' stars</div>' +
+          '<h3>' + esc(r.name) + '</h3>' +
+          '<div class="meta">' + esc(r.location || '') + '</div>' +
+          '<p>' + esc(r.quote || '') + '</p>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-review-edit="' + r.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-review-del="' + r.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-review-edit]').forEach(function (b) { b.addEventListener('click', function () { openReviewModal(b.dataset.reviewEdit); }); });
+    grid.querySelectorAll('[data-review-del]').forEach(function (b) { b.addEventListener('click', function () { delReview(b.dataset.reviewDel); }); });
+  }
+
+  function openReviewModal(id) {
+    document.getElementById('reviewModal').classList.add('active');
+    if (id) {
+      var r = reviews.find(function (x) { return x.id === id; });
+      document.getElementById('reviewModalTitle').textContent = 'Edit review';
+      document.getElementById('reviewEditId').value = id;
+      document.getElementById('reviewName').value = r.name || '';
+      document.getElementById('reviewLocation').value = r.location || '';
+      document.getElementById('reviewQuote').value = r.quote || '';
+      document.getElementById('reviewRating').value = r.rating || 5;
+    } else {
+      document.getElementById('reviewModalTitle').textContent = 'Add review';
+      document.getElementById('reviewEditId').value = '';
+      ['reviewName','reviewLocation','reviewQuote'].forEach(function (i) { document.getElementById(i).value = ''; });
+      document.getElementById('reviewRating').value = 5;
+    }
+  }
+
+  document.getElementById('reviewSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('reviewEditId').value;
+    var name = document.getElementById('reviewName').value.trim();
+    var quote = document.getElementById('reviewQuote').value.trim();
+    if (!name || !quote) return toast('Name and review required', 'error');
+    var data = {
+      name: name,
+      location: document.getElementById('reviewLocation').value.trim(),
+      quote: quote,
+      rating: parseInt(document.getElementById('reviewRating').value) || 5,
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'reviews', id), data, { merge: true })
+      : addDoc(collection(db, 'reviews'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('reviewModal');
+      toast(id ? 'Review updated' : 'Review added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delReview(id) {
+    if (!confirm('Delete this review?')) return;
+    deleteDoc(doc(db, 'reviews', id)).then(function () { toast('Deleted'); });
+  }
+
+  /* ============== SETTINGS ============== */
+  function renderSettings() {
+    var wrap = document.getElementById('settingsWrap');
+    var s = settings;
+    wrap.innerHTML =
+      '<div style="background:var(--white);border:1px solid var(--rule);padding:32px">' +
+        '<div class="field"><label>Hotel name</label><input type="text" id="setName" value="' + esc(s.name || 'Arcadia Suites Hotel') + '"></div>' +
+        '<div class="field"><label>Hero title</label><input type="text" id="setHero" value="' + esc(s.heroTitle || 'A modern retreat in the heart of Kampala') + '"><small>Shown big on the homepage</small></div>' +
+        '<div class="field"><label>Hero subtitle</label><textarea id="setHeroSub" rows="2">' + esc(s.heroSub || 'Comfortable rooms, quiet streets, and a rooftop restaurant with views across the city.') + '</textarea></div>' +
+        '<div class="field"><label>Phone</label><input type="text" id="setPhone" value="' + esc(s.phone || '+256 200 950 700') + '"></div>' +
+        '<div class="field"><label>Email</label><input type="text" id="setEmail" value="' + esc(s.email || 'info@arcadiasuiteshotel.com') + '"></div>' +
+        '<div class="field"><label>Address</label><input type="text" id="setAddress" value="' + esc(s.address || 'Kira Road, Kampala, Uganda') + '"></div>' +
+        '<div class="field"><label>WhatsApp number</label><input type="text" id="setWhatsapp" value="' + esc(s.whatsapp || '256200950700') + '"><small>Format: 256XXXXXXXXX, no spaces or plus</small></div>' +
+        '<button class="btn btn-primary" id="settingsSaveBtn" style="margin-top:12px">Save settings</button>' +
+      '</div>';
+
+    document.getElementById('settingsSaveBtn').addEventListener('click', function () {
+      var data = {
+        name: document.getElementById('setName').value.trim(),
+        heroTitle: document.getElementById('setHero').value.trim(),
+        heroSub: document.getElementById('setHeroSub').value.trim(),
+        phone: document.getElementById('setPhone').value.trim(),
+        email: document.getElementById('setEmail').value.trim(),
+        address: document.getElementById('setAddress').value.trim(),
+        whatsapp: document.getElementById('setWhatsapp').value.trim(),
+        updatedAt: serverTimestamp()
+      };
+      setDoc(doc(db, 'settings', 'hotel'), data, { merge: true })
+        .then(function () { toast('Settings saved', 'success'); })
+        .catch(function () { toast('Save failed', 'error'); });
+    });
+  }
+
+  /* PREVIEW LISTENERS */
+  document.getElementById('roomImageUrl').addEventListener('input', function () { preview('roomImageUrl', 'roomPreview'); });
+  document.getElementById('menuImageUrl').addEventListener('input', function () { preview('menuImageUrl', 'menuPreview'); });
+  document.getElementById('photoImageUrl').addEventListener('input', function () { preview('photoImageUrl', 'photoPreview'); });
+  document.getElementById('offerImageUrl').addEventListener('input', function () { preview('offerImageUrl', 'offerPreview'); });
+</script>
+</body>
+</html>
