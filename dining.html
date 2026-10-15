@@ -384,3 +384,66 @@
   var currentCat = 'all';
   var menuTabs = document.getElementById('menuTabs');
   var menuGrid = document.getElementById('menuGrid');
+
+  onSnapshot(query(collection(db, 'menu'), orderBy('createdAt', 'asc')), function (snap) {
+    allItems = [];
+    snap.forEach(function (d) { allItems.push({ id: d.id, ...d.data() }); });
+    allItems = allItems.filter(function (m) { return m.name && m.name !== 'test'; });
+
+    if (!allItems.length) {
+      menuTabs.innerHTML = '';
+      menuGrid.innerHTML = '<div class="menu-empty">The menu is being updated. Check back shortly.</div>';
+      return;
+    }
+
+    var cats = ['all'];
+    allItems.forEach(function (m) {
+      var c = m.category || 'Mains';
+      if (cats.indexOf(c) === -1) cats.push(c);
+    });
+
+    menuTabs.innerHTML = cats.map(function (c) {
+      var label = c === 'all' ? 'Everything' : c;
+      return '<span class="mtab' + (currentCat === c ? ' active' : '') + '" data-cat="' + esc(c) + '">' + esc(label) + '</span>';
+    }).join('');
+
+    menuTabs.querySelectorAll('.mtab').forEach(function (t) {
+      t.addEventListener('click', function () {
+        currentCat = t.dataset.cat;
+        renderMenu();
+      });
+    });
+
+    renderMenu();
+  });
+
+  function renderMenu() {
+    menuTabs.querySelectorAll('.mtab').forEach(function (t) {
+      t.classList.toggle('active', t.dataset.cat === currentCat);
+    });
+
+    var list = allItems;
+    if (currentCat !== 'all') list = list.filter(function (m) { return (m.category || 'Mains') === currentCat; });
+
+    if (!list.length) {
+      menuGrid.innerHTML = '<div class="menu-empty" style="grid-column:1/-1">No items in this category yet.</div>';
+      return;
+    }
+
+    menuGrid.innerHTML = list.map(function (m) {
+      var img = m.imageUrl
+        ? '<div class="menu-item-media"><img src="' + m.imageUrl + '" alt=""></div>'
+        : '<div class="menu-item-media"></div>';
+      var priceHtml = m.price
+        ? '<div class="price">' + esc(m.price) + '<small>' + esc(m.currency || 'UGX') + '</small></div>'
+        : '';
+      return '<div class="menu-item">' +
+        '<div class="menu-item-head"><h3>' + esc(m.name) + '</h3>' + priceHtml + '</div>' +
+        '<p>' + esc(m.description || '') + '</p>' +
+        img +
+      '</div>';
+    }).join('');
+  }
+</script>
+</body>
+</html>
