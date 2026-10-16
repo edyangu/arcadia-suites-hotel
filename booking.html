@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book a Room | Arcadia Suites Hotel Kampala</title>
+<meta name="description" content="Book a room at Arcadia Suites Hotel on Kira Road, Kampala. Send your dates and we'll reply with availability.">
+<meta name="theme-color" content="#1E1915">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23A83A24'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23F2EFE9' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --sand:#F2EFE9;--white:#FFFFFF;--espresso:#1E1915;
+    --brick:#A83A24;--brick-2:#8B2E1C;--copper:#D89A4E;--copper-2:#B87536;
+    --body:#5C5750;--muted:#8A857C;--rule:#DCD5C6;--rule-2:#E8E3D7;
+    --red:#B8412F;--ok:#2D7A47;
+    --f-serif:'Cormorant Garamond',Georgia,serif;--f-sans:'Inter',sans-serif;--f-mono:'JetBrains Mono',ui-monospace,monospace;
+    --max:1360px;--pad:48px;
+    padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:var(--f-sans);background:var(--sand);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--f-serif);color:var(--espresso);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  button,input,textarea,select{font:inherit;color:inherit}
+  ::selection{background:var(--brick);color:var(--sand)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+  @media (max-width:900px){ .wrap{padding:0 24px} }
+  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);margin-bottom:24px}
+  .kicker::before{content:'';width:32px;height:1px;background:var(--brick)}
+
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(242,239,233,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(242,239,233,0.98)}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
+  @media (max-width:900px){ .nav-inner{padding:16px 24px} }
+  .logo{display:flex;align-items:center;gap:14px;color:var(--espresso);line-height:1}
+  .logo-mark{width:38px;height:38px;background:var(--brick);display:grid;place-items:center;color:var(--sand);font-family:var(--f-serif);font-size:22px;flex:none;transition:background .2s}
+  .logo:hover .logo-mark{background:var(--brick-2)}
+  .logo-text{display:flex;flex-direction:column;line-height:1;gap:4px}
+  .logo-name{font-family:var(--f-serif);font-size:20px;letter-spacing:0.02em}
+  .logo-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
+  .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
+  .nav-links a{color:var(--body);position:relative;padding:6px 0;transition:color .2s}
+  .nav-links a:hover{color:var(--brick)}
+  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--espresso)}
+  .menu-btn svg{width:26px;height:26px}
+  @media (max-width:960px){ .nav-links{display:none} .menu-btn{display:inline-flex} }
+  .sheet{position:fixed;inset:0;background:var(--espresso);color:var(--sand);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
+  .sheet.open{display:flex}
+  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(242,239,233,0.12);color:var(--sand);display:flex;justify-content:space-between;align-items:center}
+  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--copper);letter-spacing:0.1em}
+  .sheet a:last-of-type{border-bottom:0}
+  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
+
+  .page-hero{padding:180px 0 80px;border-bottom:1px solid var(--rule)}
+  .page-hero h1{font-size:clamp(52px, 7.4vw, 100px);line-height:0.98;letter-spacing:-0.03em;color:var(--espresso);max-width:14ch;margin-bottom:32px;font-weight:400}
+  .page-hero h1 em{font-style:italic;color:var(--brick)}
+  .page-hero p{font-size:19px;line-height:1.65;color:var(--body);max-width:52ch}
+  @media (max-width:900px){ .page-hero{padding:130px 0 60px} }
+
+  .booking-section{padding:100px 0}
+  .booking-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start}
+  .booking-info .kicker{margin-bottom:20px}
+  .booking-info h2{font-size:clamp(30px, 3.6vw, 46px);line-height:1.08;letter-spacing:-0.025em;color:var(--espresso);margin-bottom:24px;max-width:16ch;font-weight:400}
+  .booking-info h2 em{font-style:italic;color:var(--brick)}
+  .booking-info > p{font-size:16px;line-height:1.75;color:var(--body);margin-bottom:24px;max-width:44ch}
+  .booking-info > p em{font-style:italic;color:var(--brick)}
+  .booking-details{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:32px}
+  .booking-details .li{padding:20px 0;border-bottom:1px solid var(--rule);font-size:15px;line-height:1.65}
+  .booking-details .li b{display:block;color:var(--espresso);font-weight:500;margin-bottom:4px;font-family:var(--f-sans)}
+  .booking-details .li span{color:var(--muted);font-size:14.5px}
+  .booking-details .li a{color:var(--brick);border-bottom:1px solid var(--brick)}
+
+  .form-card{background:var(--white);border:1px solid var(--rule);padding:56px;box-shadow:0 4px 24px rgba(30,25,21,0.06)}
+  .form-card h3{font-size:32px;letter-spacing:-0.02em;margin-bottom:8px;font-weight:400}
+  .form-card > p{font-size:14.5px;color:var(--muted);margin-bottom:36px;line-height:1.6}
+
+  .field{margin-bottom:22px}
+  .field label{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;font-weight:500}
+  .field input,.field textarea,.field select{width:100%;padding:14px 16px;background:var(--sand);border:1px solid var(--rule);font-family:inherit;font-size:15px;color:var(--espresso);transition:border-color .2s;border-radius:0}
+  .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--brick)}
+  .field textarea{resize:vertical;min-height:110px;line-height:1.55}
+  .field .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+  .submit-btn{width:100%;padding:20px;background:var(--brick);color:var(--sand);border:0;cursor:pointer;font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:500;transition:background .2s;margin-top:12px}
+  .submit-btn:hover:not(:disabled){background:var(--brick-2);transform:translateY(-2px)}
+  .submit-btn:disabled{opacity:0.5;cursor:not-allowed}
+
+  .status{font-size:14px;font-weight:500;min-height:1.5em;margin-top:20px;text-align:center;line-height:1.55}
+  .status.success{color:var(--ok)}
+  .status.error{color:var(--red)}
+
+  .consent{font-size:12.5px;color:var(--muted);line-height:1.55;margin-top:20px;text-align:center}
+  .consent a{color:var(--brick);border-bottom:1px solid var(--brick)}
+
+  @media (max-width:900px){
+    .booking-section{padding:70px 0}
+    .booking-grid{grid-template-columns:1fr;gap:48px}
+    .form-card{padding:36px 28px}
+    .field .row2{grid-template-columns:1fr}
+  }
+
+  footer{background:var(--espresso);color:rgba(242,239,233,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(242,239,233,0.08)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(242,239,233,0.12)}
+  .footer-brand .logo{color:var(--sand)}
+  .footer-brand .logo-mark{background:var(--brick);color:var(--sand)}
+  .footer-brand .logo-sub{color:rgba(242,239,233,0.4)}
+  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(242,239,233,0.55);max-width:36ch}
+  .footer-brand .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);border:1px solid rgba(216,154,78,0.35);padding:8px 14px}
+  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--copper);margin-bottom:24px}
+  .footer-col ul{display:flex;flex-direction:column;gap:14px}
+  .footer-col a{font-size:14px;color:rgba(242,239,233,0.6);transition:color .2s}
+  .footer-col a:hover{color:var(--copper)}
+  .footer-col li{font-size:14px;color:rgba(242,239,233,0.6);line-height:1.55}
+  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,239,233,0.4)}
+  .footer-bottom a:hover{color:var(--copper)}
+  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;gap:40px} .footer-brand{grid-column:1/-1} }
+  @media (max-width:520px){ .footer-grid{grid-template-columns:1fr} footer{padding:60px 0 32px} }
+
+  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--brick);color:var(--sand);display:grid;place-items:center;box-shadow:0 12px 32px rgba(168,58,36,0.35);z-index:90;transition:background .25s, transform .25s;border-radius:50%}
+  .wa:hover{background:var(--brick-2);transform:translateY(-3px)}
+  .wa svg{width:24px;height:24px}
+
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">
+        <span class="logo-name">Arcadia Suites</span>
+        <span class="logo-sub">Hotel · Kampala</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="rooms.html">Rooms</a>
+      <a href="dining.html">Dining</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="location.html">Location</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="sheet" id="sheet">
+  <a href="rooms.html"><span>Rooms</span><span>01</span></a>
+  <a href="dining.html"><span>Dining</span><span>02</span></a>
+  <a href="amenities.html"><span>Amenities</span><span>03</span></a>
+  <a href="location.html"><span>Location</span><span>04</span></a>
+  <a href="about.html"><span>About</span><span>05</span></a>
+  <a href="contact.html"><span>Contact</span><span>06</span></a>
+  <a href="booking.html" class="sheet-cta">Book a stay</a>
+</div>
+
+<header class="page-hero">
+  <div class="wrap">
+    <span class="kicker rv">Reserve a room</span>
+    <h1 class="rv">Book your <em>stay.</em></h1>
+    <p class="rv">Fill in your dates and details below. We'll reply within a day with availability, rates, and everything else you need.</p>
+  </div>
+</header>
+
+<section class="booking-section">
+  <div class="wrap">
+    <div class="booking-grid">
+      <div class="booking-info rv">
+        <span class="kicker">What happens next</span>
+        <h2>Send your dates, <em>get a confirmation.</em></h2>
+        <p>This is a booking enquiry, not an instant confirmation. We check availability, then reply personally with rates and any details you need. <em>Most replies go out within a few hours during the day.</em></p>
+
+        <div class="booking-details">
+          <div class="li">
+            <b>Prefer to call?</b>
+            <span>+256 200 950 700</span>
+          </div>
+          <div class="li">
+            <b>Prefer WhatsApp?</b>
+            <a href="https://wa.me/256200950700" target="_blank" rel="noopener">Message us here</a>
+          </div>
+          <div class="li">
+            <b>Special requests?</b>
+            <span>Mention them in the notes field below</span>
+          </div>
+          <div class="li">
+            <b>Groups and events?</b>
+            <span>Use the notes field, we'll come back with a plan</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card rv">
+        <h3>Booking request</h3>
+        <p>All fields marked required. We don't share your details with anyone.</p>
+
+        <form id="bookingForm" novalidate>
+          <div class="field">
+            <label for="name">Full name *</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@email.com">
+              </div>
+              <div>
+                <label for="phone">Phone *</label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+256 7...">
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="checkin">Check-in *</label>
+                <input type="date" id="checkin" name="checkin" required>
+              </div>
+              <div>
+                <label for="checkout">Check-out *</label>
+                <input type="date" id="checkout" name="checkout" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="row2">
+              <div>
+                <label for="guests">Guests *</label>
+                <select id="guests" name="guests" required>
+                  <option value="1">1 guest</option>
+                  <option value="2" selected>2 guests</option>
+                  <option value="3">3 guests</option>
+                  <option value="4">4 guests</option>
+                  <option value="5+">5+ guests</option>
+                </select>
+              </div>
+              <div>
+                <label for="room">Room type</label>
+                <select id="room" name="room">
+                  <option value="">Any room</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Special requests</label>
+            <textarea id="message" name="message" placeholder="Anything we should know? Airport pickup, dietary needs, late arrival, events..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">Send booking request</button>
+
+          <p class="consent">
+            By submitting this form you agree to our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>. We only use your details to respond to your request.
+          </p>
+          <p class="status" id="status" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">A</span>
+          <span class="logo-text">
+            <span class="logo-name">Arcadia Suites</span>
+            <span class="logo-sub">Hotel · Kampala</span>
+          </span>
+        </a>
+        <p>A modern boutique hotel on Kira Road, with comfortable rooms, quiet service, and rooftop dining above the city.</p>
+        <span class="badge">Kira Road · Kampala</span>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="rooms.html">Rooms & Suites</a></li>
+          <li><a href="dining.html">Rooftop dining</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="location.html">Location</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+256200950700">+256 200 950 700</a></li>
+          <li><a href="mailto:info@arcadiasuiteshotel.com">info@arcadiasuiteshotel.com</a></li>
+          <li><a href="https://wa.me/256200950700" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>Kira Road</li>
+          <li>Kampala, Uganda</li>
+          <li>Front desk open 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Arcadia Suites Hotel.</div>
+      <div><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/256200950700" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+</a>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import {
+    getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
+    authDomain: "arcadia-suits-hotel.firebaseapp.com",
+    projectId: "arcadia-suits-hotel",
+    storageBucket: "arcadia-suits-hotel.firebasestorage.app",
+    messagingSenderId: "443226155596",
+    appId: "1:443226155596:web:2821439ad0338c3c6822e9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  var FORMSPREE = 'https://formspree.io/f/xyzkqkno';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var sheet = document.getElementById('sheet');
+  document.getElementById('menuBtn').addEventListener('click', function () {
+    sheet.classList.toggle('open');
+    document.body.style.overflow = sheet.classList.contains('open') ? 'hidden' : '';
+  });
+  sheet.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { sheet.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+  window.addEventListener('scroll', function () {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  var params = new URLSearchParams(window.location.search);
+  var preRoom = params.get('room');
+
+  var roomSelect = document.getElementById('room');
+  onSnapshot(query(collection(db, 'rooms'), orderBy('createdAt', 'asc')), function (snap) {
+    var rooms = [];
+    snap.forEach(function (d) { rooms.push(d.data()); });
+    rooms = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
+
+    var currentVal = roomSelect.value;
+    roomSelect.innerHTML = '<option value="">Any room</option>' +
+      rooms.map(function (r) { return '<option value="' + esc(r.title) + '">' + esc(r.title) + '</option>'; }).join('');
+
+    if (preRoom) {
+      var option = Array.from(roomSelect.options).find(function (o) { return o.value === preRoom; });
+      if (option) roomSelect.value = preRoom;
+    } else if (currentVal) {
+      var opt = Array.from(roomSelect.options).find(function (o) { return o.value === currentVal; });
+      if (opt) roomSelect.value = currentVal;
+    }
+  });
+
+  var form = document.getElementById('bookingForm');
+  var statusEl = document.getElementById('status');
+  var btn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    statusEl.className = 'status';
+    statusEl.textContent = '';
+
+    var fd = new FormData(form);
+    var enquiry = {
+      name: (fd.get('name') || '').trim(),
+      email: (fd.get('email') || '').trim(),
+      phone: (fd.get('phone') || '').trim(),
+      checkin: fd.get('checkin') || '',
+      checkout: fd.get('checkout') || '',
+      guests: fd.get('guests') || '',
+      room: fd.get('room') || 'Any room',
+      message: (fd.get('message') || '').trim(),
+      status: 'pending',
+      date: new Date().toISOString().split('T')[0],
+      createdAt: serverTimestamp()
+    };
+
+    var emailPromise = fetch(FORMSPREE, {
+      method: 'POST',
+      body: fd,
+      headers: { 'Accept': 'application/json' }
+    });
+
+    var dbPromise = addDoc(collection(db, 'enquiries'), enquiry);
+
+    Promise.allSettled([emailPromise, dbPromise])
+      .then(function (results) {
+        var emailOk = results[0].status === 'fulfilled' && results[0].value && results[0].value.ok;
+        var dbOk = results[1].status === 'fulfilled';
+
+        if (emailOk || dbOk) {
+          statusEl.className = 'status success';
+          statusEl.textContent = 'Thank you. We have your booking request and will reply shortly.';
+          form.reset();
+        } else {
+          statusEl.className = 'status error';
+          statusEl.textContent = 'Something went wrong. Please message us on WhatsApp instead.';
+        }
+      })
+      .finally(function () {
+        btn.disabled = false;
+        btn.textContent = 'Send booking request';
+      });
+  });
+</script>
+</body>
+</html>
