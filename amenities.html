@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Rooftop Dining | Arcadia Suites Hotel Kampala</title>
-<meta name="description" content="Rooftop restaurant and bar at Arcadia Suites Hotel, Kira Road, Kampala. Buffet and international cuisine, coffee, and evening drinks.">
+<title>Amenities | Arcadia Suites Hotel Kampala</title>
+<meta name="description" content="Hotel amenities at Arcadia Suites Hotel, Kira Road, Kampala. 24-hour front desk, free parking, fitness center, laundry, room service, wifi, and more.">
 <meta name="theme-color" content="#1E1915">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,64 +64,26 @@
   .page-hero p{font-size:19px;line-height:1.65;color:var(--body);max-width:52ch}
   @media (max-width:900px){ .page-hero{padding:130px 0 60px} }
 
-  .intro{padding:100px 0;border-bottom:1px solid var(--rule)}
-  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-  .intro-grid p{font-family:var(--f-serif);font-size:clamp(22px, 2.4vw, 30px);line-height:1.45;color:var(--espresso);letter-spacing:-0.01em}
-  .intro-grid p em{font-style:italic;color:var(--brick)}
-  .intro-side{padding-top:12px;display:flex;flex-direction:column;gap:32px}
-  .intro-side .item{padding-bottom:28px;border-bottom:1px solid var(--rule)}
-  .intro-side .item:last-child{border-bottom:0;padding-bottom:0}
-  .intro-side .num{font-family:var(--f-serif);font-size:34px;color:var(--copper);line-height:1;margin-bottom:12px;letter-spacing:-0.02em}
-  .intro-side .txt{font-size:15px;line-height:1.65;color:var(--body)}
-  @media (max-width:900px){ .intro-grid{grid-template-columns:1fr;gap:48px} .intro{padding:80px 0} }
+  .amenities{padding:100px 0;background:var(--sand)}
+  .amenities-list{display:grid;grid-template-columns:repeat(4, 1fr);gap:0;border-top:1px solid var(--rule)}
+  .amenity{padding:44px 34px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .amenity:nth-child(4n){border-right:0}
+  .amenity .num{font-family:var(--f-mono);font-size:10px;letter-spacing:0.24em;color:var(--brick);margin-bottom:22px}
+  .amenity h3{font-family:var(--f-serif);font-size:24px;margin-bottom:14px;color:var(--espresso);line-height:1.25;font-weight:400}
+  .amenity p{font-size:14.5px;line-height:1.65;color:var(--body)}
+  @media (max-width:960px){ .amenities-list{grid-template-columns:1fr 1fr} .amenity:nth-child(4n){border-right:1px solid var(--rule)} .amenity:nth-child(2n){border-right:0} }
+  @media (max-width:600px){ .amenities-list{grid-template-columns:1fr} .amenity{border-right:0} }
 
-  .hours{background:var(--espresso);color:var(--sand);padding:100px 0;position:relative;overflow:hidden}
-  .hours::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(216,154,78,0.15) 0%,transparent 60%);border-radius:50%;pointer-events:none}
-  .hours-inner{position:relative;z-index:1}
-  .hours .kicker{color:var(--copper)}
-  .hours .kicker::before{background:var(--copper)}
-  .hours h2{font-size:clamp(36px, 4.6vw, 62px);line-height:1.04;letter-spacing:-0.025em;color:var(--sand);max-width:20ch;margin-bottom:56px;font-weight:400}
-  .hours h2 em{font-style:italic;color:var(--copper)}
-  .hours-list{display:grid;grid-template-columns:repeat(4, 1fr);gap:0;border-top:1px solid rgba(242,239,233,0.15)}
-  .hour-item{padding:36px 32px;border-right:1px solid rgba(242,239,233,0.15);border-bottom:1px solid rgba(242,239,233,0.15)}
-  .hour-item:last-child{border-right:0}
-  .hour-item .lbl{font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--copper);margin-bottom:16px}
-  .hour-item .val{font-family:var(--f-serif);font-size:22px;line-height:1.3;color:var(--sand)}
-  @media (max-width:900px){ .hours{padding:80px 0} .hours-list{grid-template-columns:1fr 1fr} .hour-item:nth-child(2n){border-right:0} }
-  @media (max-width:520px){ .hours-list{grid-template-columns:1fr} .hour-item{border-right:0} }
-
-  .menu-section{padding:100px 0}
-  .menu-tabs{display:flex;flex-wrap:wrap;gap:0;padding-bottom:40px;margin-bottom:64px;border-bottom:1px solid var(--rule)}
-  .mtab{padding:12px 22px 12px 0;margin-right:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .2s;border-bottom:2px solid transparent;font-weight:500}
-  .mtab:hover{color:var(--espresso)}
-  .mtab.active{color:var(--brick);border-bottom-color:var(--brick)}
-
-  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 80px}
-  .menu-item{padding:28px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
-  .menu-item-media{width:88px;height:88px;background:var(--rule-2);overflow:hidden;flex:none;order:3;grid-row:1/span 2;align-self:start}
-  .menu-item-media img{width:100%;height:100%;object-fit:cover}
-  .menu-item-head{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:10px}
-  .menu-item h3{font-size:24px;line-height:1.2;color:var(--espresso);letter-spacing:-0.01em;font-weight:400}
-  .menu-item .price{font-family:var(--f-serif);font-size:20px;color:var(--espresso);white-space:nowrap}
-  .menu-item .price small{font-family:var(--f-sans);font-size:12px;color:var(--muted);margin-left:2px}
-  .menu-item p{font-size:14.5px;line-height:1.6;color:var(--body);grid-column:1;max-width:52ch}
-
-  .menu-empty{grid-column:1/-1;padding:80px 40px;text-align:center;border:1px dashed var(--rule);color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
-
-  @media (max-width:900px){
-    .menu-grid{grid-template-columns:1fr;gap:0}
-    .menu-item-media{width:72px;height:72px}
-  }
-
-  .events{padding:100px 0;background:var(--white);border-top:1px solid var(--rule)}
-  .events-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-  .events-content h2{font-size:clamp(36px, 4.6vw, 62px);line-height:1.04;letter-spacing:-0.025em;color:var(--espresso);margin-bottom:28px;max-width:20ch;font-weight:400}
-  .events-content h2 em{font-style:italic;color:var(--brick)}
-  .events-content p{font-size:16.5px;line-height:1.7;color:var(--body);margin-bottom:20px;max-width:48ch}
-  .events-content p em{font-style:italic;color:var(--brick)}
-  .events-visual{aspect-ratio:4/3;background:var(--sand);border:1px solid var(--rule);position:relative;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
-  .events-visual::before{content:'';position:absolute;inset:24px;border:1px solid var(--rule);pointer-events:none}
-  @media (max-width:900px){ .events{padding:80px 0} .events-grid{grid-template-columns:1fr;gap:40px} }
+  .note{background:var(--white);border-top:1px solid var(--rule);padding:100px 0}
+  .note-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .note-grid p{font-family:var(--f-serif);font-size:clamp(22px, 2.4vw, 30px);line-height:1.45;color:var(--espresso);letter-spacing:-0.01em}
+  .note-grid p em{font-style:italic;color:var(--brick)}
+  .note-side{padding-top:12px;display:flex;flex-direction:column;gap:32px}
+  .note-side .item{padding-bottom:28px;border-bottom:1px solid var(--rule)}
+  .note-side .item:last-child{border-bottom:0;padding-bottom:0}
+  .note-side .num{font-family:var(--f-serif);font-size:34px;color:var(--copper);line-height:1;margin-bottom:12px;letter-spacing:-0.02em}
+  .note-side .txt{font-size:15px;line-height:1.65;color:var(--body)}
+  @media (max-width:900px){ .note-grid{grid-template-columns:1fr;gap:48px} .note{padding:80px 0} }
 
   .book-cta{background:var(--brick);color:var(--sand);padding:120px 0;text-align:center;position:relative;overflow:hidden}
   .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,239,233,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
@@ -186,8 +148,8 @@
     </a>
     <div class="nav-links">
       <a href="rooms.html">Rooms</a>
-      <a href="dining.html" class="active">Dining</a>
-      <a href="amenities.html">Amenities</a>
+      <a href="dining.html">Dining</a>
+      <a href="amenities.html" class="active">Amenities</a>
       <a href="location.html">Location</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -211,65 +173,35 @@
 
 <header class="page-hero">
   <div class="wrap">
-    <span class="kicker rv">Rooftop restaurant & bar</span>
-    <h1 class="rv">Dinner with the city <em>at your feet.</em></h1>
-    <p class="rv">Buffet and international cuisine served on our rooftop, above Kira Road. Open all day for breakfast, lunch, dinner, and coffee.</p>
+    <span class="kicker rv">What's included</span>
+    <h1 class="rv">The essentials, <em>handled properly.</em></h1>
+    <p class="rv">Everything you need for a comfortable stay in Kampala. The small things that make a difference when you are away from home.</p>
   </div>
 </header>
 
-<section class="intro">
+<section class="amenities">
   <div class="wrap">
-    <div class="intro-grid">
-      <p class="rv">Our rooftop sits close enough to Kololo to feel the evening come in. We serve <em>buffet and international cuisine</em> throughout the day, with a coffee menu that has quietly become a favourite among guests and neighbours.</p>
-      <div class="intro-side">
-        <div class="item rv"><div class="num">01</div><div class="txt">Breakfast buffet every morning, from 6:30 to 10:30. Included for hotel guests.</div></div>
-        <div class="item rv"><div class="num">02</div><div class="txt">Lunch and dinner from an international à la carte menu, served all day.</div></div>
-        <div class="item rv"><div class="num">03</div><div class="txt">Coffee, cocktails, and evening drinks on the terrace. Open to the public.</div></div>
-      </div>
+    <div class="amenities-list">
+      <div class="amenity rv"><div class="num">01</div><h3>24-hour front desk</h3><p>Someone is always here. Late arrival, early departure, or a question at 3am, you will find us.</p></div>
+      <div class="amenity rv"><div class="num">02</div><h3>Free parking</h3><p>Secure on-site parking for guests. No charge, no reservation needed.</p></div>
+      <div class="amenity rv"><div class="num">03</div><h3>Fitness center</h3><p>A small gym with what you need to keep a routine going while you are away from home.</p></div>
+      <div class="amenity rv"><div class="num">04</div><h3>Business center</h3><p>Printing, quiet workspace, and reliable wifi. Set up a meeting without leaving the building.</p></div>
+      <div class="amenity rv"><div class="num">05</div><h3>Laundry service</h3><p>Same-day laundry and dry-cleaning available. Leave it at the desk and it comes back folded.</p></div>
+      <div class="amenity rv"><div class="num">06</div><h3>Room service</h3><p>Available around the clock. Order from the restaurant menu and eat in your room.</p></div>
+      <div class="amenity rv"><div class="num">07</div><h3>Concierge</h3><p>Need a taxi, a restaurant booking, or directions somewhere? Just ask at the desk.</p></div>
+      <div class="amenity rv"><div class="num">08</div><h3>Free wifi</h3><p>Fast, reliable, and available in every room and every public space in the hotel.</p></div>
     </div>
   </div>
 </section>
 
-<section class="hours">
-  <div class="wrap hours-inner">
-    <span class="kicker rv">Opening hours</span>
-    <h2 class="rv">Open every day, <em>all day.</em></h2>
-    <div class="hours-list rv">
-      <div class="hour-item"><div class="lbl">Breakfast</div><div class="val">6:30 – 10:30</div></div>
-      <div class="hour-item"><div class="lbl">Lunch</div><div class="val">12:00 – 15:00</div></div>
-      <div class="hour-item"><div class="lbl">Dinner</div><div class="val">18:30 – 22:30</div></div>
-      <div class="hour-item"><div class="lbl">Coffee & bar</div><div class="val">All day</div></div>
-    </div>
-  </div>
-</section>
-
-<section class="menu-section">
+<section class="note">
   <div class="wrap">
-    <div style="margin-bottom:56px">
-      <span class="kicker rv">The menu</span>
-      <h2 class="rv" style="font-size:clamp(36px, 4.6vw, 62px);line-height:1.04;letter-spacing:-0.025em;max-width:20ch;font-weight:400">What's <em style="font-style:italic;color:var(--brick)">on today.</em></h2>
-    </div>
-    <div class="menu-tabs rv" id="menuTabs"></div>
-    <div class="menu-grid" id="menuGrid">
-      <div class="menu-empty" style="grid-column:1/-1">Loading menu...</div>
-    </div>
-  </div>
-</section>
-
-<section class="events">
-  <div class="wrap">
-    <div class="events-grid">
-      <div class="events-content rv">
-        <span class="kicker">Events</span>
-        <h2>Meetings, parties, <em>and quiet celebrations.</em></h2>
-        <p>The rooftop is where we host corporate cocktails, birthday dinners, private parties, and family celebrations. Small enough to feel personal, big enough to feel like an occasion.</p>
-        <p>Tell us the plan and we'll work out the menu, the setup, and the timing. <em>Everything except the guest list is our job.</em></p>
-        <div style="margin-top:32px">
-          <a href="contact.html" class="btn btn-primary">Enquire about events<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-      <div class="events-visual rv">
-        <span>Photo coming soon</span>
+    <div class="note-grid">
+      <p class="rv">Everything above is included in your stay. No hidden fees, no surprises. If you need something we have not listed, <em>ask at the desk</em> — we will find a way.</p>
+      <div class="note-side">
+        <div class="item rv"><div class="num">01</div><div class="txt">Check-in from 2:00 PM. Check-out at 11:00 AM. Early and late available on request.</div></div>
+        <div class="item rv"><div class="num">02</div><div class="txt">Airport transfers can be arranged through the front desk. Just ask when you arrive.</div></div>
+        <div class="item rv"><div class="num">03</div><div class="txt">All rooms are non-smoking. Designated outdoor smoking areas available on the terrace.</div></div>
       </div>
     </div>
   </div>
@@ -277,11 +209,11 @@
 
 <section class="book-cta">
   <div class="wrap book-cta-inner">
-    <span class="kicker rv">Reserve a table</span>
-    <h2 class="rv">Join us on <em>the rooftop.</em></h2>
-    <p class="rv">Message us to reserve a table for dinner, book the rooftop for an event, or ask what's on the buffet today.</p>
+    <span class="kicker rv">Reserve a room</span>
+    <h2 class="rv">Ready to <em>stay</em> with us?</h2>
+    <p class="rv">Send us your dates and we'll reply with availability, rates, and everything else you need.</p>
     <div class="actions rv">
-      <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-primary">Reserve on WhatsApp<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
       <a href="contact.html" class="btn btn-outline">Contact us</a>
     </div>
   </div>
@@ -339,22 +271,7 @@
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
 </a>
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
-  import { getFirestore, collection, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
-    authDomain: "arcadia-suits-hotel.firebaseapp.com",
-    projectId: "arcadia-suits-hotel",
-    storageBucket: "arcadia-suits-hotel.firebasestorage.app",
-    messagingSenderId: "443226155596",
-    appId: "1:443226155596:web:2821439ad0338c3c6822e9"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
+<script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   var sheet = document.getElementById('sheet');
@@ -377,73 +294,6 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
-
-  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
-
-  var allItems = [];
-  var currentCat = 'all';
-  var menuTabs = document.getElementById('menuTabs');
-  var menuGrid = document.getElementById('menuGrid');
-
-  onSnapshot(query(collection(db, 'menu'), orderBy('createdAt', 'asc')), function (snap) {
-    allItems = [];
-    snap.forEach(function (d) { allItems.push({ id: d.id, ...d.data() }); });
-    allItems = allItems.filter(function (m) { return m.name && m.name !== 'test'; });
-
-    if (!allItems.length) {
-      menuTabs.innerHTML = '';
-      menuGrid.innerHTML = '<div class="menu-empty">The menu is being updated. Check back shortly.</div>';
-      return;
-    }
-
-    var cats = ['all'];
-    allItems.forEach(function (m) {
-      var c = m.category || 'Mains';
-      if (cats.indexOf(c) === -1) cats.push(c);
-    });
-
-    menuTabs.innerHTML = cats.map(function (c) {
-      var label = c === 'all' ? 'Everything' : c;
-      return '<span class="mtab' + (currentCat === c ? ' active' : '') + '" data-cat="' + esc(c) + '">' + esc(label) + '</span>';
-    }).join('');
-
-    menuTabs.querySelectorAll('.mtab').forEach(function (t) {
-      t.addEventListener('click', function () {
-        currentCat = t.dataset.cat;
-        renderMenu();
-      });
-    });
-
-    renderMenu();
-  });
-
-  function renderMenu() {
-    menuTabs.querySelectorAll('.mtab').forEach(function (t) {
-      t.classList.toggle('active', t.dataset.cat === currentCat);
-    });
-
-    var list = allItems;
-    if (currentCat !== 'all') list = list.filter(function (m) { return (m.category || 'Mains') === currentCat; });
-
-    if (!list.length) {
-      menuGrid.innerHTML = '<div class="menu-empty" style="grid-column:1/-1">No items in this category yet.</div>';
-      return;
-    }
-
-    menuGrid.innerHTML = list.map(function (m) {
-      var img = m.imageUrl
-        ? '<div class="menu-item-media"><img src="' + m.imageUrl + '" alt=""></div>'
-        : '<div class="menu-item-media"></div>';
-      var priceHtml = m.price
-        ? '<div class="price">' + esc(m.price) + '<small>' + esc(m.currency || 'UGX') + '</small></div>'
-        : '';
-      return '<div class="menu-item">' +
-        '<div class="menu-item-head"><h3>' + esc(m.name) + '</h3>' + priceHtml + '</div>' +
-        '<p>' + esc(m.description || '') + '</p>' +
-        img +
-      '</div>';
-    }).join('');
-  }
 </script>
 </body>
 </html>
