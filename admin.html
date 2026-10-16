@@ -248,6 +248,7 @@
     <div class="sbox"><div class="k">Photos</div><div class="v" id="statPhotos">0</div></div>
     <div class="sbox"><div class="k">Reviews</div><div class="v" id="statReviews">0</div></div>
     <div class="sbox"><div class="k">Offers</div><div class="v" id="statOffers">0</div></div>
+    <div class="sbox"><div class="k">Events</div><div class="v" id="statEvents">0</div></div>
   </div>
 
   <div class="tabs">
@@ -257,6 +258,7 @@
     <div class="tab" data-tab="photos">Photos</div>
     <div class="tab" data-tab="offers">Offers</div>
     <div class="tab" data-tab="reviews">Reviews</div>
+    <div class="tab" data-tab="events">Events</div>
     <div class="tab" data-tab="settings">Settings</div>
   </div>
 
@@ -321,6 +323,15 @@
         <button class="btn btn-primary" id="addReviewBtn">+ Add review</button>
       </div>
       <div class="grid" id="reviewsGrid"><div class="loading" style="grid-column:1/-1">Loading reviews...</div></div>
+    </div>
+
+    <!-- EVENTS -->
+    <div id="eventsTab" style="display:none">
+      <div class="phead">
+        <div><h2>Events</h2><p>Events shown on the dining page.</p></div>
+        <button class="btn btn-primary" id="addEventBtn">+ Add event</button>
+      </div>
+      <div class="grid" id="eventsGrid"><div class="loading" style="grid-column:1/-1">Loading events...</div></div>
     </div>
 
     <!-- SETTINGS -->
@@ -466,6 +477,28 @@
   </div>
 </div>
 
+<!-- EVENT MODAL -->
+<div class="modal-bg" id="eventModal">
+  <div class="modal">
+    <h2 id="eventModalTitle">Add event</h2>
+    <input type="hidden" id="eventEditId">
+
+    <div class="hint"><strong>Upload first</strong>Go to <a href="https://postimages.org" target="_blank" rel="noopener">postimages.org</a>, upload your image, copy the <strong>Direct link</strong>, paste below.</div>
+
+    <div class="field"><label for="eventTitle">Title</label><input type="text" id="eventTitle" placeholder="e.g. Rooftop cocktail night"></div>
+    <div class="field"><label for="eventDesc">Description</label><textarea id="eventDesc" rows="3" placeholder="Short description shown on the dining page"></textarea></div>
+    <div class="field"><label for="eventImageUrl">Image URL</label><input type="url" id="eventImageUrl" placeholder="https://i.postimg.cc/.../event.jpg"></div>
+    <div class="preview" id="eventPreview">Image preview</div>
+    <div class="field"><label for="eventBtnText">Button text (optional)</label><input type="text" id="eventBtnText" placeholder="Enquire about events"></div>
+    <div class="field"><label for="eventBtnLink">Button link (optional)</label><input type="text" id="eventBtnLink" placeholder="contact.html"></div>
+
+    <div class="mfoot">
+      <button class="mcancel" onclick="closeModal('eventModal')">Cancel</button>
+      <button class="msave" id="eventSaveBtn">Save event</button>
+    </div>
+  </div>
+</div>
+
 <!-- ENQUIRY DETAIL MODAL -->
 <div class="modal-bg" id="enqModal">
   <div class="modal">
@@ -505,8 +538,6 @@
   </div>
 </div>
 
-<!-- SETTINGS MODAL (reuses enqModal style but is inline, not modal) -->
-
 <div class="toast" id="toast"></div>
 
 <script type="module">
@@ -532,7 +563,7 @@
   const db = getFirestore(app);
   const auth = getAuth(app);
 
-  var enquiries = [], rooms = [], menu = [], photos = [], offers = [], reviews = [], settings = {};
+  var enquiries = [], rooms = [], menu = [], photos = [], offers = [], reviews = [], events = [], settings = {};
   var listenersStarted = false;
   var enqFilter = 'all', enqSearch = '';
 
@@ -585,6 +616,7 @@
       document.getElementById('photosTab').style.display = id === 'photos' ? 'block' : 'none';
       document.getElementById('offersTab').style.display = id === 'offers' ? 'block' : 'none';
       document.getElementById('reviewsTab').style.display = id === 'reviews' ? 'block' : 'none';
+      document.getElementById('eventsTab').style.display = id === 'events' ? 'block' : 'none';
       document.getElementById('settingsTab').style.display = id === 'settings' ? 'block' : 'none';
     });
   });
@@ -644,15 +676,14 @@
       s.forEach(function (d) { reviews.push({ id: d.id, ...d.data() }); });
       renderReviews(); updateStats();
     });
+    onSnapshot(query(collection(db, 'events'), orderBy('createdAt', 'asc')), function (s) {
+      events = [];
+      s.forEach(function (d) { events.push({ id: d.id, ...d.data() }); });
+      renderEvents(); updateStats();
+    });
     onSnapshot(doc(db, 'settings', 'hotel'), function (d) {
       settings = d.exists() ? d.data() : {};
       renderSettings();
-    });
-  }
-
-  function clean(arr, keys) {
-    return arr.filter(function (x) {
-      return x && !keys.some(function (k) { return x[k] === 'test'; }) && !keys.every(function (k) { return !x[k]; });
     });
   }
 
@@ -663,6 +694,7 @@
     var realPhotos = photos.filter(function (p) { return p.imageUrl && p.imageUrl !== 'test'; });
     var realOffers = offers.filter(function (o) { return o.title && o.title !== 'test'; });
     var realReviews = reviews.filter(function (r) { return r.name && r.name !== 'test'; });
+    var realEvents = events.filter(function (e) { return e.title && e.title !== 'test'; });
 
     document.getElementById('statEnq').textContent = realEnq.length;
     document.getElementById('statPend').textContent = realEnq.filter(function (e) { return (e.status || 'pending') === 'pending'; }).length;
@@ -671,6 +703,7 @@
     document.getElementById('statPhotos').textContent = realPhotos.length;
     document.getElementById('statReviews').textContent = realReviews.length;
     document.getElementById('statOffers').textContent = realOffers.length;
+    document.getElementById('statEvents').textContent = realEvents.length;
   }
 
   /* ============== ENQUIRIES ============== */
@@ -1149,6 +1182,79 @@
     deleteDoc(doc(db, 'reviews', id)).then(function () { toast('Deleted'); });
   }
 
+  /* ============== EVENTS ============== */
+  document.getElementById('addEventBtn').addEventListener('click', function () { openEventModal(); });
+
+  function renderEvents() {
+    var grid = document.getElementById('eventsGrid');
+    var list = events.filter(function (e) { return e.title && e.title !== 'test'; });
+    if (!list.length) {
+      grid.innerHTML = '<div class="empty" style="grid-column:1/-1"><h3>No events yet</h3><p>Click "+ Add event" to create your first event.</p></div>';
+      return;
+    }
+    grid.innerHTML = list.map(function (e) {
+      var img = e.imageUrl ? '<img src="' + e.imageUrl + '" alt="">' : 'No image';
+      return '<div class="card">' +
+        '<div class="card-img">' + img + '</div>' +
+        '<div class="card-body">' +
+          '<h3>' + esc(e.title) + '</h3>' +
+          '<p>' + esc((e.description || '').slice(0, 120)) + '</p>' +
+          '<div class="card-actions">' +
+            '<button class="btn btn-outline" data-event-edit="' + e.id + '">Edit</button>' +
+            '<button class="btn btn-danger" data-event-del="' + e.id + '">Delete</button>' +
+          '</div>' +
+        '</div></div>';
+    }).join('');
+    grid.querySelectorAll('[data-event-edit]').forEach(function (b) { b.addEventListener('click', function () { openEventModal(b.dataset.eventEdit); }); });
+    grid.querySelectorAll('[data-event-del]').forEach(function (b) { b.addEventListener('click', function () { delEvent(b.dataset.eventDel); }); });
+  }
+
+  function openEventModal(id) {
+    document.getElementById('eventModal').classList.add('active');
+    if (id) {
+      var e = events.find(function (x) { return x.id === id; });
+      document.getElementById('eventModalTitle').textContent = 'Edit event';
+      document.getElementById('eventEditId').value = id;
+      document.getElementById('eventTitle').value = e.title || '';
+      document.getElementById('eventDesc').value = e.description || '';
+      document.getElementById('eventImageUrl').value = e.imageUrl || '';
+      document.getElementById('eventBtnText').value = e.btnText || '';
+      document.getElementById('eventBtnLink').value = e.btnLink || '';
+      preview('eventImageUrl', 'eventPreview');
+    } else {
+      document.getElementById('eventModalTitle').textContent = 'Add event';
+      document.getElementById('eventEditId').value = '';
+      ['eventTitle','eventDesc','eventImageUrl','eventBtnText','eventBtnLink'].forEach(function (i) { document.getElementById(i).value = ''; });
+      document.getElementById('eventPreview').innerHTML = 'Image preview';
+    }
+  }
+
+  document.getElementById('eventSaveBtn').addEventListener('click', function () {
+    var id = document.getElementById('eventEditId').value;
+    var title = document.getElementById('eventTitle').value.trim();
+    if (!title) return toast('Title required', 'error');
+    var data = {
+      title: title,
+      description: document.getElementById('eventDesc').value.trim(),
+      imageUrl: document.getElementById('eventImageUrl').value.trim(),
+      btnText: document.getElementById('eventBtnText').value.trim(),
+      btnLink: document.getElementById('eventBtnLink').value.trim(),
+      updatedAt: serverTimestamp()
+    };
+    var p = id
+      ? setDoc(doc(db, 'events', id), data, { merge: true })
+      : addDoc(collection(db, 'events'), Object.assign({}, data, { createdAt: serverTimestamp() }));
+    p.then(function () {
+      closeModal('eventModal');
+      toast(id ? 'Event updated' : 'Event added', 'success');
+    }).catch(function () { toast('Save failed', 'error'); });
+  });
+
+  function delEvent(id) {
+    if (!confirm('Delete this event?')) return;
+    deleteDoc(doc(db, 'events', id)).then(function () { toast('Deleted'); });
+  }
+
   /* ============== SETTINGS ============== */
   function renderSettings() {
     var wrap = document.getElementById('settingsWrap');
@@ -1187,6 +1293,7 @@
   document.getElementById('menuImageUrl').addEventListener('input', function () { preview('menuImageUrl', 'menuPreview'); });
   document.getElementById('photoImageUrl').addEventListener('input', function () { preview('photoImageUrl', 'photoPreview'); });
   document.getElementById('offerImageUrl').addEventListener('input', function () { preview('offerImageUrl', 'offerPreview'); });
+  document.getElementById('eventImageUrl').addEventListener('input', function () { preview('eventImageUrl', 'eventPreview'); });
 </script>
 </body>
 </html>
