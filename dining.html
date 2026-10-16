@@ -119,8 +119,10 @@
   .events-content h2 em{font-style:italic;color:var(--brick)}
   .events-content p{font-size:16.5px;line-height:1.7;color:var(--body);margin-bottom:20px;max-width:48ch}
   .events-content p em{font-style:italic;color:var(--brick)}
-  .events-visual{aspect-ratio:4/3;background:var(--sand);border:1px solid var(--rule);position:relative;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
+  .events-visual{aspect-ratio:4/3;background:var(--sand);border:1px solid var(--rule);position:relative;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;overflow:hidden}
   .events-visual::before{content:'';position:absolute;inset:24px;border:1px solid var(--rule);pointer-events:none}
+  .events-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .events-visual.has-photo::before{display:none}
   @media (max-width:900px){ .events{padding:80px 0} .events-grid{grid-template-columns:1fr;gap:40px} }
 
   .book-cta{background:var(--brick);color:var(--sand);padding:120px 0;text-align:center;position:relative;overflow:hidden}
@@ -188,7 +190,7 @@
       <a href="rooms.html">Rooms</a>
       <a href="dining.html" class="active">Dining</a>
       <a href="amenities.html">Amenities</a>
-      
+      <a href="location.html">Location</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </div>
@@ -203,7 +205,7 @@
   <a href="rooms.html"><span>Rooms</span><span>01</span></a>
   <a href="dining.html"><span>Dining</span><span>02</span></a>
   <a href="amenities.html"><span>Amenities</span><span>03</span></a>
-  
+  <a href="location.html"><span>Location</span><span>04</span></a>
   <a href="about.html"><span>About</span><span>05</span></a>
   <a href="contact.html"><span>Contact</span><span>06</span></a>
   <a href="booking.html" class="sheet-cta">Book a stay</a>
@@ -261,14 +263,14 @@
     <div class="events-grid">
       <div class="events-content rv">
         <span class="kicker">Events</span>
-        <h2>Meetings, parties, <em>and quiet celebrations.</em></h2>
-        <p>The rooftop is where we host corporate cocktails, birthday dinners, private parties, and family celebrations. Small enough to feel personal, big enough to feel like an occasion.</p>
+        <h2 id="eventsTitle">Meetings, parties, <em>and quiet celebrations.</em></h2>
+        <p id="eventsDesc">The rooftop is where we host corporate cocktails, birthday dinners, private parties, and family celebrations. Small enough to feel personal, big enough to feel like an occasion.</p>
         <p>Tell us the plan and we'll work out the menu, the setup, and the timing. <em>Everything except the guest list is our job.</em></p>
         <div style="margin-top:32px">
-          <a href="contact.html" class="btn btn-primary">Enquire about events<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="contact.html" id="eventsBtn" class="btn btn-primary">Enquire about events<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
-      <div class="events-visual rv">
+      <div class="events-visual rv" id="eventsVisual">
         <span>Photo coming soon</span>
       </div>
     </div>
@@ -307,7 +309,7 @@
           <li><a href="rooms.html">Rooms & Suites</a></li>
           <li><a href="dining.html">Rooftop dining</a></li>
           <li><a href="amenities.html">Amenities</a></li>
-          
+          <li><a href="location.html">Location</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
       </div>
@@ -380,6 +382,7 @@
 
   function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 
+  /* ---- MENU ---- */
   var allItems = [];
   var currentCat = 'all';
   var menuTabs = document.getElementById('menuTabs');
@@ -444,6 +447,30 @@
       '</div>';
     }).join('');
   }
+
+  /* ---- EVENTS ---- */
+  onSnapshot(collection(db, 'events'), function (snap) {
+    var events = [];
+    snap.forEach(function (d) { events.push({ id: d.id, ...d.data() }); });
+    events = events.filter(function (e) { return e.title && e.title !== 'test'; });
+
+    if (!events.length) return;
+
+    var e = events[0];
+
+    if (e.title) document.getElementById('eventsTitle').innerHTML = esc(e.title);
+    if (e.description) document.getElementById('eventsDesc').textContent = e.description;
+
+    var btn = document.getElementById('eventsBtn');
+    if (e.btnText) btn.firstChild.textContent = e.btnText;
+    if (e.btnLink) btn.setAttribute('href', e.btnLink);
+
+    if (e.imageUrl) {
+      var v = document.getElementById('eventsVisual');
+      v.classList.add('has-photo');
+      v.innerHTML = '<img src="' + e.imageUrl + '" alt="' + esc(e.title) + '" onerror="this.parentElement.innerHTML=\'<span>Photo coming soon</span>\'">';
+    }
+  });
 </script>
 </body>
 </html>
