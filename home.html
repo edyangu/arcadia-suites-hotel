@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arcadia Suites Hotel Kampala | Modern Boutique Stay in the Heart of the City</title>
+<meta name="description" content="A modern boutique hotel in the heart of Kampala. Comfortable rooms, rooftop dining, minutes from Acacia Mall and Kololo.">
+<meta name="theme-color" content="#1E1915">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23A83A24'/%3E%3Ctext x='16' y='23' font-family='Cormorant Garamond,serif' font-size='20' fill='%23F2EFE9' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --sand:#F2EFE9;--white:#FFFFFF;--espresso:#1E1915;
+    --brick:#A83A24;--brick-2:#8B2E1C;--copper:#D89A4E;--copper-2:#B87536;
+    --body:#5C5750;--muted:#8A857C;--rule:#DCD5C6;--rule-2:#E8E3D7;
+
+    --f-serif:'Cormorant Garamond',Georgia,serif;
+    --f-sans:'Inter',sans-serif;
+    --f-mono:'JetBrains Mono',ui-monospace,monospace;
+    --max:1360px;--pad:48px;
+
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{font-family:var(--f-sans);background:var(--sand);color:var(--body);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--f-serif);color:var(--espresso);font-weight:400;line-height:1.15;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  ul{list-style:none}
+  ::selection{background:var(--brick);color:var(--sand)}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+  @media (max-width:900px){ .wrap{padding:0 24px} }
+
+  .kicker{display:inline-flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;color:var(--brick);margin-bottom:24px}
+  .kicker::before{content:'';width:32px;height:1px;background:var(--brick)}
+
+  /* NAV */
+  .nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:100;background:rgba(242,239,233,0.92);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid transparent;transition:border-color .3s, background .3s}
+  .nav.scrolled{border-bottom-color:var(--rule);background:rgba(242,239,233,0.98)}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:20px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:40px}
+  @media (max-width:900px){ .nav-inner{padding:16px 24px} }
+  .logo{display:flex;align-items:center;gap:14px;color:var(--espresso);line-height:1}
+  .logo-mark{width:38px;height:38px;background:var(--brick);display:grid;place-items:center;color:var(--sand);font-family:var(--f-serif);font-size:22px;flex:none;transition:background .2s}
+  .logo:hover .logo-mark{background:var(--brick-2)}
+  .logo-text{display:flex;flex-direction:column;line-height:1;gap:4px}
+  .logo-name{font-family:var(--f-serif);font-size:20px;letter-spacing:0.02em}
+  .logo-sub{font-family:var(--f-mono);font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
+  .nav-links{display:flex;gap:38px;font-size:13px;font-weight:500;letter-spacing:0.05em;text-transform:uppercase}
+  .nav-links a{color:var(--body);position:relative;padding:6px 0;transition:color .2s}
+  .nav-links a:hover{color:var(--brick)}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--brick);transform:scaleX(0);transform-origin:left;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+  .nav-links a:hover::after{transform:scaleX(1)}
+  .nav-cta{display:inline-flex;align-items:center;gap:10px;padding:12px 22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;transition:background .2s}
+  .nav-cta:hover{background:var(--brick-2)}
+  .menu-btn{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--espresso)}
+  .menu-btn svg{width:26px;height:26px}
+  @media (max-width:960px){ .nav-links,.nav-cta{display:none} .menu-btn{display:inline-flex} }
+
+  /* MOBILE SHEET */
+  .sheet{position:fixed;inset:0;background:var(--espresso);color:var(--sand);z-index:99;padding:100px 32px 40px;display:none;flex-direction:column;overflow-y:auto}
+  .sheet.open{display:flex}
+  .sheet a{font-family:var(--f-serif);font-size:32px;padding:22px 0;border-bottom:1px solid rgba(242,239,233,0.12);color:var(--sand);display:flex;justify-content:space-between;align-items:center}
+  .sheet a span:last-child{font-family:var(--f-mono);font-size:12px;color:var(--copper);letter-spacing:0.1em}
+  .sheet a:last-of-type{border-bottom:0}
+  .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
+
+  /* HERO */
+  .hero{padding:180px 0 100px;position:relative;overflow:hidden;isolation:isolate}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule) 1px,transparent 1px),linear-gradient(to bottom,var(--rule) 1px,transparent 1px);background-size:100px 100px;mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);opacity:0.5;pointer-events:none;z-index:1}
+  .hero-inner{position:relative;z-index:3}
+
+  /* HERO PHOTO BACKGROUND (managed from admin Photos) */
+  .hero-bg{position:absolute;inset:0;z-index:0;background:var(--espresso);opacity:0;transition:opacity 1s ease}
+  .hero-bg.active{opacity:1}
+  .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+  .hero-bg img.on{opacity:1}
+  .hero.has-photos::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,25,21,0.78) 0%,rgba(30,25,21,0.55) 45%,rgba(30,25,21,0.35) 100%);z-index:2;pointer-events:none}
+  .hero.has-photos h1,.hero.has-photos .hero-lede,.hero.has-photos .hero-foot .val{color:var(--sand)}
+  .hero.has-photos .kicker{color:var(--copper)}
+  .hero.has-photos .kicker::before{background:var(--copper)}
+  .hero.has-photos .hero-foot{border-top-color:rgba(242,239,233,0.25)}
+  .hero.has-photos .hero-foot .item .lbl{color:var(--copper)}
+  .hero.has-photos .btn-outline{color:var(--sand);border-color:rgba(242,239,233,0.5)}
+  .hero.has-photos .btn-outline:hover{background:var(--sand);color:var(--espresso);border-color:var(--sand)}
+
+  .hero h1{font-family:var(--f-serif);font-size:clamp(56px, 8.4vw, 130px);line-height:0.94;letter-spacing:-0.03em;color:var(--espresso);max-width:14ch;margin-bottom:44px;font-weight:400}
+  .hero h1 em{font-style:italic;color:var(--brick);font-weight:400}
+  .hero.has-photos h1 em{color:var(--copper)}
+  .hero-lede{font-size:19px;line-height:1.7;color:var(--body);max-width:46ch;margin-bottom:44px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 32px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;border:0;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);white-space:nowrap}
+  .btn-primary{background:var(--brick);color:var(--sand)}
+  .btn-primary:hover{background:var(--brick-2);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--espresso);border:1px solid var(--espresso)}
+  .btn-outline:hover{background:var(--espresso);color:var(--sand)}
+  .btn-gold{background:var(--copper);color:var(--espresso)}
+  .btn-gold:hover{background:var(--copper-2);color:var(--sand)}
+  .btn svg{width:14px;height:14px;transition:transform .3s}
+  .btn:hover svg{transform:translateX(4px)}
+  .hero-foot{margin-top:96px;padding-top:32px;border-top:1px solid var(--rule);display:grid;grid-template-columns:repeat(3, 1fr);gap:40px;max-width:900px}
+  .hero-foot .item .lbl{font-family:var(--f-mono);font-size:10px;letter-spacing:0.24em;text-transform:uppercase;color:var(--brick);margin-bottom:10px}
+  .hero-foot .item .val{font-family:var(--f-serif);font-size:20px;color:var(--espresso);line-height:1.35}
+  @media (max-width:700px){ .hero{padding:130px 0 70px} .hero-foot{grid-template-columns:1fr;gap:28px;margin-top:64px} }
+
+  /* SECTION */
+  section{padding:120px 0;position:relative}
+  @media (max-width:900px){ section{padding:80px 0} }
+  .section-head{display:grid;grid-template-columns:280px 1fr;gap:80px;align-items:start;padding-bottom:56px;border-bottom:1px solid var(--rule);margin-bottom:80px}
+  .section-head .label{font-family:var(--f-mono);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--brick);padding-top:14px;font-weight:500}
+  .section-head h2{font-family:var(--f-serif);font-size:clamp(36px, 4.6vw, 62px);line-height:1.04;letter-spacing:-0.025em;color:var(--espresso);max-width:20ch;font-weight:400}
+  .section-head h2 em{font-style:italic;color:var(--brick)}
+  @media (max-width:900px){ .section-head{grid-template-columns:1fr;gap:20px;padding-bottom:36px;margin-bottom:56px} .section-head .label{padding-top:0} }
+
+  /* INTRO */
+  .intro{background:var(--sand)}
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+  .intro-grid p{font-family:var(--f-serif);font-size:clamp(22px, 2.4vw, 30px);line-height:1.45;color:var(--espresso);letter-spacing:-0.01em}
+  .intro-grid p em{font-style:italic;color:var(--brick)}
+  .intro-side{padding-top:12px;display:flex;flex-direction:column;gap:32px}
+  .intro-side .item{padding-bottom:28px;border-bottom:1px solid var(--rule)}
+  .intro-side .item:last-child{border-bottom:0;padding-bottom:0}
+  .intro-side .num{font-family:var(--f-serif);font-size:34px;color:var(--copper);line-height:1;margin-bottom:12px;letter-spacing:-0.02em}
+  .intro-side .txt{font-size:15px;line-height:1.6;color:var(--body)}
+  @media (max-width:900px){ .intro-grid{grid-template-columns:1fr;gap:48px} }
+
+  /* ROOMS */
+  .rooms-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:32px}
+  .room-card{background:var(--white);border:1px solid var(--rule);padding:0;display:flex;flex-direction:column;transition:transform .3s, border-color .3s;cursor:pointer;color:inherit}
+  .room-card:hover{transform:translateY(-4px);border-color:var(--brick)}
+  .room-image{aspect-ratio:4/3;background:var(--rule-2);position:relative;overflow:hidden;display:grid;place-items:center;color:var(--muted);font-family:var(--f-mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase}
+  .room-image::before{content:'';position:absolute;inset:20px;border:1px solid var(--rule);pointer-events:none}
+  .room-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .room-body{padding:32px 28px;display:flex;flex-direction:column;flex:1}
+  .room-meta{font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--brick);margin-bottom:14px}
+  .room-card h3{font-family:var(--f-serif);font-size:26px;line-height:1.2;color:var(--espresso);margin-bottom:14px;letter-spacing:-0.01em}
+  .room-card p{font-size:14.5px;line-height:1.65;color:var(--body);margin-bottom:24px;flex:1}
+  .room-price{display:flex;justify-content:space-between;align-items:baseline;padding-top:20px;border-top:1px solid var(--rule)}
+  .room-price .from{font-family:var(--f-mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+  .room-price .amt{font-family:var(--f-serif);font-size:22px;color:var(--espresso)}
+  .room-price .amt small{font-family:var(--f-sans);font-size:12px;color:var(--muted);margin-left:2px}
+  .rooms-empty{grid-column:1/-1;padding:80px 40px;text-align:center;border:1px dashed var(--rule);color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
+  .rooms-foot{margin-top:64px;display:flex;justify-content:center}
+  @media (max-width:900px){ .rooms-grid{grid-template-columns:1fr} }
+
+  /* DINING */
+  .dining{background:var(--espresso);color:var(--sand)}
+  .dining h2,.dining h3{color:var(--sand)}
+  .dining .section-head{border-bottom-color:rgba(242,239,233,0.15)}
+  .dining .section-head .label{color:var(--copper)}
+  .dining .section-head h2 em{color:var(--copper)}
+  .dining-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:96px;align-items:start}
+  .dining-copy p{font-family:var(--f-serif);font-size:clamp(22px, 2.2vw, 28px);line-height:1.5;color:rgba(242,239,233,0.85);margin-bottom:40px;letter-spacing:-0.005em}
+  .dining-copy p em{font-style:italic;color:var(--copper)}
+  .dining-details{display:grid;gap:0;border-top:1px solid rgba(242,239,233,0.15)}
+  .dining-details .row{display:flex;justify-content:space-between;padding:22px 0;border-bottom:1px solid rgba(242,239,233,0.15);font-family:var(--f-mono);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:rgba(242,239,233,0.65)}
+  .dining-details .row b{color:var(--sand);font-weight:500}
+  @media (max-width:900px){ .dining-grid{grid-template-columns:1fr;gap:48px} }
+
+  /* AMENITIES */
+  .amenities{background:var(--sand)}
+  .amenities-list{display:grid;grid-template-columns:repeat(4, 1fr);gap:0;border-top:1px solid var(--rule)}
+  .amenity{padding:40px 32px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .amenity:nth-child(4n){border-right:0}
+  .amenity .num{font-family:var(--f-mono);font-size:10px;letter-spacing:0.24em;color:var(--brick);margin-bottom:22px}
+  .amenity h3{font-family:var(--f-serif);font-size:22px;margin-bottom:14px;color:var(--espresso);line-height:1.25}
+  .amenity p{font-size:14px;line-height:1.65;color:var(--body)}
+  @media (max-width:960px){ .amenities-list{grid-template-columns:1fr 1fr} .amenity:nth-child(4n){border-right:1px solid var(--rule)} .amenity:nth-child(2n){border-right:0} }
+  @media (max-width:600px){ .amenities-list{grid-template-columns:1fr} .amenity{border-right:0} }
+
+  /* LOCATION */
+  .location{background:var(--white);padding-bottom:0}
+  .location-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:0}
+  .location-copy p{font-size:16.5px;line-height:1.75;color:var(--body);margin-bottom:22px;max-width:48ch}
+  .location-copy p em{font-style:italic;color:var(--brick)}
+  .location-list{display:grid;gap:0;border-top:1px solid var(--rule)}
+  .location-list .li{display:flex;justify-content:space-between;padding:20px 0;border-bottom:1px solid var(--rule);font-size:15px}
+  .location-list .li b{color:var(--espresso);font-weight:500}
+  .location-list .li span{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:0.05em}
+  @media (max-width:900px){ .location-grid{grid-template-columns:1fr;gap:48px} }
+
+  /* GALLERY */
+  .gallery{background:var(--white);border-top:1px solid var(--rule)}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:14px}
+  .gallery-item{position:relative;aspect-ratio:1/1;overflow:hidden;background:var(--rule-2);margin:0}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+  .gallery-item:hover img{transform:scale(1.05)}
+  .gallery-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--sand);background:linear-gradient(to top,rgba(30,25,21,0.85),transparent);opacity:0;transition:opacity .3s}
+  .gallery-item:hover figcaption{opacity:1}
+  .gallery-empty{grid-column:1/-1;padding:80px 40px;text-align:center;border:1px dashed var(--rule);color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
+  @media (max-width:900px){ .gallery-grid{grid-template-columns:repeat(2, 1fr);gap:10px} }
+
+  /* REVIEWS */
+  .reviews{background:var(--sand)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3, 1fr);gap:32px}
+  .review-card{background:var(--white);border:1px solid var(--rule);padding:40px 36px;display:flex;flex-direction:column}
+  .review-stars{display:flex;gap:6px;color:var(--copper);margin-bottom:24px}
+  .review-stars svg{width:16px;height:16px}
+  .review-card blockquote{font-family:var(--f-serif);font-size:20px;line-height:1.55;color:var(--espresso);letter-spacing:-0.005em;margin-bottom:28px;flex:1}
+  .review-meta{padding-top:20px;border-top:1px solid var(--rule)}
+  .review-meta b{display:block;font-family:var(--f-sans);font-size:14px;font-weight:600;color:var(--espresso);margin-bottom:3px;letter-spacing:0.01em}
+  .review-meta span{font-family:var(--f-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+  .reviews-empty{grid-column:1/-1;padding:80px 40px;text-align:center;border:1px dashed var(--rule);color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase}
+  @media (max-width:900px){ .reviews-grid{grid-template-columns:1fr} }
+
+  /* BOOK CTA */
+  .book-cta{background:var(--brick);color:var(--sand);padding:120px 0;position:relative;overflow:hidden}
+  .book-cta::before{content:'';position:absolute;top:-50%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(242,239,233,0.08) 0%,transparent 60%);border-radius:50%;pointer-events:none}
+  .book-cta-inner{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center}
+  .book-cta .kicker{color:var(--sand);justify-content:center}
+  .book-cta .kicker::before{background:var(--sand)}
+  .book-cta h2{font-family:var(--f-serif);font-size:clamp(42px, 6vw, 84px);line-height:1;letter-spacing:-0.035em;color:var(--sand);margin-bottom:32px;font-weight:400}
+  .book-cta h2 em{font-style:italic;color:var(--copper)}
+  .book-cta p{font-size:17px;line-height:1.65;color:rgba(242,239,233,0.82);max-width:52ch;margin:0 auto 44px}
+  .book-cta .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .book-cta .btn-primary{background:var(--sand);color:var(--brick)}
+  .book-cta .btn-primary:hover{background:var(--espresso);color:var(--sand)}
+  .book-cta .btn-outline{color:var(--sand);border-color:rgba(242,239,233,0.4)}
+  .book-cta .btn-outline:hover{background:var(--sand);color:var(--brick);border-color:var(--sand)}
+
+  /* FOOTER */
+  footer{background:var(--espresso);color:rgba(242,239,233,0.6);padding:80px 0 40px;font-size:14.5px;border-top:1px solid rgba(242,239,233,0.08)}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(242,239,233,0.12)}
+  .footer-brand .logo{color:var(--sand)}
+  .footer-brand .logo-mark{background:var(--brick);color:var(--sand)}
+  .footer-brand .logo-sub{color:rgba(242,239,233,0.4)}
+  .footer-brand > p{font-size:14.5px;line-height:1.7;margin:26px 0;color:rgba(242,239,233,0.55);max-width:36ch}
+  .footer-brand .badge{display:inline-flex;align-items:center;gap:10px;font-family:var(--f-mono);font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--copper);border:1px solid rgba(216,154,78,0.35);padding:8px 14px}
+  .footer-col h4{font-family:var(--f-mono);font-size:10.5px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--copper);margin-bottom:24px}
+  .footer-col ul{display:flex;flex-direction:column;gap:14px}
+  .footer-col a{font-size:14px;color:rgba(242,239,233,0.6);transition:color .2s;letter-spacing:-0.005em}
+  .footer-col a:hover{color:var(--copper)}
+  .footer-col li{font-size:14px;color:rgba(242,239,233,0.6);line-height:1.55}
+  .footer-bottom{padding-top:36px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-family:var(--f-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(242,239,233,0.4)}
+  .footer-bottom a{transition:color .2s}
+  .footer-bottom a:hover{color:var(--copper)}
+  @media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr;gap:40px} .footer-brand{grid-column:1/-1} }
+  @media (max-width:520px){ .footer-grid{grid-template-columns:1fr} footer{padding:60px 0 32px} }
+
+  /* WHATSAPP */
+  .wa{position:fixed;right:24px;bottom:calc(24px + env(safe-area-inset-bottom,0px));width:54px;height:54px;background:var(--brick);color:var(--sand);display:grid;place-items:center;box-shadow:0 12px 32px rgba(168,58,36,0.35);z-index:90;transition:background .25s, transform .25s;border-radius:50%}
+  .wa:hover{background:var(--brick-2);transform:translateY(-3px)}
+  .wa svg{width:24px;height:24px}
+
+  /* REVEAL */
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){ .rv{opacity:1;transform:none;transition:none} html{scroll-behavior:auto} }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">
+        <span class="logo-name">Arcadia Suites</span>
+        <span class="logo-sub">Hotel · Kampala</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="rooms.html">Rooms</a>
+      <a href="dining.html">Dining</a>
+      <a href="amenities.html">Amenities</a>
+      <a href="location.html">Location</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="booking.html" class="nav-cta">Book a stay</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="sheet" id="sheet">
+  <a href="rooms.html"><span>Rooms</span><span>01</span></a>
+  <a href="dining.html"><span>Dining</span><span>02</span></a>
+  <a href="amenities.html"><span>Amenities</span><span>03</span></a>
+  <a href="location.html"><span>Location</span><span>04</span></a>
+  <a href="about.html"><span>About</span><span>05</span></a>
+  <a href="contact.html"><span>Contact</span><span>06</span></a>
+  <a href="booking.html" class="sheet-cta">Book a stay</a>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <span class="kicker rv">Kampala · Uganda</span>
+    <h1 class="rv" id="heroTitle">A modern retreat <em>in the heart</em> of Kampala.</h1>
+    <p class="hero-lede rv" id="heroLede">Comfortable rooms, quiet streets, and a rooftop restaurant with views across the city. Minutes from Acacia Mall, Kololo, and everything that matters in Kampala.</p>
+    <div class="hero-actions rv">
+      <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="rooms.html" class="btn btn-outline">See rooms</a>
+    </div>
+    <div class="hero-foot rv">
+      <div class="item"><div class="lbl">Location</div><div class="val">Kira Road, Kampala</div></div>
+      <div class="item"><div class="lbl">Rooftop dining</div><div class="val">Buffet & à la carte</div></div>
+      <div class="item"><div class="lbl">Front desk</div><div class="val">Open 24 hours</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">The hotel</div>
+      <h2 class="rv">A quiet place to <em>come back to.</em></h2>
+    </div>
+    <div class="intro-grid">
+      <p class="rv">Arcadia Suites is a small, independent hotel on Kira Road, in the heart of Kampala. We are not the biggest hotel in the city. We do not try to be. What we offer is simple: a comfortable room, friendly service, and a rooftop restaurant that guests actually want to spend time in.</p>
+      <div class="intro-side">
+        <div class="item rv"><div class="num">01</div><div class="txt">A short walk from Acacia Mall and the Uganda Museum, minutes from Kololo and the city centre.</div></div>
+        <div class="item rv"><div class="num">02</div><div class="txt">Rooftop restaurant serving buffet and international cuisine, open to guests and to the public.</div></div>
+        <div class="item rv"><div class="num">03</div><div class="txt">Modern rooms with the essentials done properly. Comfortable beds, reliable wifi, quiet air conditioning.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--white);border-top:1px solid var(--rule)">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">Rooms & Suites</div>
+      <h2 class="rv">Rooms designed for <em>a good night's sleep.</em></h2>
+    </div>
+    <div class="rooms-grid" id="roomsGrid">
+      <div class="rooms-empty">Rooms are being updated. Check back shortly.</div>
+    </div>
+    <div class="rooms-foot rv">
+      <a href="rooms.html" class="btn btn-outline">All rooms & rates<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="dining">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">Rooftop dining</div>
+      <h2 class="rv">Dinner with the city <em>at your feet.</em></h2>
+    </div>
+    <div class="dining-grid">
+      <div class="dining-copy rv">
+        <p>Our rooftop restaurant sits above Kira Road, close enough to Kololo to feel the evening come in. We serve buffet and international cuisine throughout the day, with a coffee menu that has quietly become a favourite among guests and neighbours.</p>
+        <p>The rooftop is also where we host meetings, corporate cocktails, private parties, and family celebrations. <em>Tell us the occasion.</em></p>
+        <div style="margin-top:16px"><a href="dining.html" class="btn btn-gold">See the full menu<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+      </div>
+      <div class="dining-details rv">
+        <div class="row"><span>Breakfast</span><b>6:30 – 10:30</b></div>
+        <div class="row"><span>Lunch</span><b>12:00 – 15:00</b></div>
+        <div class="row"><span>Dinner</span><b>18:30 – 22:30</b></div>
+        <div class="row"><span>Coffee & bar</span><b>All day</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="amenities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">What's included</div>
+      <h2 class="rv">The essentials, <em>handled properly.</em></h2>
+    </div>
+    <div class="amenities-list">
+      <div class="amenity rv"><div class="num">01</div><h3>24-hour front desk</h3><p>Someone is always here. Late arrival, early departure, or a question at 3am, you will find us.</p></div>
+      <div class="amenity rv"><div class="num">02</div><h3>Free parking</h3><p>Secure on-site parking for guests. No charge, no reservation needed.</p></div>
+      <div class="amenity rv"><div class="num">03</div><h3>Fitness center</h3><p>A small gym with what you need to keep a routine going while you are away from home.</p></div>
+      <div class="amenity rv"><div class="num">04</div><h3>Business center</h3><p>Printing, quiet workspace, and reliable wifi. Set up a meeting without leaving the building.</p></div>
+      <div class="amenity rv"><div class="num">05</div><h3>Laundry service</h3><p>Same-day laundry and dry-cleaning available. Leave it at the desk and it comes back folded.</p></div>
+      <div class="amenity rv"><div class="num">06</div><h3>Room service</h3><p>Available around the clock. Order from the restaurant menu and eat in your room.</p></div>
+      <div class="amenity rv"><div class="num">07</div><h3>Concierge</h3><p>Need a taxi, a restaurant booking, or directions somewhere? Just ask at the desk.</p></div>
+      <div class="amenity rv"><div class="num">08</div><h3>Free wifi</h3><p>Fast, reliable, and available in every room and every public space in the hotel.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="location">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">Location</div>
+      <h2 class="rv">In the middle of <em>everything.</em></h2>
+    </div>
+    <div class="location-grid">
+      <div class="location-copy rv">
+        <p>Kira Road runs through the heart of Kampala, and Arcadia Suites sits on it, minutes from Acacia Mall and the Uganda Museum.</p>
+        <p>The location suits business travellers who need to be in the city, and visitors who want to walk to shops and restaurants without needing a driver. <em>Kololo is a short drive away.</em></p>
+      </div>
+      <div class="location-list rv">
+        <div class="li"><b>Acacia Mall</b><span>3 min drive</span></div>
+        <div class="li"><b>Uganda Museum</b><span>4 min drive</span></div>
+        <div class="li"><b>Kololo</b><span>7 min drive</span></div>
+        <div class="li"><b>Kampala city centre</b><span>12 min drive</span></div>
+        <div class="li"><b>Entebbe Airport</b><span>60 min drive</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">Gallery</div>
+      <h2 class="rv">A look <em>around.</em></h2>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-empty">Photos are being updated.</div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label rv">What guests say</div>
+      <h2 class="rv">In their <em>own words.</em></h2>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid">
+      <div class="reviews-empty">Reviews are being updated.</div>
+    </div>
+  </div>
+</section>
+
+<section class="book-cta">
+  <div class="wrap book-cta-inner">
+    <span class="kicker rv">Reserve a room</span>
+    <h2 class="rv">Ready to <em>stay</em> with us?</h2>
+    <p class="rv">Send us your dates and we'll reply with availability, rates, and everything else you need.</p>
+    <div class="actions rv">
+      <a href="booking.html" class="btn btn-primary">Book a room<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      <a href="https://wa.me/256200950700" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">A</span>
+          <span class="logo-text">
+            <span class="logo-name">Arcadia Suites</span>
+            <span class="logo-sub">Hotel · Kampala</span>
+          </span>
+        </a>
+        <p>A modern boutique hotel on Kira Road, with comfortable rooms, quiet service, and rooftop dining above the city.</p>
+        <span class="badge">Kira Road · Kampala</span>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="rooms.html">Rooms & Suites</a></li>
+          <li><a href="dining.html">Rooftop dining</a></li>
+          <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="location.html">Location</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+256200950700">+256 200 950 700</a></li>
+          <li><a href="mailto:info@arcadiasuiteshotel.com">info@arcadiasuiteshotel.com</a></li>
+          <li><a href="https://wa.me/256200950700" target="_blank" rel="noopener">WhatsApp</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>Kira Road</li>
+          <li>Kampala, Uganda</li>
+          <li>Front desk open 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="year"></span> Arcadia Suites Hotel.</div>
+      <div><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/256200950700" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+</a>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  import {
+    getFirestore, collection, onSnapshot, query, orderBy
+  } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAJ6nX0DiouZlTryF9o8kMgQLpPxBHRvMo",
+    authDomain: "arcadia-suits-hotel.firebaseapp.com",
+    projectId: "arcadia-suits-hotel",
+    storageBucket: "arcadia-suits-hotel.firebasestorage.app",
+    messagingSenderId: "443226155596",
+    appId: "1:443226155596:web:2821439ad0338c3c6822e9"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  var sheet = document.getElementById('sheet');
+  document.getElementById('menuBtn').addEventListener('click', function () {
+    sheet.classList.toggle('open');
+    document.body.style.overflow = sheet.classList.contains('open') ? 'hidden' : '';
+  });
+  sheet.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { sheet.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+  window.addEventListener('scroll', function () {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+
+  function esc(s) { var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+
+  var roomsGrid = document.getElementById('roomsGrid');
+  onSnapshot(query(collection(db, 'rooms'), orderBy('createdAt', 'asc')), function (snap) {
+    var rooms = [];
+    snap.forEach(function (d) { rooms.push({ id: d.id, ...d.data() }); });
+    rooms = rooms.filter(function (r) { return r.title && r.title !== 'test'; });
+    if (!rooms.length) {
+      roomsGrid.innerHTML = '<div class="rooms-empty">Rooms are being updated. Check back shortly.</div>';
+      return;
+    }
+    roomsGrid.innerHTML = rooms.slice(0, 6).map(function (r) {
+      var img = r.imageUrl ? '<img src="' + r.imageUrl + '" alt="' + esc(r.title) + '" onerror="this.style.display=\'none\'">' : '<span>Photo</span>';
+      var priceHtml = r.price ? '<div class="room-price"><span class="from">From</span><span class="amt">' + esc(r.price) + '<small>' + esc(r.currency || 'UGX') + '</small></span></div>' : '';
+      return '<a href="room.html?id=' + r.id + '" class="room-card rv">' +
+        '<div class="room-image">' + img + '</div>' +
+        '<div class="room-body">' +
+          '<div class="room-meta">Room</div>' +
+          '<h3>' + esc(r.title) + '</h3>' +
+          '<p>' + esc(r.description || '') + '</p>' +
+          priceHtml +
+        '</div>' +
+      '</a>';
+    }).join('');
+    roomsGrid.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  });
+
+  /* HERO BACKGROUND SLIDESHOW (from admin Photos) */
+  var heroBg = document.getElementById('heroBg');
+  var heroEl = document.querySelector('.hero');
+  var heroTimer = null;
+  var heroImages = [];
+  var heroIndex = 0;
+
+  function startHeroSlideshow(urls) {
+    if (!urls.length) return;
+    heroEl.classList.add('has-photos');
+    heroBg.classList.add('active');
+    heroBg.innerHTML = urls.map(function (u, i) {
+      return '<img src="' + u + '" alt="" class="' + (i === 0 ? 'on' : '') + '" onerror="this.remove()">';
+    }).join('');
+    heroImages = Array.prototype.slice.call(heroBg.querySelectorAll('img'));
+    if (heroImages.length < 2) return;
+    heroTimer = setInterval(function () {
+      heroImages[heroIndex].classList.remove('on');
+      heroIndex = (heroIndex + 1) % heroImages.length;
+      heroImages[heroIndex].classList.add('on');
+    }, 5000);
+  }
+
+  onSnapshot(query(collection(db, 'photos'), orderBy('createdAt', 'asc')), function (snap) {
+    var photos = [];
+    snap.forEach(function (d) { photos.push({ id: d.id, ...d.data() }); });
+    photos = photos.filter(function (p) { return p.imageUrl && p.imageUrl !== 'test'; });
+
+    /* Hero: first 5 photos */
+    if (heroTimer) { clearInterval(heroTimer); heroTimer = null; }
+    heroImages = []; heroIndex = 0;
+    heroBg.innerHTML = '';
+    heroEl.classList.remove('has-photos');
+    heroBg.classList.remove('active');
+    if (photos.length) startHeroSlideshow(photos.slice(0, 5).map(function (p) { return p.imageUrl; }));
+
+    /* Gallery: next 8 photos */
+    var galleryGrid = document.getElementById('galleryGrid');
+    if (!photos.length) {
+      galleryGrid.innerHTML = '<div class="gallery-empty">Photos are being updated.</div>';
+      return;
+    }
+    galleryGrid.innerHTML = photos.slice(0, 8).map(function (p) {
+      var cap = p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : '';
+      return '<figure class="gallery-item rv">' +
+        '<img src="' + p.imageUrl + '" alt="' + esc(p.caption || 'Arcadia Suites') + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        cap +
+      '</figure>';
+    }).join('');
+    galleryGrid.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  });
+
+  var reviewsGrid = document.getElementById('reviewsGrid');
+  var starSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+  onSnapshot(query(collection(db, 'reviews'), orderBy('createdAt', 'desc')), function (snap) {
+    var reviews = [];
+    snap.forEach(function (d) { reviews.push({ id: d.id, ...d.data() }); });
+    reviews = reviews.filter(function (r) { return r.name && r.quote && r.name !== 'test'; });
+    if (!reviews.length) {
+      reviewsGrid.innerHTML = '<div class="reviews-empty">Reviews are being updated.</div>';
+      return;
+    }
+    reviewsGrid.innerHTML = reviews.slice(0, 3).map(function (r) {
+      var stars = r.rating || 5;
+      var starHtml = '';
+      for (var i = 0; i < stars; i++) starHtml += starSvg;
+      return '<div class="review-card rv">' +
+        '<div class="review-stars">' + starHtml + '</div>' +
+        '<blockquote>&ldquo;' + esc(r.quote) + '&rdquo;</blockquote>' +
+        '<div class="review-meta"><b>' + esc(r.name) + '</b><span>' + esc(r.location || '') + '</span></div>' +
+      '</div>';
+    }).join('');
+    reviewsGrid.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
+  });
+</script>
+</body>
+</html>
