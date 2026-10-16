@@ -676,7 +676,8 @@
       s.forEach(function (d) { reviews.push({ id: d.id, ...d.data() }); });
       renderReviews(); updateStats();
     });
-    onSnapshot(query(collection(db, 'events'), orderBy('createdAt', 'asc')), function (s) {
+    /* EVENTS — no orderBy so docs without createdAt still show */
+    onSnapshot(collection(db, 'events'), function (s) {
       events = [];
       s.forEach(function (d) { events.push({ id: d.id, ...d.data() }); });
       renderEvents(); updateStats();
@@ -1242,7 +1243,7 @@
       updatedAt: serverTimestamp()
     };
     var p = id
-      ? setDoc(doc(db, 'events', id), data, { merge: true })
+      ? setDoc(doc(db, 'events', id), Object.assign({}, data, { createdAt: serverTimestamp() }), { merge: true })
       : addDoc(collection(db, 'events'), Object.assign({}, data, { createdAt: serverTimestamp() }));
     p.then(function () {
       closeModal('eventModal');
