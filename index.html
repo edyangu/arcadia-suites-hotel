@@ -13,18 +13,9 @@
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
-    /* NEW PALETTE */
-    --sand:#F2EFE9;       /* page background */
-    --white:#FFFFFF;      /* surfaces */
-    --espresso:#1E1915;   /* dark sections + primary text */
-    --brick:#A83A24;      /* PRIMARY brand color */
-    --brick-2:#8B2E1C;    /* darker brick for hover */
-    --copper:#D89A4E;     /* accent */
-    --copper-2:#B87536;   /* darker copper for hover */
-    --body:#5C5750;       /* body text */
-    --muted:#8A857C;      /* secondary text */
-    --rule:#DCD5C6;       /* hairlines */
-    --rule-2:#E8E3D7;     /* lighter hairlines */
+    --sand:#F2EFE9;--white:#FFFFFF;--espresso:#1E1915;
+    --brick:#A83A24;--brick-2:#8B2E1C;--copper:#D89A4E;--copper-2:#B87536;
+    --body:#5C5750;--muted:#8A857C;--rule:#DCD5C6;--rule-2:#E8E3D7;
 
     --f-serif:'Cormorant Garamond',Georgia,serif;
     --f-sans:'Inter',sans-serif;
@@ -79,11 +70,27 @@
   .sheet .sheet-cta{margin-top:40px;padding:22px;background:var(--brick);color:var(--sand);font-family:var(--f-mono);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;justify-content:center;font-weight:500;border:0}
 
   /* HERO */
-  .hero{padding:180px 0 100px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule) 1px,transparent 1px),linear-gradient(to bottom,var(--rule) 1px,transparent 1px);background-size:100px 100px;mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);opacity:0.5;pointer-events:none}
-  .hero-inner{position:relative;z-index:1}
+  .hero{padding:180px 0 100px;position:relative;overflow:hidden;isolation:isolate}
+  .hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(to right,var(--rule) 1px,transparent 1px),linear-gradient(to bottom,var(--rule) 1px,transparent 1px);background-size:100px 100px;mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse 900px 700px at 30% 20%,black 10%,transparent 70%);opacity:0.5;pointer-events:none;z-index:1}
+  .hero-inner{position:relative;z-index:3}
+
+  /* HERO PHOTO BACKGROUND (managed from admin Photos) */
+  .hero-bg{position:absolute;inset:0;z-index:0;background:var(--espresso);opacity:0;transition:opacity 1s ease}
+  .hero-bg.active{opacity:1}
+  .hero-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+  .hero-bg img.on{opacity:1}
+  .hero.has-photos::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(30,25,21,0.78) 0%,rgba(30,25,21,0.55) 45%,rgba(30,25,21,0.35) 100%);z-index:2;pointer-events:none}
+  .hero.has-photos h1,.hero.has-photos .hero-lede,.hero.has-photos .hero-foot .val{color:var(--sand)}
+  .hero.has-photos .kicker{color:var(--copper)}
+  .hero.has-photos .kicker::before{background:var(--copper)}
+  .hero.has-photos .hero-foot{border-top-color:rgba(242,239,233,0.25)}
+  .hero.has-photos .hero-foot .item .lbl{color:var(--copper)}
+  .hero.has-photos .btn-outline{color:var(--sand);border-color:rgba(242,239,233,0.5)}
+  .hero.has-photos .btn-outline:hover{background:var(--sand);color:var(--espresso);border-color:var(--sand)}
+
   .hero h1{font-family:var(--f-serif);font-size:clamp(56px, 8.4vw, 130px);line-height:0.94;letter-spacing:-0.03em;color:var(--espresso);max-width:14ch;margin-bottom:44px;font-weight:400}
   .hero h1 em{font-style:italic;color:var(--brick);font-weight:400}
+  .hero.has-photos h1 em{color:var(--copper)}
   .hero-lede{font-size:19px;line-height:1.7;color:var(--body);max-width:46ch;margin-bottom:44px}
   .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
   .btn{display:inline-flex;align-items:center;gap:12px;padding:18px 32px;font-family:var(--f-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;border:0;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);white-space:nowrap}
@@ -282,6 +289,7 @@
 </div>
 
 <header class="hero" id="top">
+  <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <span class="kicker rv">Kampala · Uganda</span>
     <h1 class="rv" id="heroTitle">A modern retreat <em>in the heart</em> of Kampala.</h1>
@@ -548,11 +556,44 @@
     roomsGrid.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
   });
 
-  var galleryGrid = document.getElementById('galleryGrid');
+  /* HERO BACKGROUND SLIDESHOW (from admin Photos) */
+  var heroBg = document.getElementById('heroBg');
+  var heroEl = document.querySelector('.hero');
+  var heroTimer = null;
+  var heroImages = [];
+  var heroIndex = 0;
+
+  function startHeroSlideshow(urls) {
+    if (!urls.length) return;
+    heroEl.classList.add('has-photos');
+    heroBg.classList.add('active');
+    heroBg.innerHTML = urls.map(function (u, i) {
+      return '<img src="' + u + '" alt="" class="' + (i === 0 ? 'on' : '') + '" onerror="this.remove()">';
+    }).join('');
+    heroImages = Array.prototype.slice.call(heroBg.querySelectorAll('img'));
+    if (heroImages.length < 2) return;
+    heroTimer = setInterval(function () {
+      heroImages[heroIndex].classList.remove('on');
+      heroIndex = (heroIndex + 1) % heroImages.length;
+      heroImages[heroIndex].classList.add('on');
+    }, 5000);
+  }
+
   onSnapshot(query(collection(db, 'photos'), orderBy('createdAt', 'asc')), function (snap) {
     var photos = [];
     snap.forEach(function (d) { photos.push({ id: d.id, ...d.data() }); });
-    photos = photos.filter(function (p) { return p.url && p.url !== 'test'; });
+    photos = photos.filter(function (p) { return p.imageUrl && p.imageUrl !== 'test'; });
+
+    /* Hero: first 5 photos */
+    if (heroTimer) { clearInterval(heroTimer); heroTimer = null; }
+    heroImages = []; heroIndex = 0;
+    heroBg.innerHTML = '';
+    heroEl.classList.remove('has-photos');
+    heroBg.classList.remove('active');
+    if (photos.length) startHeroSlideshow(photos.slice(0, 5).map(function (p) { return p.imageUrl; }));
+
+    /* Gallery: next 8 photos */
+    var galleryGrid = document.getElementById('galleryGrid');
     if (!photos.length) {
       galleryGrid.innerHTML = '<div class="gallery-empty">Photos are being updated.</div>';
       return;
@@ -560,7 +601,7 @@
     galleryGrid.innerHTML = photos.slice(0, 8).map(function (p) {
       var cap = p.caption ? '<figcaption>' + esc(p.caption) + '</figcaption>' : '';
       return '<figure class="gallery-item rv">' +
-        '<img src="' + p.url + '" alt="' + esc(p.caption || 'Arcadia Suites') + '" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<img src="' + p.imageUrl + '" alt="' + esc(p.caption || 'Arcadia Suites') + '" loading="lazy" onerror="this.style.display=\'none\'">' +
         cap +
       '</figure>';
     }).join('');
